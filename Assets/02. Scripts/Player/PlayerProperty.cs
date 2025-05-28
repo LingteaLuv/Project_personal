@@ -43,7 +43,7 @@ public class PlayerProperty : MonoBehaviour
     private void Init()
     {
         _weaponList = new List<IAttackable>();
-        _basicWeapon = GetComponent<IAttackable>();
+        _basicWeapon = GetComponentInChildren<IAttackable>();
         _weaponList.Add(_basicWeapon);
         _curIndex = 0;
         _curWeapon = _weaponList[_curIndex];
