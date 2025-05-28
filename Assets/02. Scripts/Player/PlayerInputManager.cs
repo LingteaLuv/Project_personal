@@ -19,6 +19,9 @@ public class PlayerInputManager : MonoBehaviour
 
     private bool _isHide;
     public bool IsHide => _isHide;
+
+    private bool _isPickUp;
+    public bool IsPickUp => _isPickUp;
     
     
     private void Awake()
@@ -36,6 +39,7 @@ public class PlayerInputManager : MonoBehaviour
         _isAttack = Input.GetKeyDown(_atkKey);
         _changeLeftWeapon = Input.GetKeyDown(KeyCode.Q);
         _changeRightWeapon = Input.GetKeyDown(KeyCode.E);
+        _isPickUp = Input.GetKeyDown(KeyCode.R);
         _isHide = Input.GetKey(KeyCode.LeftShift);
     }
 

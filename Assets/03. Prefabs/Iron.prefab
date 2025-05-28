@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8203562159439010716}
   m_Layer: 0
   m_Name: Iron
-  m_TagString: Untagged
+  m_TagString: Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 2292323695750052009}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -102,9 +102,9 @@ public class MonsterDetect : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, _firstDetectRange);
+        //Gizmos.DrawSphere(transform.position, _firstDetectRange);
         
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position,_secondDetectRange);
+        //Gizmos.DrawSphere(transform.position,_secondDetectRange);
     }
 }

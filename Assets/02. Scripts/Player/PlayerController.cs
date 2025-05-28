@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack _playerAttack;
     private PlayerProperty _playerProperty;
     private PlayerStealth _playerStealth;
+    private PlayerPickUp _playerPickUp;
+    private PlayerInventory _inventory;
 
     private void Awake()
     {
@@ -23,6 +25,11 @@ public class PlayerController : MonoBehaviour
         _playerAttack.AtkUpdate(_playerInput.IsAttack, _playerProperty.CurWeapon);
         _playerProperty.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
         _playerStealth.ChangePresence(_playerInput.IsHide);
+        _playerPickUp.ConfigItem();
+        if (_playerInput.IsPickUp && _playerPickUp.CanPickUp)
+        {
+            _playerPickUp.PickUp(_inventory);
+        }
     }
 
     private void FixedUpdate()
@@ -37,5 +44,7 @@ public class PlayerController : MonoBehaviour
         _playerAttack = GetComponent<PlayerAttack>();
         _playerProperty = GetComponent<PlayerProperty>();
         _playerStealth = GetComponentInChildren<PlayerStealth>();
+        _playerPickUp = GetComponentInChildren<PlayerPickUp>();
+        _inventory = GetComponent<PlayerInventory>();
     }
 }
