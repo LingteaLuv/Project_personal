@@ -47,6 +47,7 @@ public class MonsterAI : MonoBehaviour
     private void Init()
     {
         //_patrolPoints = new List<Transform>();
+        // todo : 맵 생성에 따른 자동 points 생성 및 리스트에 추가
     }
     
     private void SetCurTarget()

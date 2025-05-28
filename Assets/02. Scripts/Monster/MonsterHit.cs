@@ -34,6 +34,5 @@ public class MonsterHit : MonoBehaviour,IDamageable
     private void Die()
     {
         _isDead = true;
-        Destroy(transform.root.gameObject);
     }
 }

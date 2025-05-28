@@ -6,6 +6,8 @@ public class MonsterController : MonoBehaviour
 {
     private MonsterDetect _monsterDetect;
     private MonsterAI _monsterAI;
+    private MonsterHit _monsterHit;
+    private MonsterLoot _monsterLoot;
 
     private void Awake()
     {
@@ -16,11 +18,17 @@ public class MonsterController : MonoBehaviour
     {
         _monsterDetect.Detect();
         _monsterAI.AIUpdate(_monsterDetect.IsFirstDetect, _monsterDetect.IsSecondDetect, _monsterDetect.Target);
+        if (_monsterHit.IsDead)
+        {
+            _monsterLoot.Generate();
+        }
     }
 
     private void Init()
     {
         _monsterDetect = GetComponentInChildren<MonsterDetect>();
         _monsterAI = GetComponent<MonsterAI>();
+        _monsterHit = GetComponentInChildren<MonsterHit>();
+        _monsterLoot = GetComponent<MonsterLoot>();
     }
 }
