@@ -5,12 +5,13 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [Header("Drag&Drop")]
-    [SerializeField] private MapData _data;
+    [SerializeField] private MapData_T _data;
     [SerializeField] private GameObject _wallPrefab;
     [SerializeField] private GameObject _tilePrefab;
     
     private int[,] _map;
     private int _mapSize;
+    private int _offset;
 
     private void Awake()
     {
@@ -24,8 +25,8 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x < _mapSize; x++)
             {
-                Vector3 pos = new Vector3(x, 0, z);
-                if (_map[z, x] == 1)
+                Vector3 pos = new Vector3(_offset * x, 0, _offset * z);
+                if (_map[_offset * z, _offset * x] == 1)
                 {
                     Instantiate(_wallPrefab, pos, Quaternion.identity,transform);
                 }
@@ -41,5 +42,6 @@ public class MapGenerator : MonoBehaviour
     {
         _map = _data.Map;
         _mapSize = _data.MapSize;
+        _offset = _data.Offset;
     }
 }
