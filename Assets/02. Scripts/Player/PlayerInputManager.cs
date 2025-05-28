@@ -11,6 +11,11 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsAttack => _isAttack;
     private Vector3 _inputDir;
     public Vector3 InputDir => _inputDir;
+
+    private bool _changeRightWeapon;
+    public bool ChangeRightWeapon => _changeRightWeapon;
+    private bool _changeLeftWeapon;
+    public bool ChangeLeftWeapon => _changeLeftWeapon;
     
     
     private void Awake()
@@ -25,10 +30,9 @@ public class PlayerInputManager : MonoBehaviour
     {
         MoveInput();
 
-        if (Input.GetKeyDown(_atkKey))
-        {
-            _isAttack = true;
-        }
+        _isAttack = Input.GetKeyDown(_atkKey);
+        _changeLeftWeapon = Input.GetKeyDown(KeyCode.Q);
+        _changeRightWeapon = Input.GetKeyDown(KeyCode.E);
     }
 
     private void MoveInput()

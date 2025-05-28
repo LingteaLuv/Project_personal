@@ -911,6 +911,9 @@ GameObject:
   - component: {fileID: 2126892391}
   - component: {fileID: 2126892390}
   - component: {fileID: 2126892394}
+  - component: {fileID: 2126892395}
+  - component: {fileID: 2126892396}
+  - component: {fileID: 2126892397}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -947,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3431477acc583fb4cbb84bdff97366d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _atkKey: 0
+  _atkKey: 32
 --- !u!114 &2126892392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,6 +1007,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &2126892395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126892389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e37cd865e15054395df8e1dbddeb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _atkDamage: 3
+--- !u!114 &2126892396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126892389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c67c4038b8e91f418d98e69051a1237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 100
+  _mentality: 100
+  _hunger: 100
+--- !u!114 &2126892397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126892389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b59f8492195b684d88f06327e060302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
