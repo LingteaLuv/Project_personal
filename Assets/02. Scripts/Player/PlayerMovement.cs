@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] [Range(0,10)] private float _moveSpeed;
     [SerializeField] [Range(0,10)] private float _acceleration;
     [SerializeField] [Range(5,20)] private float _deceleration;
-    [SerializeField] [Range(0,10)] private float _rotateInertia;
+    [SerializeField] [Range(0,100)] private float _rotateInertia;
     
     private Rigidbody _rigid;
     
@@ -32,13 +32,18 @@ public class PlayerMovement : MonoBehaviour
             Vector3 targetV = moveDir * _moveSpeed;
 
             _rigid.velocity = Vector3.Lerp(_rigid.velocity, targetV, _acceleration * Time.fixedDeltaTime);
-            //Quaternion targetRot = Quaternion.LookRotation(moveDir);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * _rotateInertia);
         }
         else
         {
             _rigid.velocity = Vector3.MoveTowards(_rigid.velocity, Vector3.zero, _deceleration * Time.fixedDeltaTime);
         }
+    }
+
+    public void RotateUpdate()
+    {
+        Vector3 targetEuler = _playerFollowCam.transform.rotation.eulerAngles;
+        Quaternion targetRot = Quaternion.Euler(0, targetEuler.y, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * _rotateInertia);
     }
 
     private void Init()

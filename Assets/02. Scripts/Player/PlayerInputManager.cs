@@ -24,6 +24,11 @@ public class PlayerInputManager : MonoBehaviour
     public void InputUpdate()
     {
         MoveInput();
+
+        if (Input.GetKeyDown(_atkKey))
+        {
+            _isAttack = true;
+        }
     }
 
     private void MoveInput()
@@ -33,7 +38,6 @@ public class PlayerInputManager : MonoBehaviour
 
         _inputDir = new Vector3(x, 0, z).normalized;
     }
-    
     
     private void Init()
     {

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Drag&Drop")]
-    
     private PlayerMovement _playerMovement;
     private PlayerInputManager _playerInput;
 
@@ -18,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _playerInput.InputUpdate();
+        _playerMovement.RotateUpdate();
     }
 
     private void FixedUpdate()
