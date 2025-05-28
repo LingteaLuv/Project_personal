@@ -20,11 +20,9 @@ public class PlayerPickUp : MonoBehaviour
 
     public void PickUp(PlayerInventory inventory)
     {
-        Debug.Log($"PickUp 호출, _canPickUp={_canPickUp}, _closeTarget={_closeTarget}");
         if (_closeTarget != null)
         {
             inventory.AddStuff(_closeTarget.GetComponent<Stuff>());
-            Debug.Log($"인벤에 추가 : {_closeTarget.name}");
             _targets.Remove(_closeTarget);
             Destroy(_closeTarget.transform.root.gameObject);
         }
@@ -50,7 +48,6 @@ public class PlayerPickUp : MonoBehaviour
             Vector3 target = _closeTarget.transform.position;
             Vector3 direction = (target - origin).normalized;
             
-            Debug.DrawRay(origin,direction,Color.red,_configRange);
             _canPickUp = false;
             if (Physics.SphereCast(origin, 0.3f, direction, out RaycastHit hit, _configRange))
             {
@@ -60,6 +57,7 @@ public class PlayerPickUp : MonoBehaviour
                 }
             }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,8 +65,6 @@ public class PlayerPickUp : MonoBehaviour
         if (other.transform.CompareTag("Stuff"))
         {
             _targets.Add(other.gameObject);
-            Debug.Log("진입1");
-            Debug.Log(_targets);
         }
     }
 

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Drag&Drop")]
-    [SerializeField] private GameObject obj;
-
     private void Awake()
     {
         Init();

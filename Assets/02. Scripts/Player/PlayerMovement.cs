@@ -39,13 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 moveDir = camForward * inputDir.z + camRight * inputDir.x;
             Vector3 targetV = moveDir * _moveSpeed;
-
-            _rigid.velocity = Vector3.Lerp(_rigid.velocity, targetV, _acceleration * Time.fixedDeltaTime);
+            _rigid.velocity = Vector3.MoveTowards(_rigid.velocity, targetV, _acceleration * Time.fixedDeltaTime);
         }
         else
         {
             _rigid.velocity = Vector3.MoveTowards(_rigid.velocity, Vector3.zero, _deceleration * Time.fixedDeltaTime);
         }
+        transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
     }
 
     public void RotateUpdate()
