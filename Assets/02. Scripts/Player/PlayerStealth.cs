@@ -10,6 +10,7 @@ public class PlayerStealth : MonoBehaviour
 
     [Header("InputNumber")] 
     [SerializeField][Range(1,5)] private float _range;
+    public float Range => _range;
 
     private bool _curState;
     
