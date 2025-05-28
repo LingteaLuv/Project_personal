@@ -16,6 +16,9 @@ public class PlayerInputManager : MonoBehaviour
     public bool ChangeRightWeapon => _changeRightWeapon;
     private bool _changeLeftWeapon;
     public bool ChangeLeftWeapon => _changeLeftWeapon;
+
+    private bool _isHide;
+    public bool IsHide => _isHide;
     
     
     private void Awake()
@@ -33,6 +36,7 @@ public class PlayerInputManager : MonoBehaviour
         _isAttack = Input.GetKeyDown(_atkKey);
         _changeLeftWeapon = Input.GetKeyDown(KeyCode.Q);
         _changeRightWeapon = Input.GetKeyDown(KeyCode.E);
+        _isHide = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void MoveInput()

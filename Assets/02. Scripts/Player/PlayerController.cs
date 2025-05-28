@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputManager _playerInput;
     private PlayerAttack _playerAttack;
     private PlayerProperty _playerProperty;
+    private PlayerStealth _playerStealth;
 
     private void Awake()
     {
@@ -21,11 +22,12 @@ public class PlayerController : MonoBehaviour
         _playerMovement.RotateUpdate();
         _playerAttack.AtkUpdate(_playerInput.IsAttack, _playerProperty.CurWeapon);
         _playerProperty.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
+        _playerStealth.ChangePresence(_playerInput.IsHide);
     }
 
     private void FixedUpdate()
     {
-        _playerMovement.MoveUpdate(_playerInput.InputDir);
+        _playerMovement.MoveUpdate(_playerInput.InputDir, _playerInput.IsHide);
     }
 
     private void Init()
@@ -34,5 +36,6 @@ public class PlayerController : MonoBehaviour
         _playerInput = GetComponent<PlayerInputManager>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerProperty = GetComponent<PlayerProperty>();
+        _playerStealth = GetComponentInChildren<PlayerStealth>();
     }
 }

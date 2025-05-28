@@ -8,12 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera _playerFollowCam;
     
     [Header("InputNumber")]
-    [SerializeField] [Range(0,10)] private float _moveSpeed;
+    [SerializeField] [Range(0,10)] private float _runSpeed;
+    [SerializeField] [Range(0,10)] private float _hideSpeed;
     [SerializeField] [Range(0,10)] private float _acceleration;
     [SerializeField] [Range(5,20)] private float _deceleration;
     [SerializeField] [Range(0,100)] private float _rotateInertia;
     
     private Rigidbody _rigid;
+    private bool _curState;
+    private float _moveSpeed;
     
 
     private void Awake()
@@ -21,8 +24,14 @@ public class PlayerMovement : MonoBehaviour
         Init();
     }
 
-    public void MoveUpdate(Vector3 inputDir)
+    public void MoveUpdate(Vector3 inputDir, bool isHide)
     {
+        if (_curState != isHide)
+        {
+            _moveSpeed = isHide ? _hideSpeed : _runSpeed;
+            _curState = isHide;
+        }
+        
         if (inputDir != Vector3.zero)
         {
             Vector3 camForward = _playerFollowCam.transform.forward;
@@ -49,5 +58,6 @@ public class PlayerMovement : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody>();
+        _moveSpeed = _runSpeed;
     }
 }
