@@ -18,11 +18,15 @@ public class MonsterLoot : MonoBehaviour
 
     public void Generate()
     {
-        Stuff drop = Instantiate(_drop);
-        drop.transform.position = transform.position;
+        if (_drop != null)
+        {
+            GameObject drop = Instantiate(_drop.Prefab);
+            drop.transform.position = transform.position;
+        }
+       
         if (_luckyDrop != null)
         {
-            Stuff luckyDrop = Instantiate(_luckyDrop);
+            GameObject luckyDrop = Instantiate(_luckyDrop.Prefab);
             luckyDrop.transform.position = transform.position + Vector3.forward * 1f + Vector3.right * 1f;
         }
         Destroy(gameObject);

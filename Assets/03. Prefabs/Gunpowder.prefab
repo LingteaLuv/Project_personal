@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5748998790053891374}
-  - component: {fileID: 2548624093750264013}
+  - component: {fileID: 6497192331074263996}
   m_Layer: 0
   m_Name: Gunpowder
   m_TagString: Stuff
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6212486221407729582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2548624093750264013
+--- !u!114 &6497192331074263996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2635735819803717658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a502a86a791c3ad478e6eaed46b498d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 935bf968e0b7ef540965abb015a79740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stuff: {fileID: 11400000, guid: 3ea5f2300775e5c45bfdeecc25c786e7, type: 2}
   _rotateSpeed: 100
 --- !u!1 &2801267046606588166
 GameObject:

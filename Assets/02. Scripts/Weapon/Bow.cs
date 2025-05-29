@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Bow : MonoBehaviour
 {
     [Header("Drag&Drop")]
     [SerializeField] private GameObject obj;
