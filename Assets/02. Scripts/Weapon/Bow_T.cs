@@ -1,20 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class Bow : BaseWeapon
+public class Bow_T : BaseWeapon
 {
     [Header("Drag&Drop")]
     [SerializeField] private GameObject _arrowPrefab;
-    [SerializeField] private LineRenderer _renderer;
     
     [Header("InputNumber")]
     [SerializeField] private float _arrowSpeed;
 
+    private LineRenderer _renderer;
+    private Trajectory _trajectory;
     private GameObject _curArrow;
-    private Camera _camera;
 
     private void Awake()
     {
@@ -31,50 +29,18 @@ public class Bow : BaseWeapon
         {
             _curArrow.SetActive(true);
         }
-
-        _curArrow.GetComponent<Arrow>().OnArrowDestroyed += () =>
-        {
-            CreateNewArrow();
-            _renderer.enabled = true;
-        };
+        _curArrow.transform.rotation = transform.rotation;
+        _renderer.enabled = true;
+        _curArrow.GetComponent<Arrow>().OnArrowDestroyed += CreateNewArrow;
     }
 
     private void OnDisable()
     {
         if (_curArrow != null)
         {
-            _curArrow.GetComponent<Arrow>().OnArrowDestroyed -= () =>
-            {
-                CreateNewArrow();
-                _renderer.enabled = true;
-            };
+            _curArrow.GetComponent<Arrow>().OnArrowDestroyed -= CreateNewArrow;
             _curArrow.SetActive(false);
         }
-        
-    }
-
-    public override void DisplayTrajectory()
-    {
-        int pointCount = 30;
-        float deltaTime = 0.1f;
-
-        Vector3[] trajectorys = new Vector3[pointCount];
-        Vector3 startPos = transform.position;
-
-        transform.rotation = Quaternion.Euler(_camera.transform.eulerAngles.x, _camera.transform.eulerAngles.y, 0);
-        
-        _curArrow.transform.rotation = transform.rotation;
-        
-        float speed = _arrowSpeed;
-        Vector3 startVel = transform.forward * speed;
-
-        for (int i = 0; i < pointCount; i++)
-        {
-            trajectorys[i] = CalculatePoint(startPos, startVel, deltaTime * i);
-        }
-
-        _renderer.positionCount = pointCount;
-        _renderer.SetPositions(trajectorys);
     }
     
     public override void Operate()
@@ -98,10 +64,15 @@ public class Bow : BaseWeapon
         gameObject.SetActive(false);
     }
 
+    public override void DisplayTrajectory()
+    {
+        _trajectory.UpdateTrajectory(_curArrow, _arrowSpeed);
+    }
+
     private void Init()
     {
         _renderer = GetComponent<LineRenderer>();
-        _camera = transform.parent.GetComponentInChildren<Camera>();
+        _trajectory = GetComponent<Trajectory>();
     }
 
     private void CreateNewArrow()
@@ -114,12 +85,5 @@ public class Bow : BaseWeapon
             _renderer.enabled = true;
         };
         _renderer.enabled = true;
-    }
-    
-
-    private Vector3 CalculatePoint(Vector3 startPos, Vector3 startVel, float time)
-    {
-        Vector3 gravity = Physics.gravity;
-        return startPos + startVel * time + 0.5f * gravity * time * time;
     }
 }

@@ -26,15 +26,11 @@ public class Arrow : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        OnArrowDestroyed?.Invoke();
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Wall"))
         {
+            OnArrowDestroyed?.Invoke();
             Destroy(gameObject);
         }
     }

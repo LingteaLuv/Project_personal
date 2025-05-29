@@ -613,8 +613,9 @@ GameObject:
   m_Component:
   - component: {fileID: 424431404}
   - component: {fileID: 424431406}
-  - component: {fileID: 424431408}
   - component: {fileID: 424431407}
+  - component: {fileID: 424431409}
+  - component: {fileID: 424431410}
   m_Layer: 0
   m_Name: Hit
   m_TagString: Untagged
@@ -762,7 +763,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &424431408
+--- !u!114 &424431409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -771,12 +772,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 424431403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41df5f4ec4b9de4fb1b7fca6947a65d, type: 3}
+  m_Script: {fileID: 11500000, guid: c65c6831df6580f4e97824afb5058b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &424431410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424431403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c84b0fad4517642b9f70e62fda2d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 7802181649684721871, guid: 48799bad2e46c6f488138335805ac4e1,
     type: 3}
-  _renderer: {fileID: 424431407}
   _arrowSpeed: 20
 --- !u!1 &811401010
 GameObject:
