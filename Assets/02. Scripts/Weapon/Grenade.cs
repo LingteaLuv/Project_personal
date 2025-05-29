@@ -54,6 +54,7 @@ public class Grenade : BaseWeapon
 
     public override void DisplayTrajectory()
     {
+        if (_grenade == null) return;
         _trajectory.UpdateTrajectory(_grenade, _speed);
     }
 

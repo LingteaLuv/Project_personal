@@ -20,6 +20,7 @@ public class GrenadeExplosion : MonoBehaviour
     }*/
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("진입1");
         if (_explosionAreaPrefab != null)
         {
             Instantiate(_explosionAreaPrefab, transform.position, Quaternion.identity);

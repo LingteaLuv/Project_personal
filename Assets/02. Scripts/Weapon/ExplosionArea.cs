@@ -13,6 +13,7 @@ public class ExplosionArea : MonoBehaviour
     private void OnEnable()
     {
         Invoke(nameof(DestroySelf), _lifeTime);
+        Debug.Log("진입2");
     }
 
     private void OnTriggerEnter(Collider other)
