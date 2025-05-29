@@ -334,7 +334,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 951
+    m_Bits: 1975
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -631,7 +631,7 @@ Transform:
   m_GameObject: {fileID: 424431403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.44, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -711,7 +711,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.10194206
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -753,7 +753,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 4
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
@@ -777,7 +777,7 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 7802181649684721871, guid: 48799bad2e46c6f488138335805ac4e1,
     type: 3}
   _renderer: {fileID: 424431407}
-  _arrowSpeed: 5
+  _arrowSpeed: 20
 --- !u!1 &811401010
 GameObject:
   m_ObjectHideFlags: 0

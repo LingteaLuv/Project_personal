@@ -29,6 +29,7 @@ public class CombineTiles : MonoBehaviour
         }
 
         GameObject floor = new GameObject("CombinedFloor");
+        floor.tag = "Wall";
         Mesh combinedMesh = new Mesh();
 
         // 🔥 인덱스 포맷을 UInt32로 설정 (중요!)

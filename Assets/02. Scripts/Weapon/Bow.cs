@@ -25,12 +25,18 @@ public class Bow : BaseWeapon
     {
         if (_curArrow == null)
         {
-            _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward));
+            _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
         }
         else
         {
             _curArrow.SetActive(true);
         }
+
+        _curArrow.GetComponent<Arrow>().OnArrowDestroyed += () =>
+        {
+            CreateNewArrow();
+            _renderer.enabled = true;
+        };
     }
 
     private void OnDisable()
@@ -39,6 +45,11 @@ public class Bow : BaseWeapon
         {
             _curArrow.SetActive(false);
         }
+        _curArrow.GetComponent<Arrow>().OnArrowDestroyed -= () =>
+        {
+            CreateNewArrow();
+            _renderer.enabled = true;
+        };
     }
 
     public override void DisplayTrajectory()
@@ -47,9 +58,11 @@ public class Bow : BaseWeapon
         float deltaTime = 0.1f;
 
         Vector3[] trajectorys = new Vector3[pointCount];
-        Vector3 startPos = _curArrow.transform.position;
+        Vector3 startPos = transform.position;
 
         transform.rotation = Quaternion.Euler(_camera.transform.eulerAngles.x, _camera.transform.eulerAngles.y, 0);
+        
+        _curArrow.transform.rotation = transform.rotation;
         
         float speed = _arrowSpeed;
         Vector3 startVel = transform.forward * speed;
@@ -65,9 +78,13 @@ public class Bow : BaseWeapon
     
     public override void Operate()
     {
-        // 인벤토리에 화살에 있으면
-        
-        
+        if (_curArrow != null)
+        {
+            _renderer.enabled = false;
+            _curArrow.transform.SetParent(null);
+            _curArrow.GetComponent<Rigidbody>().isKinematic = false;
+            _curArrow.GetComponent<Rigidbody>().velocity = transform.forward * _arrowSpeed;
+        }
     }
 
     public override void Activate()
@@ -85,6 +102,19 @@ public class Bow : BaseWeapon
         _renderer = GetComponentInChildren<LineRenderer>();
         _camera = transform.parent.GetComponentInChildren<Camera>();
     }
+
+    private void CreateNewArrow()
+    {
+        _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
+        Arrow arrowScript = _curArrow.GetComponent<Arrow>();
+        arrowScript.OnArrowDestroyed += () =>
+        {
+            CreateNewArrow();  
+            _renderer.enabled = true;
+        };
+        _renderer.enabled = true;
+    }
+    
 
     private Vector3 CalculatePoint(Vector3 startPos, Vector3 startVel, float time)
     {
