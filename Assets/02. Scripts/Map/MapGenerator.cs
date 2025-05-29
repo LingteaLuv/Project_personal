@@ -13,7 +13,7 @@ public class MapGenerator : MonoBehaviour
     private int _mapSize;
     private int _offset;
 
-    private void Awake()
+    private void Start()
     {
         Init();
         GenerateMap();

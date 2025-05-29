@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement _playerMovement;
     private PlayerInputManager _playerInput;
     private PlayerAttack _playerAttack;
-    private PlayerProperty _playerProperty;
+    private PlayerWeapon _playerWeapon;
     private PlayerStealth _playerStealth;
     private PlayerPickUp _playerPickUp;
     private PlayerInventory _inventory;
@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput.InputUpdate();
         _playerMovement.RotateUpdate();
-        _playerAttack.AtkUpdate(_playerInput.IsAttack, _playerProperty.CurWeapon);
-        _playerProperty.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
+        _playerAttack.AtkUpdate(_playerInput.IsAttack, _playerWeapon.CurWeapon);
+        _playerWeapon.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
         _playerStealth.ChangePresence(_playerInput.IsHide);
         _playerPickUp.ConfigItem();
         if (_playerInput.IsPickUp && _playerPickUp.CanPickUp)
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _playerInput = GetComponent<PlayerInputManager>();
         _playerAttack = GetComponent<PlayerAttack>();
-        _playerProperty = GetComponent<PlayerProperty>();
+        _playerWeapon = GetComponent<PlayerWeapon>();
         _playerStealth = GetComponentInChildren<PlayerStealth>();
         _playerPickUp = GetComponentInChildren<PlayerPickUp>();
         _inventory = GetComponent<PlayerInventory>();

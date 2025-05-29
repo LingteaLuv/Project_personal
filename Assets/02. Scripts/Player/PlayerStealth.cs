@@ -7,11 +7,8 @@ public class PlayerStealth : MonoBehaviour
 {
     [Header("Drag&Drop")] 
     [SerializeField] private SphereCollider _presence;
-
-    [Header("InputNumber")] 
-    [SerializeField][Range(1,5)] private float _range;
-    public float Range => _range;
-
+    
+    private IDetectRangeNotify _detectRangeNotify;
     private bool _curState;
     
     private void Awake()
@@ -19,22 +16,39 @@ public class PlayerStealth : MonoBehaviour
         Init();
     }
 
+    private void OnEnable()
+    {
+        _detectRangeNotify.OnDetectRangeChanged += UpdateRangeNotify;
+    }
+
+    private void OnDisable()
+    {
+        _detectRangeNotify.OnDetectRangeChanged -= UpdateRangeNotify;
+    }
+
     public void ChangePresence(bool isHide)
     {
         if (_curState != isHide)
         {
-            _presence.radius = isHide ? 0.3f * _range : _range;
             _curState = isHide;
+            UpdateRangeNotify(_detectRangeNotify.DetectRange);
         }
     }
 
     private void Init()
     {
-        _presence.radius = _range;
+        _detectRangeNotify = GetComponentInParent<IDetectRangeNotify>();
     }
 
+    private void UpdateRangeNotify(float range)
+    {
+        _presence.radius = _curState ? 0.3f * range : range;
+    }
+    
     private void OnDrawGizmos()
     {
         //Gizmos.DrawSphere(transform.position, _presence.radius);
     }
+
+ 
 }

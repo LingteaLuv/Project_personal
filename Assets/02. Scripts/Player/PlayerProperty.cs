@@ -1,51 +1,75 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class PlayerProperty : MonoBehaviour
+public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNotify, ISpeedNotify
 {
     [Header("InputNumber")]
     [SerializeField] private int _hp;
     [SerializeField] private int _mentality;
+    [SerializeField] private float _mentalityDecrease;
     [SerializeField] private int _hunger;
+    [SerializeField] private float _detectRange;
+    public float DetectRange
+    {
+        get { return _detectRange; }
+        set
+        {
+            _detectRange = value;
+            OnDetectRangeChanged?.Invoke(_detectRange);
+        }
+    }
+    public event Action<float> OnDetectRangeChanged;
 
-    private List<IAttackable> _weaponList;
-    private IAttackable _basicWeapon;
-    
-    private IAttackable _curWeapon;
-    public IAttackable CurWeapon => _curWeapon;
+    [SerializeField] private float _speed;
+    public float Speed
+    {
+        get { return _speed; }
+        set
+        {
+            _speed = value;
+            OnSpeedChanged?.Invoke(_speed);
+        }
+    }
+    public event Action<float> OnSpeedChanged;
 
-    private int _curIndex;
+    private List<StatModifier> _activeModifiers;
 
     private void Awake()
     {
         Init();
     }
-    
-    public void ChangeWeapon(bool changeLeft, bool changeRight)
-    {
-        if (changeLeft)
-        {
-            int index = _curIndex - 1 < 0 ? _weaponList.Count - 1 : _curIndex - 1;
-            _curIndex = index;
-            _curWeapon = _weaponList[_curIndex];
-        }
 
-        if (changeRight)
-        {
-            int index = _curIndex + 1 > _weaponList.Count - 1 ? 0 : _curIndex + 1;
-            _curIndex = index;
-            _curWeapon = _weaponList[_curIndex];
-        }
+    private void Start()
+    {
+        OnSpeedChanged?.Invoke(_speed);
+    }
+    
+    public void ApplyModifier(StatModifier modifier)
+    {
+        _activeModifiers.Add(modifier);
+        UpdateStat();
     }
 
+    public void RemoveModifier(StatModifier modifier)
+    {
+        _activeModifiers.Remove(modifier);
+        UpdateStat();
+    }
+
+    private void UpdateStat()
+    {
+        foreach (var mod in _activeModifiers)
+        {
+            _mentalityDecrease += mod.MentalityDecreaseChange;
+            _detectRange += mod.DetectRangeChange;
+            _speed += mod.SpeedChange;
+        }
+    }
+    
     private void Init()
     {
-        _weaponList = new List<IAttackable>();
-        _basicWeapon = GetComponentInChildren<IAttackable>();
-        _weaponList.Add(_basicWeapon);
-        _curIndex = 0;
-        _curWeapon = _weaponList[_curIndex];
+        _activeModifiers = new List<StatModifier>();
     }
 }

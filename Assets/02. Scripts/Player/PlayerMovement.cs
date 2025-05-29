@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera _playerFollowCam;
     
     [Header("InputNumber")]
-    [SerializeField] [Range(0,10)] private float _runSpeed;
     [SerializeField] [Range(0,10)] private float _hideSpeed;
     [SerializeField] [Range(0,10)] private float _acceleration;
     [SerializeField] [Range(5,20)] private float _deceleration;
@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rigid;
     private bool _curState;
     private float _moveSpeed;
+    private float _runSpeed;
+    private ISpeedNotify _speedNotify;
     
 
     private void Awake()
@@ -24,6 +26,26 @@ public class PlayerMovement : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        _moveSpeed = _runSpeed;
+    }
+
+    private void OnEnable()
+    {
+        _speedNotify.OnSpeedChanged += UpdateSpeed;
+    }
+
+    private void OnDisable()
+    {
+        _speedNotify.OnSpeedChanged -= UpdateSpeed;
+    }
+
+    private void UpdateSpeed(float speed)
+    {
+        _runSpeed = speed;
+    }
+    
     public void MoveUpdate(Vector3 inputDir, bool isHide)
     {
         if (_curState != isHide)
@@ -58,6 +80,6 @@ public class PlayerMovement : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody>();
-        _moveSpeed = _runSpeed;
+        _speedNotify = GetComponent<ISpeedNotify>();
     }
 }
