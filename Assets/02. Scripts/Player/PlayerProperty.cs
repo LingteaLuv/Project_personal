@@ -35,7 +35,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
     public event Action<float> OnSpeedChanged;
 
     private List<StatModifier> _activeModifiers;
-
+    
     private void Awake()
     {
         Init();

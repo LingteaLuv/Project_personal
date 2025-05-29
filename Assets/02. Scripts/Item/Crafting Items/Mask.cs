@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoes : WearingItem
+public class Mask : WearingItem
 {
     private void Awake()
     {
@@ -12,7 +11,7 @@ public class Shoes : WearingItem
     
     private void Init()
     {
-        _modifier = new StatModifier() { SpeedChange = 2f };
+        _modifier = new StatModifier() { MentalityDecreaseChange = -0.5f };
         _handler = GetComponent<IPlayerStatHandler>();
     }
 }
