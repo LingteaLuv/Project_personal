@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b4a2f341967374995f0c1d51f85014, type: 3}
+  m_Name: GrenadeRecipe
+  m_EditorClassIdentifier: 
+  Ingredients:
+  - Stuff: {fileID: 11400000, guid: 3ea5f2300775e5c45bfdeecc25c786e7, type: 2}
+    Amount: 1
+  - Stuff: {fileID: 11400000, guid: 1d8dc555860be234cafaa93f89366423, type: 2}
+    Amount: 1
+  Result: {fileID: 11400000, guid: ef77201fc926eac43b188b7229567bec, type: 2}
