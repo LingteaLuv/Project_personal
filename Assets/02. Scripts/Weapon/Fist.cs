@@ -20,6 +20,21 @@ public class Fist : BaseWeapon
         
     }
 
+    public override void Activate()
+    {
+        
+    }
+
+    public override void Deactivate()
+    {
+        
+    }
+
+    public override void DisplayTrajectory()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Monster"))

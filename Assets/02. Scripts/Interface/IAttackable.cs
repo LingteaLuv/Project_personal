@@ -5,4 +5,7 @@ using UnityEngine;
 public interface IAttackable
 {
     public void Operate();
+    public void Activate();
+    public void Deactivate();
+    public void DisplayTrajectory();
 }

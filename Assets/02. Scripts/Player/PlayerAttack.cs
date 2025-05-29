@@ -8,9 +8,10 @@ public class PlayerAttack : MonoBehaviour
     {
         Init();
     }
-
+    
     public void AtkUpdate(bool isAttack, IAttackable weapon)
     {
+        weapon.DisplayTrajectory();
         if (isAttack)
         {
             weapon.Operate();

@@ -21,16 +21,20 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (changeLeft)
         {
+            _curWeapon.Deactivate();
             int index = _curIndex - 1 < 0 ? _weaponList.Count - 1 : _curIndex - 1;
             _curIndex = index;
             _curWeapon = _weaponList[_curIndex];
+            _curWeapon.Activate();
         }
 
         if (changeRight)
         {
+            _curWeapon.Deactivate();
             int index = _curIndex + 1 > _weaponList.Count - 1 ? 0 : _curIndex + 1;
             _curIndex = index;
             _curWeapon = _weaponList[_curIndex];
+            _curWeapon.Activate();
         }
     }
 
@@ -41,5 +45,6 @@ public class PlayerWeapon : MonoBehaviour
         _weaponList.Add(_basicWeapon);
         _curIndex = 0;
         _curWeapon = _weaponList[_curIndex];
+        _curWeapon.Activate();
     }
 }
