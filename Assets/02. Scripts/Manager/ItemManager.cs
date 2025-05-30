@@ -10,7 +10,10 @@ public class ItemManager : Singleton<ItemManager>
     
     private bool _hasCompass;
     public bool HasCompass => _hasCompass;
-
+    
+    private bool _hasBackpack;
+    public bool HasBackpack => _hasBackpack;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -27,10 +30,16 @@ public class ItemManager : Singleton<ItemManager>
         _hasCompass = true;
     }
 
+    public void GetBackpack()
+    {
+        _hasBackpack = true;
+    }
+
     private void Init()
     {
         // todo : 테스트 용 값이니까 나중에 바꿔야함
         _hasLantern = true;
         _hasCompass = true;
+        _hasBackpack = true;
     }
 }

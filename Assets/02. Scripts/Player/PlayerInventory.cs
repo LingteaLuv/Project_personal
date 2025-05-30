@@ -13,6 +13,14 @@ public class PlayerInventory : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        if (ItemManager.Instance.HasBackpack)
+        {
+            _maxCount = 5;
+        }
+    }
+
     public void AddStuff(Stuff stuff)
     {
         if (_stuffInventory.Count < _maxCount)
