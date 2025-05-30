@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cape
   m_EditorClassIdentifier: 
   _name: Cape
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 3157560898879098726, guid: 462b1bccb503a5548a2aad621bcb4c07, type: 3}
   _description: 

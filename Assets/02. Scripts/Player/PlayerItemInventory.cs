@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class PlayerItemInventory : MonoBehaviour
 {
-    [SerializeField] private List<Item> _items;
-
+    private List<Item> _items;
+    private Dictionary<Item, GameObject> _spawnedItem;
+    
     public int Count => _items.Count;
+    
     private void Awake()
     {
         Init();
@@ -14,7 +18,12 @@ public class PlayerItemInventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        _items.Add(item);
+        if (ConfigItem(item) < 1)
+        {
+            _items.Add(item);
+            GameObject itemObject = Instantiate(item.Prefab, transform);
+            _spawnedItem.Add(item, itemObject);
+        }
     }
 
     public int ConfigItem(Item item)
@@ -30,11 +39,13 @@ public class PlayerItemInventory : MonoBehaviour
         return amount;
     }
 
-    public void RemoveItem(Item item, int amount)
+    public void RemoveItem(Item item)
     {
-        for (int i = 0; i < amount; i++)
+        _items.Remove(item);
+        if (_spawnedItem.TryGetValue(item, out GameObject itemObject))
         {
-            _items.Remove(item);
+            Destroy(itemObject);
+            _spawnedItem.Remove(item);
         }
     }
     
