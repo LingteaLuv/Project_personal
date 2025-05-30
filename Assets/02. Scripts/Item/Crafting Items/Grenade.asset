@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   _name: Grenade
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 5673765134663701195, guid: 8dc70221f8e882843a50c6e57d17af96, type: 3}
   _description: 

@@ -31,8 +31,7 @@ public class CombineTiles : MonoBehaviour
         GameObject floor = new GameObject("CombinedFloor");
         floor.tag = "Wall";
         Mesh combinedMesh = new Mesh();
-
-        // 🔥 인덱스 포맷을 UInt32로 설정 (중요!)
+        
         combinedMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
 
         combinedMesh.CombineMeshes(combine);
@@ -41,7 +40,7 @@ public class CombineTiles : MonoBehaviour
         floor.AddComponent<MeshCollider>();
         
         NavMeshSurface navSurface = floor.AddComponent<NavMeshSurface>();
-        navSurface.collectObjects = CollectObjects.Children; // Children으로 하면 하위 오브젝트도 자동으로 수집
-        navSurface.BuildNavMesh(); // NavMesh 빌드// 하나의 MeshCollider 추가
+        navSurface.collectObjects = CollectObjects.Children; 
+        navSurface.BuildNavMesh(); 
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Arrow
   m_EditorClassIdentifier: 
   _name: Arrow
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7802181649684721871, guid: 48799bad2e46c6f488138335805ac4e1, type: 3}
   _description: 

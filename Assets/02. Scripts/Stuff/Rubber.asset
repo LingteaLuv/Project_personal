@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rubber
   m_EditorClassIdentifier: 
   _name: Rubber
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 1826385338903528923, guid: 396485a69e0bdda4b93a029e06d2cc75, type: 3}
