@@ -32,10 +32,8 @@ public class MinimapReveal : MonoBehaviour
     private void Init()
     {
         _tiles = new List<GameObject>();
-        Debug.Log("진입1");
         foreach (var tile in GetComponentsInChildren<MeshFilter>())
         {
-            Debug.Log("진입2");
             tile.gameObject.SetActive(false);
             _tiles.Add(tile.gameObject);
         }

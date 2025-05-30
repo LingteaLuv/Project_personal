@@ -16,7 +16,10 @@ public class MinimapCam : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = new Vector3(_player.position.x / 5, transform.position.y, _player.position.z / 5);
-        // todo : 플레이어의 회전값을 가져와서 카메라 회전에 적용
+        if (!ItemManager.Instance.HasCompass)
+        {
+            transform.rotation = Quaternion.Euler(90,_player.rotation.eulerAngles.y,0);
+        }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         transform.position += Vector3.up * (scroll * _zoomSpeed);
