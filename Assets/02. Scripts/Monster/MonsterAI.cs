@@ -7,9 +7,7 @@ public class MonsterAI : MonoBehaviour
 {
     [Header("Drag&Drop")] 
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private List<Transform> _patrolPoints;
-    
-    private Transform _curTarget;
+    [SerializeField] private List<Vector3Int> _patrolPoints;
 
     private void Awake()
     {
@@ -55,7 +53,14 @@ public class MonsterAI : MonoBehaviour
         if (_patrolPoints.Count == 0) return;
 
         int curIndex = Random.Range(0, _patrolPoints.Count);
-        _curTarget = _patrolPoints[curIndex];
-        _agent.SetDestination(_curTarget.position);
+        _agent.SetDestination(_patrolPoints[curIndex]);
+    }
+
+    public void SetPatrolPoint(Vector3Int[] points)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            _patrolPoints.Add(points[i]);
+        }
     }
 }

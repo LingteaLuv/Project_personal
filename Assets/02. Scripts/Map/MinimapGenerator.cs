@@ -20,7 +20,6 @@ public class MinimapGenerator : MonoBehaviour
 
     private void GenerateMap()
     {
-        Debug.Log("생성");
         for (int z = 0; z < _mapSize; z++)
         {
             for (int x = 0; x < _mapSize; x++)

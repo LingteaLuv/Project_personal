@@ -1510,6 +1510,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2126892393}
   _revealRange: 2
+--- !u!1 &1433071539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433071541}
+  - component: {fileID: 1433071540}
+  m_Layer: 0
+  m_Name: ObjectGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1433071540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433071539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed17369eece5c0542876f05fa70d0f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fibber: {fileID: 11400000, guid: 519202037aafdca419dc4b3e147e3195, type: 2}
+  _rubber: {fileID: 11400000, guid: 200c84a80ad26384282a43478e42570c, type: 2}
+  _stone: {fileID: 11400000, guid: c0233407ea5d7124da69f148bfd2cb69, type: 2}
+  _wood: {fileID: 11400000, guid: 86c97f750fa24ac41a16275ab99c1118, type: 2}
+  _monsterPrefab: {fileID: 3513905363058856644, guid: 910c367a79dd3a6408ee1156ee992d01,
+    type: 3}
+  _mapData: {fileID: 227367084}
+  _fibberAmount: 5
+  _rubberAmount: 5
+  _stoneAmount: 5
+  _woodAmount: 5
+  _monsterAmount: 5
+--- !u!4 &1433071541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433071539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -202.42615, y: -471.70398, z: 322.5779}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1559444468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,5 +2029,6 @@ SceneRoots:
   - {fileID: 2126892393}
   - {fileID: 227367082}
   - {fileID: 1147628443}
+  - {fileID: 1433071541}
   - {fileID: 2009888350}
   - {fileID: 733310788}

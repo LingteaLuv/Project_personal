@@ -14,7 +14,9 @@ public class MapData : MonoBehaviour
     public int Offset => _offset;
 
     private int _safeZoneStart;
+    public int SafeZoneStart => _safeZoneStart;
     private int _safeZoneEnd;
+    public int SafeZoneEnd => _safeZoneEnd;
     
     private int[,] _map;
     public int[,] Map => _map;
