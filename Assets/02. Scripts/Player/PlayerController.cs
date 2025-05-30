@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStealth _playerStealth;
     private PlayerPickUp _playerPickUp;
     private PlayerInventory _inventory;
+    private PlayerInteract _playerInteract;
 
     private void Awake()
     {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
         _playerWeapon.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
         _playerStealth.ChangePresence(_playerInput.IsHide);
         _playerPickUp.ConfigItem();
+        _playerInteract.Interact(_playerInput.IsInteracted, _playerInput.IsPressEsc);
+        
         if (_playerInput.IsPickUp && _playerPickUp.CanPickUp)
         {
             _playerPickUp.PickUp(_inventory);
@@ -46,5 +49,6 @@ public class PlayerController : MonoBehaviour
         _playerStealth = GetComponentInChildren<PlayerStealth>();
         _playerPickUp = GetComponentInChildren<PlayerPickUp>();
         _inventory = GetComponent<PlayerInventory>();
+        _playerInteract = GetComponent<PlayerInteract>();
     }
 }

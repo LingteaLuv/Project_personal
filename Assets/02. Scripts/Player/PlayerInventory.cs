@@ -25,6 +25,18 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public bool HasStuff(Stuff stuff)
+    {
+        for (int i = 0; i < _stuffInventory.Count; i++)
+        {
+            if (_stuffInventory[i] == stuff)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public int ConfigStuff(Stuff stuff)
     {
         int amount = 0;
