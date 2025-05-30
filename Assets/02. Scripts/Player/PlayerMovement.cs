@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 camRight = _playerFollowCam.transform.right;
 
             Vector3 moveDir = camForward * inputDir.z + camRight * inputDir.x;
+            
             Vector3 targetV = moveDir * _moveSpeed;
             _rigid.velocity = Vector3.MoveTowards(_rigid.velocity, targetV, _acceleration * Time.fixedDeltaTime);
         }

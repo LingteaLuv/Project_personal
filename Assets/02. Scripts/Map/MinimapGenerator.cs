@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
+public class MinimapGenerator : MonoBehaviour
 {
     [Header("Drag&Drop")]
-    [SerializeField] private MapData _data;
+    [SerializeField] private MinimapData _data;
     [SerializeField] private GameObject _wallPrefab;
     [SerializeField] private GameObject _tilePrefab;
     
     private int[,] _map;
     private int _mapSize;
-    private int _offset;
 
     private void Start()
     {
@@ -21,12 +20,13 @@ public class MapGenerator : MonoBehaviour
 
     private void GenerateMap()
     {
+        Debug.Log("생성");
         for (int z = 0; z < _mapSize; z++)
         {
             for (int x = 0; x < _mapSize; x++)
             {
-                Vector3 pos = new Vector3(_offset * x, 0, _offset * z);
-                if (_map[_offset * z, _offset * x] == 1)
+                Vector3 pos = new Vector3(x, -1, z);
+                if (_map[z, x] == 1)
                 {
                     Instantiate(_wallPrefab, pos, Quaternion.identity,transform);
                 }
@@ -42,6 +42,5 @@ public class MapGenerator : MonoBehaviour
     {
         _map = _data.Map;
         _mapSize = _data.MapSize;
-        _offset = _data.Offset;
     }
 }

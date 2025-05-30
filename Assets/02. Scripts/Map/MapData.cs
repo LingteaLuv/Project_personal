@@ -10,6 +10,8 @@ public class MapData : MonoBehaviour
     [SerializeField] private int _mapSize;
     public int MapSize => _mapSize;
     [SerializeField] private int _safeZoneSize;
+    [SerializeField] private int _offset;
+    public int Offset => _offset;
 
     private int _safeZoneStart;
     private int _safeZoneEnd;
@@ -28,14 +30,14 @@ public class MapData : MonoBehaviour
         _safeZoneEnd = (_mapSize + _safeZoneSize) / 2 - 1;
         
         // 맵 데이터
-        _map = new int[_mapSize, _mapSize];
+        _map = new int[_offset * _mapSize, _offset * _mapSize];
         
         // 벽 데이터
         for (int x = 0; x < _mapSize; x++)
         {
             for (int y = 0; y < _mapSize; y++)
             {
-                _map[x, y] = 1;
+                _map[_offset * x, _offset * y] = 1;
             }
         }
 
@@ -44,17 +46,17 @@ public class MapData : MonoBehaviour
         {
             for (int y = _safeZoneStart; y < _safeZoneEnd; y++)
             {
-                _map[x, y] = 0;
+                _map[_offset * x, _offset * y] = 0;
             }
         }
 
-        _map[1, 1] = 0;
-        GenerateMaze(1,1);
+        _map[_offset, _offset] = 0;
+        GenerateMaze(_offset,_offset);
 
-        _map[30, 37] = 0;
-        _map[44, 37] = 0;
-        _map[37, 30] = 0;
-        _map[37, 44] = 0;
+        _map[_offset * (_safeZoneStart - 1), _offset * (_mapSize / 2)] = 0;
+        _map[_offset * _safeZoneEnd, _offset * (_mapSize / 2)] = 0;
+        _map[_offset * (_mapSize / 2), _offset * (_safeZoneStart - 1)] = 0;
+        _map[_offset * (_mapSize / 2), _offset * _safeZoneEnd] = 0;
     }
 
     private void GetRndDirection(List<Vector2Int> dirList)
@@ -81,15 +83,15 @@ public class MapData : MonoBehaviour
 
         foreach (Vector2Int direction in directions)
         {
-            int nextX = x + direction.x * 2;
-            int nextY = y + direction.y * 2;
+            int nextX = x + direction.x * 2 * _offset;
+            int nextY = y + direction.y * 2 * _offset;
 
-            if (nextX < 0 || nextX >= _mapSize - 1 || nextY < 0 || nextY >= _mapSize - 1)
+            if (nextX < 0 || nextX >= (_mapSize - 1) * _offset || nextY < 0 || nextY >= (_mapSize - 1) * _offset)
             {
                 continue;
             }
             
-            if (nextX <= _safeZoneEnd && nextX >= _safeZoneStart && nextY <= _safeZoneEnd && nextY >= _safeZoneStart)
+            if (nextX <= _safeZoneEnd * _offset && nextX >= _safeZoneStart * _offset && nextY <= _safeZoneEnd * _offset && nextY >= _safeZoneStart * _offset)
             {
                 continue;
             }
@@ -97,7 +99,7 @@ public class MapData : MonoBehaviour
             if (_map[nextX, nextY] == 1)
             {
                 _map[nextX, nextY] = 0;
-                _map[x + direction.x, y + direction.y] = 0;
+                _map[ x + _offset * direction.x, y + _offset * direction.y] = 0;
                 GenerateMaze(nextX, nextY);
             }
         }
