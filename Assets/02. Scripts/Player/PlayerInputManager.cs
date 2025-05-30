@@ -22,7 +22,12 @@ public class PlayerInputManager : MonoBehaviour
 
     private bool _isPickUp;
     public bool IsPickUp => _isPickUp;
+
+    private bool _isInteracted;
+    public bool IsInteracted => _isInteracted;
     
+    private bool _isPressEsc;
+    public bool IsPressEsc => _isPressEsc;
     
     private void Awake()
     {
@@ -41,6 +46,8 @@ public class PlayerInputManager : MonoBehaviour
         _changeRightWeapon = Input.GetKeyDown(KeyCode.E);
         _isPickUp = Input.GetKeyDown(KeyCode.R);
         _isHide = Input.GetKey(KeyCode.LeftShift);
+        _isInteracted = Input.GetKeyDown(KeyCode.F);
+        _isPressEsc = Input.GetKeyDown(KeyCode.Escape);
     }
 
     private void MoveInput()
