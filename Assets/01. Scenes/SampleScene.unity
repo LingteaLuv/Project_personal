@@ -269,6 +269,8 @@ MonoBehaviour:
     type: 3}
   _tilePrefab: {fileID: 110262441910702315, guid: 6b882568073caa04b97ca4602d0186ca,
     type: 3}
+  _safeZonePrefab: {fileID: 7580295695941291126, guid: 02778acb98f147e4dbf505ebd6dde060,
+    type: 3}
 --- !u!4 &227367082
 Transform:
   m_ObjectHideFlags: 0

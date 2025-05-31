@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
+using Unity.Collections;
 
 public class CombineTiles_T : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CombineTiles_T : MonoBehaviour
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         List<MeshFilter> wallMeshFilters = new List<MeshFilter>();
         List<MeshFilter> planeMeshFilters = new List<MeshFilter>();
+        List<MeshFilter> safeZoneMeshFilters = new List<MeshFilter>();
         foreach (MeshFilter mesh in meshFilters)
         {
             if (mesh.sharedMesh.name.StartsWith("Cube"))
@@ -23,17 +25,27 @@ public class CombineTiles_T : MonoBehaviour
             }
             else
             {
-                planeMeshFilters.Add(mesh);
+                if (mesh.gameObject.layer == 8)
+                {
+                    planeMeshFilters.Add(mesh);
+                }
+                else
+                {
+                    safeZoneMeshFilters.Add(mesh);
+                }
             }
         }
         CombineInstance[] wallCombine = Initiate(wallMeshFilters);
         CombineInstance[] planeCombine = Initiate(planeMeshFilters);
+        CombineInstance[] safeZoneCombine = Initiate(safeZoneMeshFilters);
 
         GameObject wall = Combine(wallCombine, wallMeshFilters);
         GameObject floor = Combine(planeCombine, planeMeshFilters);
+        GameObject safeZone = Combine(safeZoneCombine, safeZoneMeshFilters);
 
         floor.name = "CombinedFloor";
         wall.name = "CombinedWall";
+        safeZone.name = "CombinedSafeZone";
         
         NavMeshSurface navSurface = floor.AddComponent<NavMeshSurface>();
         navSurface.collectObjects = CollectObjects.Children; 

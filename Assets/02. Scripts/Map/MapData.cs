@@ -48,7 +48,7 @@ public class MapData : MonoBehaviour
         {
             for (int y = _safeZoneStart; y < _safeZoneEnd; y++)
             {
-                _map[_offset * x, _offset * y] = 0;
+                _map[_offset * x, _offset * y] = 2;
             }
         }
 

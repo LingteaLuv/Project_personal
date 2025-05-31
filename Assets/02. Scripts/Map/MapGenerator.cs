@@ -8,6 +8,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private MapData _data;
     [SerializeField] private GameObject _wallPrefab;
     [SerializeField] private GameObject _tilePrefab;
+    [SerializeField] private GameObject _safeZonePrefab;
     
     private int[,] _map;
     private int _mapSize;
@@ -30,9 +31,13 @@ public class MapGenerator : MonoBehaviour
                 {
                     Instantiate(_wallPrefab, pos, Quaternion.identity,transform);
                 }
-                else
+                else if(_map[_offset * z, _offset * x] == 0)
                 {
                     Instantiate(_tilePrefab, pos, Quaternion.identity,transform);
+                }
+                else
+                {
+                    Instantiate(_safeZonePrefab, pos, Quaternion.identity,transform);
                 }
             }
         }

@@ -44,7 +44,6 @@ public class PlayerPickUp : MonoBehaviour
         
         if(_closeTarget != null)
         {
-            Debug.Log(_closeTarget.name);
             Vector3 origin = transform.position;
             Vector3 target = _closeTarget.transform.position;
             Vector3 direction = (target - origin).normalized;
@@ -63,10 +62,8 @@ public class PlayerPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("추가전");
         if (other.transform.CompareTag("Stuff"))
         {
-            Debug.Log("추가");
             _targets.Add(other.gameObject);
         }
     }
@@ -75,7 +72,6 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (other.transform.CompareTag("Stuff"))
         {
-            Debug.Log("제거");
             _targets.Remove(other.gameObject);
         }
     }
