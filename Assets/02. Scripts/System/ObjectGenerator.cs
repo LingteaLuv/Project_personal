@@ -9,6 +9,7 @@ public class ObjectGenerator : MonoBehaviour
     [SerializeField] private Stuff _rubber;
     [SerializeField] private Stuff _stone;
     [SerializeField] private Stuff _wood;
+    [SerializeField] private GameObject _objectInMinimapPrefab;
     [SerializeField] private GameObject _monsterPrefab;
     [SerializeField] private GameObject _escapePortalPrefab;
     [SerializeField] private MapData _mapData;
@@ -23,13 +24,11 @@ public class ObjectGenerator : MonoBehaviour
     private int _offset;
     private Vector3Int _escapePortalPos;
 
-    private List<Vector3Int> _stuffPosList;
-    public List<Vector3Int> StuffPosList => _stuffPosList;
+    
     
     private void Awake()
     {
         _offset = _mapData.Offset;
-        _stuffPosList = new List<Vector3Int>();
     }
     
     private void Start()
@@ -72,10 +71,13 @@ public class ObjectGenerator : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3Int genPos = GetRndPosition();
-            Instantiate(prefab, genPos, Quaternion.identity, transform);
+            GameObject stuffInMap = Instantiate(prefab, genPos, Quaternion.identity, transform);
             
             Vector3Int minimapGenPos = new Vector3Int(genPos.x / _offset, 0, genPos.z / _offset);
-            _stuffPosList.Add(minimapGenPos);
+            GameObject stuffInMinimap = Instantiate(_objectInMinimapPrefab, minimapGenPos, Quaternion.identity);
+            stuffInMinimap.SetActive(false);
+            
+            StuffManager.Instance.Add(stuffInMap,stuffInMinimap);
         }
     }
 

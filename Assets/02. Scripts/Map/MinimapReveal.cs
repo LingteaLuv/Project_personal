@@ -6,13 +6,14 @@ public class MinimapReveal : MonoBehaviour
 {
     [Header("Drag&Drop")] 
     [SerializeField] private Transform _player;
-
+    [SerializeField] private ObjectGenerator _minimapObject;
+    
     [Header("InputNumber")] 
     [SerializeField] private float _revealRange;
         
     private List<GameObject> _tiles;
     private List<GameObject> _stuffs;
-    private MinimapObject _minimapObject;
+    
     
     private void Start()
     {
@@ -40,9 +41,7 @@ public class MinimapReveal : MonoBehaviour
 
     private void Init()
     {
-        _minimapObject = GetComponent<MinimapObject>();
-        _stuffs = new List<GameObject>();
-        _stuffs = _minimapObject.StuffList;
+        _stuffs = StuffManager.Instance.StuffList;
         
         _tiles = new List<GameObject>();
         foreach (var tile in transform.Find("Tiles").GetComponentsInChildren<MeshFilter>())

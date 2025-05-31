@@ -24,7 +24,9 @@ public class PlayerPickUp : MonoBehaviour
         {
             inventory.AddStuff(_closeTarget.GetComponentInParent<LootingStuff>().Stuff);
             _targets.Remove(_closeTarget);
-            Destroy(_closeTarget.transform.root.gameObject);
+            Destroy(_closeTarget.transform.parent.gameObject);
+            
+            StuffManager.Instance.Remove(_closeTarget.transform.parent.gameObject);
         }
     }
 
@@ -57,7 +59,6 @@ public class PlayerPickUp : MonoBehaviour
                 }
             }
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)
