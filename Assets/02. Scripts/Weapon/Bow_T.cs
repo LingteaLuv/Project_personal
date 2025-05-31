@@ -23,24 +23,13 @@ public class Bow_T : BaseWeapon
     {
         if (_curArrow == null)
         {
+            Debug.Log("화살 생성");
             _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
-        }
-        else
-        {
-            _curArrow.SetActive(true);
+            _curArrow.GetComponent<Arrow>().OnArrowDestroyed += CreateNewArrow;
+            _curArrow.SetActive(false);
         }
         _curArrow.transform.rotation = transform.rotation;
         _renderer.enabled = true;
-        _curArrow.GetComponent<Arrow>().OnArrowDestroyed += CreateNewArrow;
-    }
-
-    private void OnDisable()
-    {
-        if (_curArrow != null)
-        {
-            _curArrow.GetComponent<Arrow>().OnArrowDestroyed -= CreateNewArrow;
-            _curArrow.SetActive(false);
-        }
     }
     
     public override void Operate()
@@ -56,12 +45,12 @@ public class Bow_T : BaseWeapon
 
     public override void Activate()
     {
-        gameObject.SetActive(true);
+        _curArrow.SetActive(true);
     }
 
     public override void Deactivate()
     {
-        gameObject.SetActive(false);
+        _curArrow.SetActive(false);
     }
 
     public override void DisplayTrajectory()
