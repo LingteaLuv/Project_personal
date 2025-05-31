@@ -20,13 +20,13 @@ public class TransferManager : Singleton<TransferManager>
     public void OpenChest(Chest chest)
     {
         _curChest = chest;
-        //_chestUI.SetActive(true);
+        UIManager.Instance.OpenUI(_chestUI);
     }
 
     public void CloseChest()
     {
         _curChest = null;
-        //_chestUI.SetActive(false);
+        UIManager.Instance.CloseUI();
     }
     
     public void TransferToChest(Stuff stuff)

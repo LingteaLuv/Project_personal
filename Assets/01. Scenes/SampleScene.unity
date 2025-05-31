@@ -380,7 +380,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6071
+    m_Bits: 63415
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1547,6 +1547,8 @@ MonoBehaviour:
   _wood: {fileID: 11400000, guid: 86c97f750fa24ac41a16275ab99c1118, type: 2}
   _monsterPrefab: {fileID: 3513905363058856644, guid: 910c367a79dd3a6408ee1156ee992d01,
     type: 3}
+  _escapePortalPrefab: {fileID: 5899812413181485, guid: 1d49339fb3d4af14c83bb39d5df5ecc5,
+    type: 3}
   _mapData: {fileID: 227367084}
   _fibberAmount: 5
   _rubberAmount: 5
@@ -1877,7 +1879,7 @@ MonoBehaviour:
   _playerFollowCam: {fileID: 330585545}
   _hideSpeed: 2
   _acceleration: 6
-  _deceleration: 10
+  _deceleration: 20
   _rotateInertia: 10
 --- !u!114 &2126892391
 MonoBehaviour:
