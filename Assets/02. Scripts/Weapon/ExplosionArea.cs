@@ -10,22 +10,34 @@ public class ExplosionArea : MonoBehaviour
     [SerializeField][Range(10,50)] private int _atkdamage;
     [SerializeField][Range(0,1)] private float _lifeTime;
 
+    private bool _isUsed;
+
+    private void Awake()
+    {
+        Init();
+    }
+    
     private void OnEnable()
     {
         Invoke(nameof(DestroySelf), _lifeTime);
-        Debug.Log("진입2");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Monster"))
+        if (other.transform.CompareTag("Monster") && !_isUsed)
         {
-            other.GetComponent<IDamageable>().Damaged(_atkdamage);
+            _isUsed = true;
+            other.transform.GetComponent<IDamageable>().Damaged(_atkdamage);
         }
     }
 
     private void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    private void Init()
+    {
+        _isUsed = false;
     }
 }

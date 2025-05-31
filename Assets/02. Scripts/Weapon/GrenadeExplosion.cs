@@ -9,9 +9,6 @@ public class GrenadeExplosion : MonoBehaviour
     [Header("Drag&Drop")]
     [SerializeField] private ExplosionArea _explosionAreaPrefab;
     
-    [Header("InputNumber")]
-    [SerializeField] private int _atkDamage;
-    
     public event Action OnExplode;
     
     private void OnCollisionEnter(Collision other)

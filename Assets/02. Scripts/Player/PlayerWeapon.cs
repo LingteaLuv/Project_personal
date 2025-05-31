@@ -30,7 +30,6 @@ public class PlayerWeapon : MonoBehaviour
             _curIndex = index;
             _curWeapon = _weaponList[_curIndex];
             _curWeapon.Activate();
-            Debug.Log(_curWeapon);
         }
 
         if (changeRight)
@@ -40,7 +39,6 @@ public class PlayerWeapon : MonoBehaviour
             _curIndex = index;
             _curWeapon = _weaponList[_curIndex];
             _curWeapon.Activate();
-            Debug.Log(_curWeapon);
         }
     }
 

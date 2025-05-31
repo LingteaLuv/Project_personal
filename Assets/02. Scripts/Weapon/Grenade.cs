@@ -28,15 +28,12 @@ public class Grenade : BaseWeapon
     {
         if (_grenade == null)
         {
-            Debug.Log("수류탄 생성");
             _grenade = Instantiate(_grenadePrefab, transform.position, Quaternion.Euler(transform.forward), transform);
             _grenade.SetActive(false);
             _grenade.GetComponent<Rigidbody>().isKinematic = true;
         }
         _renderer.enabled = true;
     }
-
-    
     
     public override void Operate()
     {
@@ -55,11 +52,13 @@ public class Grenade : BaseWeapon
     public override void Activate()
     {
         _grenade.SetActive(true);
+        _renderer.enabled = true;
     }
 
     public override void Deactivate()
     {
         _grenade.SetActive(false);
+        _renderer.enabled = false;
     }
 
     public override void DisplayTrajectory()

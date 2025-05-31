@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 6336604054244738949}
   - component: {fileID: 4109352173743313890}
   - component: {fileID: 5389486109045037372}
-  - component: {fileID: 4061326747612005314}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Monster
@@ -255,27 +254,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4061326747612005314
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3576406527888576474}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3726966047669420858
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,4 +375,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e011ccba88214014fa70462cde8c38a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 6
+  _maxHp: 30
