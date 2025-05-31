@@ -1003,6 +1003,9 @@ MonoBehaviour:
   _player: {fileID: 2126892393}
   _playerPrefab: {fileID: 7333726273303113591, guid: 6a4c654b9ba9ede418f5d5ee79a6f1c3,
     type: 3}
+  _posX: 0.7
+  _posY: 0.7
+  _size: 0.3
 --- !u!1 &811401010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1321,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -1348,9 +1351,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2126892393}
-  _zoomSpeed: 20
-  _minY: 5
-  _maxY: 20
+  _zoomSpeed: 5
+  _minZoom: 5
+  _maxZoom: 20
 --- !u!1 &1041215807
 GameObject:
   m_ObjectHideFlags: 0

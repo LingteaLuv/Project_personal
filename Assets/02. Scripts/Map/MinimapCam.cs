@@ -10,9 +10,16 @@ public class MinimapCam : MonoBehaviour
 
     [Header("InputNumber")] 
     [SerializeField] private float _zoomSpeed;
-    [SerializeField] private float _minY;
-    [SerializeField] private float _maxY;
+    [SerializeField] private float _minZoom;
+    [SerializeField] private float _maxZoom;
 
+    private Camera _minimapCam;
+
+    private void Awake()
+    {
+        Init();
+    }
+    
     private void LateUpdate()
     {
         transform.position = new Vector3(_player.position.x / 5, transform.position.y, _player.position.z / 5);
@@ -21,10 +28,16 @@ public class MinimapCam : MonoBehaviour
             transform.rotation = Quaternion.Euler(90,_player.rotation.eulerAngles.y,0);
         }
 
+        
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        transform.position += Vector3.up * (scroll * _zoomSpeed);
+        _minimapCam.orthographicSize += scroll * _zoomSpeed;
 
-        float clampY = Mathf.Clamp(transform.position.y, _minY, _maxY);
-        transform.position = new Vector3(transform.position.x, clampY, transform.position.z);
+        _minimapCam.orthographicSize = Mathf.Clamp(_minimapCam.orthographicSize, _minZoom, _maxZoom);
+    }
+
+    private void Init()
+    {
+        _minimapCam = GetComponent<Camera>();
+        _minimapCam.orthographicSize = 10;
     }
 }
