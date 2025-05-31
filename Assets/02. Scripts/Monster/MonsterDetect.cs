@@ -31,19 +31,7 @@ public class MonsterDetect : MonoBehaviour
         if (_target != null)
         {
             float distance = Vector3.Distance(transform.position, _target.position);
-            if (_target == null)
-            {
-                Debug.Log("타겟이 널");
-            }
-            if (_target.GetComponent<PlayerProperty>() == null)
-            {
-                Debug.Log("프로퍼티가 널");
-            }
-            if (_target.GetComponent<PlayerProperty>().DetectRange == 0)
-            {
-                Debug.Log("랭지가 0");
-            }
-            float offset = _target.GetComponent<PlayerProperty>().DetectRange;
+            float offset = _target.GetComponentInParent<PlayerProperty>().DetectRange;
             if (distance < _firstDetectRange + offset)
             {
                 if (IsVisible(_target))
@@ -67,6 +55,11 @@ public class MonsterDetect : MonoBehaviour
                 _isFirstDetect = false;
                 _isSecondDetect = false;
             }
+        }
+        else
+        {
+            _isFirstDetect = false;
+            _isSecondDetect = false;
         }
     }
 

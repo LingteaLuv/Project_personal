@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7126811635487207815}
   m_Layer: 7
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,8 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1336851288351287261}
-  _patrolPoints:
-  - {fileID: 0}
+  _patrolPoints: []
 --- !u!195 &1336851288351287261
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -145,7 +144,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -170,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drops:
-  - {fileID: 2548624093750264013, guid: 86c710803ffdbc94483e5267e6919505, type: 3}
-  - {fileID: 8203562159439010716, guid: f8000f40ef132af43a866c7c30dc64cf, type: 3}
+  - {fileID: 11400000, guid: 3ea5f2300775e5c45bfdeecc25c786e7, type: 2}
+  - {fileID: 11400000, guid: 1d8dc555860be234cafaa93f89366423, type: 2}
 --- !u!1 &3576406527888576474
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,9 +183,9 @@ GameObject:
   - component: {fileID: 4109352173743313890}
   - component: {fileID: 5389486109045037372}
   - component: {fileID: 4061326747612005314}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

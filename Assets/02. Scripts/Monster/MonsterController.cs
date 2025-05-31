@@ -17,6 +17,10 @@ public class MonsterController : MonoBehaviour
     private void Update()
     {
         _monsterDetect.Detect();
+        if (_monsterDetect.Target == null)
+        {
+            Debug.Log("_monsterDetect.Target");
+        }
         _monsterAI.AIUpdate(_monsterDetect.IsFirstDetect, _monsterDetect.IsSecondDetect, _monsterDetect.Target);
         if (_monsterHit.IsDead)
         {

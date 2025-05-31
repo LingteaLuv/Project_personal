@@ -25,12 +25,14 @@ public class MonsterAI : MonoBehaviour
         {
             _agent.velocity = Vector3.zero;
             transform.LookAt(player.position);
+            Debug.Log("플레이어를 봐야해");
         }
 
         else if (second)
         {
             transform.LookAt(player.position);
             _agent.SetDestination(player.position);
+            Debug.Log("플레이어를 쫓아와야해");
         }
 
         else

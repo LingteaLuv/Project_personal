@@ -13,11 +13,11 @@ public class ObjectGenerator : MonoBehaviour
     [SerializeField] private MapData _mapData;
 
     [Header("InputNumber")] 
-    [SerializeField][Range(1,5)] private int _fibberAmount;
-    [SerializeField][Range(1,5)] private int _rubberAmount;
-    [SerializeField][Range(1,5)] private int _stoneAmount;
-    [SerializeField][Range(1,5)] private int _woodAmount;
-    [SerializeField][Range(1,5)] private int _monsterAmount;
+    [SerializeField][Range(1,10)] private int _fibberAmount;
+    [SerializeField][Range(1,10)] private int _rubberAmount;
+    [SerializeField][Range(1,10)] private int _stoneAmount;
+    [SerializeField][Range(1,10)] private int _woodAmount;
+    [SerializeField][Range(1,10)] private int _monsterAmount;
 
     private int _offset;
     
