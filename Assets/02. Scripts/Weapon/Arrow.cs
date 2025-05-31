@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    [Header("InputNumber")] 
+    [SerializeField] private int _atkDamage;
+    
     private Rigidbody _rigid;
-
+    
     public event Action OnArrowDestroyed;
     private void Awake()
     {
@@ -30,6 +33,13 @@ public class Arrow : MonoBehaviour
     {
         if (other.transform.CompareTag("Wall"))
         {
+            OnArrowDestroyed?.Invoke();
+            Destroy(gameObject);
+        }
+
+        if (other.transform.CompareTag("Monster"))
+        {
+            other.transform.GetComponent<IDamageable>().Damaged(_atkDamage);
             OnArrowDestroyed?.Invoke();
             Destroy(gameObject);
         }

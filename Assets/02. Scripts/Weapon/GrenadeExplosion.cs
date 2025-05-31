@@ -9,20 +9,15 @@ public class GrenadeExplosion : MonoBehaviour
     [Header("Drag&Drop")]
     [SerializeField] private ExplosionArea _explosionAreaPrefab;
     
+    [Header("InputNumber")]
+    [SerializeField] private int _atkDamage;
+    
     public event Action OnExplode;
-
-    /*private void Start()
-    {
-        OnExplode += () =>
-        {
-            var explosionArea = Instantiate(_explosionAreaPrefab, transform.position, quaternion.identity);
-        };
-    }*/
+    
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("진입1");
         if (_explosionAreaPrefab != null)
-        {
+        { 
             Instantiate(_explosionAreaPrefab, transform.position, Quaternion.identity);
         }
         OnExplode?.Invoke();

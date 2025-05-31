@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,13 @@ public class Grenade : BaseWeapon
     
     [Header("InputNumber")]
     [SerializeField] private float _speed;
+    
 
     private LineRenderer _renderer;
     private Trajectory _trajectory;
     private GameObject _grenade;
+    public event Action<Grenade> OnUsed;
+    
 
     private void Awake()
     {
@@ -24,12 +28,15 @@ public class Grenade : BaseWeapon
     {
         if (_grenade == null)
         {
+            Debug.Log("수류탄 생성");
             _grenade = Instantiate(_grenadePrefab, transform.position, Quaternion.Euler(transform.forward), transform);
+            _grenade.SetActive(false);
             _grenade.GetComponent<Rigidbody>().isKinematic = true;
         }
-
         _renderer.enabled = true;
     }
+
+    
     
     public override void Operate()
     {
@@ -39,17 +46,20 @@ public class Grenade : BaseWeapon
             _grenade.transform.SetParent(null);
             _grenade.GetComponent<Rigidbody>().isKinematic = false;
             _grenade.GetComponent<Rigidbody>().velocity = transform.forward * _speed;
+
+            GrenadeExplosion explosion = _grenade.GetComponent<GrenadeExplosion>();
+            explosion.OnExplode += () => OnUsed?.Invoke(this);
         }
     }
 
     public override void Activate()
     {
-        gameObject.SetActive(true);
+        _grenade.SetActive(true);
     }
 
     public override void Deactivate()
     {
-        gameObject.SetActive(false);
+        _grenade.SetActive(false);
     }
 
     public override void DisplayTrajectory()

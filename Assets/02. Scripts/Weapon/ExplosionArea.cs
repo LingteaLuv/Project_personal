@@ -7,7 +7,7 @@ using UnityEngine;
 public class ExplosionArea : MonoBehaviour
 {
     [Header("InputNumber")]
-    [SerializeField][Range(10,50)] private int _damage;
+    [SerializeField][Range(10,50)] private int _atkdamage;
     [SerializeField][Range(0,1)] private float _lifeTime;
 
     private void OnEnable()
@@ -20,7 +20,7 @@ public class ExplosionArea : MonoBehaviour
     {
         if (other.CompareTag("Monster"))
         {
-            other.GetComponent<IDamageable>().Damaged(_damage);
+            other.GetComponent<IDamageable>().Damaged(_atkdamage);
         }
     }
 

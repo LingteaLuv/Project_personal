@@ -662,6 +662,8 @@ GameObject:
   - component: {fileID: 424431407}
   - component: {fileID: 424431409}
   - component: {fileID: 424431410}
+  - component: {fileID: 424431412}
+  - component: {fileID: 424431411}
   m_Layer: 6
   m_Name: Hit
   m_TagString: Untagged
@@ -836,6 +838,34 @@ MonoBehaviour:
   _grenadePrefab: {fileID: 5673765134663701195, guid: 8dc70221f8e882843a50c6e57d17af96,
     type: 3}
   _speed: 20
+--- !u!114 &424431411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424431403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c84b0fad4517642b9f70e62fda2d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arrowPrefab: {fileID: 7802181649684721871, guid: 48799bad2e46c6f488138335805ac4e1,
+    type: 3}
+  _arrowSpeed: 20
+--- !u!114 &424431412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424431403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e37cd865e15054395df8e1dbddeb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _atkDamage: 2
 --- !u!1 &684251410
 GameObject:
   m_ObjectHideFlags: 0
