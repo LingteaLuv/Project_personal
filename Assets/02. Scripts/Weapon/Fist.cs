@@ -12,12 +12,10 @@ public class Fist : BaseWeapon
 
     public override void Operate()
     {
-        Debug.Log($"{_atkDamage}데미지 주먹질");
         if (_target != null)
         {
             _target.Damaged(_atkDamage); 
         }
-        
     }
 
     public override void Activate()
@@ -39,7 +37,6 @@ public class Fist : BaseWeapon
     {
         if (other.transform.CompareTag("Monster"))
         {
-            Debug.Log("진입");
             _target = other.gameObject.GetComponent<IDamageable>();
         }
     }

@@ -23,7 +23,6 @@ public class Bow_T : BaseWeapon
     {
         if (_curArrow == null)
         {
-            Debug.Log("화살 생성");
             _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
             _curArrow.GetComponent<Arrow>().OnArrowDestroyed += CreateNewArrow;
             _curArrow.SetActive(false);
@@ -46,11 +45,13 @@ public class Bow_T : BaseWeapon
     public override void Activate()
     {
         _curArrow.SetActive(true);
+        _renderer.enabled = true;
     }
 
     public override void Deactivate()
     {
         _curArrow.SetActive(false);
+        _renderer.enabled = false;
     }
 
     public override void DisplayTrajectory()

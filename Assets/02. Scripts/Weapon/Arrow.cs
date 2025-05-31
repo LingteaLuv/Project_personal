@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private int _atkDamage;
     
     private Rigidbody _rigid;
+    private bool _isUsed;
     
     public event Action OnArrowDestroyed;
     private void Awake()
@@ -31,14 +32,16 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.CompareTag("Wall"))
+        if (other.transform.CompareTag("Wall") && !_isUsed)
         {
+            _isUsed = true;
             OnArrowDestroyed?.Invoke();
             Destroy(gameObject);
         }
 
-        if (other.transform.CompareTag("Monster"))
+        if (other.transform.CompareTag("Monster") && !_isUsed)
         {
+            _isUsed = true;
             other.transform.GetComponent<IDamageable>().Damaged(_atkDamage);
             OnArrowDestroyed?.Invoke();
             Destroy(gameObject);
@@ -48,5 +51,6 @@ public class Arrow : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody>();
+        _isUsed = false;
     }
 }
