@@ -6,6 +6,7 @@ public class LootingStuff : MonoBehaviour
 {
     [Header("Drag&Drop")] 
     [SerializeField] private Stuff _stuff;
+    public Stuff Stuff => _stuff;
     
     [Header("InputNumber")] 
     [SerializeField] private float _rotateSpeed;

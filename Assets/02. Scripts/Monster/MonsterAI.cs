@@ -8,11 +8,6 @@ public class MonsterAI : MonoBehaviour
     [Header("Drag&Drop")] 
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private List<Vector3Int> _patrolPoints;
-
-    private void Awake()
-    {
-        Init();
-    }
     
     private void Start()
     {
@@ -25,14 +20,12 @@ public class MonsterAI : MonoBehaviour
         {
             _agent.velocity = Vector3.zero;
             transform.LookAt(player.position);
-            Debug.Log("플레이어를 봐야해");
         }
 
         else if (second)
         {
             transform.LookAt(player.position);
             _agent.SetDestination(player.position);
-            Debug.Log("플레이어를 쫓아와야해");
         }
 
         else
@@ -42,12 +35,6 @@ public class MonsterAI : MonoBehaviour
                 SetCurTarget();
             }
         }
-    }
-
-    private void Init()
-    {
-        //_patrolPoints = new List<Transform>();
-        // todo : 맵 생성에 따른 자동 points 생성 및 리스트에 추가
     }
     
     private void SetCurTarget()

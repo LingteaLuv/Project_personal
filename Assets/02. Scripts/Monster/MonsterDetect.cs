@@ -68,7 +68,6 @@ public class MonsterDetect : MonoBehaviour
         if (other.CompareTag("Presence"))
         {
             _target = other.transform;
-            Debug.Log(_target);
         }
     }
 
@@ -77,7 +76,6 @@ public class MonsterDetect : MonoBehaviour
         if (other.CompareTag("Presence"))
         {
             _target = null;
-            Debug.Log("범위 밖으로 나감");
         }
     }
 

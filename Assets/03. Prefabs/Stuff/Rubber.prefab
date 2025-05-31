@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7391960918898649039}
-  m_Layer: 0
+  - component: {fileID: 4009200138373619660}
+  m_Layer: 12
   m_Name: Rubber
-  m_TagString: Untagged
+  m_TagString: Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 1399779868446089634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4009200138373619660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826385338903528923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935bf968e0b7ef540965abb015a79740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stuff: {fileID: 11400000, guid: 200c84a80ad26384282a43478e42570c, type: 2}
+  _rotateSpeed: 100
 --- !u!1 &4755059426343810531
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,9 +59,9 @@ GameObject:
   - component: {fileID: 1568498116610077836}
   - component: {fileID: 8384865511750601754}
   - component: {fileID: 4307289207019769494}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Stuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

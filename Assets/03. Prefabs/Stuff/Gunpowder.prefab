@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5748998790053891374}
   - component: {fileID: 6497192331074263996}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gunpowder
   m_TagString: Stuff
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4147350808881238488}
   - component: {fileID: 2731875843863115983}
   - component: {fileID: 5829857822719102552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Stuff
   m_Icon: {fileID: 0}

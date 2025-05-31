@@ -49,6 +49,4 @@ public class PlayerStealth : MonoBehaviour
     {
         //Gizmos.DrawSphere(transform.position, _presence.radius);
     }
-
- 
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7046861252429941080}
   - component: {fileID: -5096270586468220740}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Iron
   m_TagString: Stuff
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1818966496909120685}
   - component: {fileID: 5202339595197976534}
   - component: {fileID: 2292323695750052009}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Stuff
   m_Icon: {fileID: 0}

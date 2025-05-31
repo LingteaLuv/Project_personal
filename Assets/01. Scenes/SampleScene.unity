@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1975
+    m_Bits: 6071
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 424431407}
   - component: {fileID: 424431409}
   - component: {fileID: 424431410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 684251411}
   - component: {fileID: 684251413}
   - component: {fileID: 684251412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820725550}
   - component: {fileID: 820725551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HeadLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1426,8 +1426,8 @@ Transform:
   m_GameObject: {fileID: 1041215807}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: -2, z: 50}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: 100, y: -2, z: 100}
+  m_LocalScale: {x: 20, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 733310788}
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2126892393}
-  _revealRange: 2
+  _revealRange: 5
 --- !u!1 &1433071539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1550,7 @@ MonoBehaviour:
   _rubberAmount: 5
   _stoneAmount: 5
   _woodAmount: 5
-  _monsterAmount: 5
+  _monsterAmount: 10
 --- !u!4 &1433071541
 Transform:
   m_ObjectHideFlags: 0
@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 1559444472}
   - component: {fileID: 1559444471}
   - component: {fileID: 1559444470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
