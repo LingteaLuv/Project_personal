@@ -11,6 +11,8 @@ public class MinimapReveal : MonoBehaviour
     [SerializeField] private float _revealRange;
         
     private List<GameObject> _tiles;
+    private List<GameObject> _stuffs;
+    private MinimapObject _minimapObject;
     
     private void Start()
     {
@@ -19,20 +21,31 @@ public class MinimapReveal : MonoBehaviour
 
     private void Update()
     {
+        Vector3 targetPos = new Vector3(_player.position.x / 5, -1, _player.position.z / 5);
         foreach (var tile in _tiles)
         {
-            Vector3 targetPos = new Vector3(_player.position.x / 5, -1, _player.position.z / 5);
             if (Vector3.Distance(tile.transform.position, targetPos) < _revealRange)
             {
                 tile.SetActive(true);
+            }
+        }
+        foreach (var stuff in _stuffs)
+        {
+            if (Vector3.Distance(stuff.transform.position, targetPos) < _revealRange)
+            {
+                stuff.SetActive(true);
             }
         }
     }
 
     private void Init()
     {
+        _minimapObject = GetComponent<MinimapObject>();
+        _stuffs = new List<GameObject>();
+        _stuffs = _minimapObject.StuffList;
+        
         _tiles = new List<GameObject>();
-        foreach (var tile in GetComponentsInChildren<MeshFilter>())
+        foreach (var tile in transform.Find("Tiles").GetComponentsInChildren<MeshFilter>())
         {
             tile.gameObject.SetActive(false);
             _tiles.Add(tile.gameObject);

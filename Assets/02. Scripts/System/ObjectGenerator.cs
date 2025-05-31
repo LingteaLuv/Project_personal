@@ -22,10 +22,14 @@ public class ObjectGenerator : MonoBehaviour
 
     private int _offset;
     private Vector3Int _escapePortalPos;
+
+    private List<Vector3Int> _stuffPosList;
+    public List<Vector3Int> StuffPosList => _stuffPosList;
     
     private void Awake()
     {
         _offset = _mapData.Offset;
+        _stuffPosList = new List<Vector3Int>();
     }
     
     private void Start()
@@ -69,6 +73,9 @@ public class ObjectGenerator : MonoBehaviour
         {
             Vector3Int genPos = GetRndPosition();
             Instantiate(prefab, genPos, Quaternion.identity, transform);
+            
+            Vector3Int minimapGenPos = new Vector3Int(genPos.x / _offset, 0, genPos.z / _offset);
+            _stuffPosList.Add(minimapGenPos);
         }
     }
 

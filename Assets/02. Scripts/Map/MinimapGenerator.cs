@@ -20,6 +20,8 @@ public class MinimapGenerator : MonoBehaviour
 
     private void GenerateMap()
     {
+        GameObject tilesObj = new GameObject("Tiles");
+        tilesObj.transform.SetParent(transform);
         for (int z = 0; z < _mapSize; z++)
         {
             for (int x = 0; x < _mapSize; x++)
@@ -27,11 +29,11 @@ public class MinimapGenerator : MonoBehaviour
                 Vector3 pos = new Vector3(x, -1, z);
                 if (_map[z, x] == 1)
                 {
-                    Instantiate(_wallPrefab, pos, Quaternion.identity,transform);
+                    Instantiate(_wallPrefab, pos, Quaternion.identity, tilesObj.transform);
                 }
                 else
                 {
-                    Instantiate(_tilePrefab, pos, Quaternion.identity,transform);
+                    Instantiate(_tilePrefab, pos, Quaternion.identity, tilesObj.transform);
                 }
             }
         }

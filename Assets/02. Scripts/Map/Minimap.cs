@@ -39,9 +39,7 @@ public class Minimap : MonoBehaviour
     private void Init()
     {
         _minicam = GetComponentInChildren<Camera>();
-
         _minicam.rect = new Rect(0.35f, 0.35f, 0.3f, 0.3f);
-        
         _isTurnOn = false;
         _minicam.gameObject.SetActive(_isTurnOn);
     }
