@@ -54,11 +54,11 @@ public class ObjectGenerator : MonoBehaviour
         Vector3Int result = new Vector3Int();
         while (result == Vector3Int.zero)
         {
-            int z1 = Random.Range(0, _mapData.SafeZoneStart);
-            int z2 = Random.Range(_mapData.SafeZoneEnd, _mapData.MapSize);
+            int z1 = Random.Range(_mapData.SafeZoneStart / 2, _mapData.SafeZoneStart);
+            int z2 = Random.Range(_mapData.SafeZoneEnd, _mapData.MapSize - _mapData.SafeZoneStart / 2);
             int z = Random.Range(0, 2) < 1 ? z1 : z2;
-            int x1 = Random.Range(0, _mapData.SafeZoneStart);
-            int x2 = Random.Range(_mapData.SafeZoneEnd, _mapData.MapSize);
+            int x1 = Random.Range(_mapData.SafeZoneStart / 2, _mapData.SafeZoneStart);
+            int x2 = Random.Range(_mapData.SafeZoneEnd, _mapData.MapSize - _mapData.SafeZoneStart / 2);
             int x = Random.Range(0, 2) < 1 ? x1 : x2;
         
             if (_mapData.Map[z * _offset, x * _offset] == 0)
