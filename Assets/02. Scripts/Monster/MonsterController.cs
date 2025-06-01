@@ -21,6 +21,8 @@ public class MonsterController : MonoBehaviour
         if (_monsterHit.IsDead)
         {
             _monsterLoot.Generate();
+            Destroy(gameObject);
+            GameManager.Instance.KillMonster();
         }
     }
 

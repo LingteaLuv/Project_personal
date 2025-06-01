@@ -29,7 +29,7 @@ public class MonsterLoot : MonoBehaviour
             GameObject luckyDrop = Instantiate(_luckyDrop.Prefab);
             luckyDrop.transform.position = transform.position + Vector3.down * 1f + Vector3.forward * 1f + Vector3.right * 1f;
         }
-        Destroy(gameObject);
+        
     }
 
     private void Init()

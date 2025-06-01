@@ -10,8 +10,10 @@ public class ObjectGenerator : MonoBehaviour
     [SerializeField] private Stuff _stone;
     [SerializeField] private Stuff _wood;
     [SerializeField] private GameObject _objectInMinimapPrefab;
+    [SerializeField] private GameObject _portalInMinimapPrefab;
     [SerializeField] private GameObject _monsterPrefab;
     [SerializeField] private GameObject _escapePortalPrefab;
+    [SerializeField] private GameObject _portalPrefab;
     [SerializeField] private MapData _mapData;
 
     [Header("InputNumber")] 
@@ -23,6 +25,7 @@ public class ObjectGenerator : MonoBehaviour
 
     private int _offset;
     private Vector3Int _escapePortalPos;
+    private Vector3Int _portalPos;
 
     
     
@@ -91,6 +94,48 @@ public class ObjectGenerator : MonoBehaviour
         }
     }
 
+    public void GeneratePortal()
+    {
+        Vector3Int result = new Vector3Int();
+        Vector3 rotation = new Vector3();
+        while (result == Vector3Int.zero)
+        {
+            Vector3 temprotation = new Vector3(0, 0, 0);
+            int n = Random.Range(0, 2);
+            int x = 0;
+            int z = 0;
+            if (n == 0)
+            {
+                z = Random.Range(1, _mapData.MapSize - 1);
+                int x1 = Random.Range(1, _mapData.SafeZoneStart / 2);
+                int x2 = Random.Range((_mapData.MapSize + _mapData.SafeZoneEnd) / 2,_mapData.MapSize - 2);
+                x = Random.Range(0, 2) < 1 ? x1 : x2;
+            }
+            else
+            {
+                x = Random.Range(1, _mapData.MapSize - 1);
+                int z1 = Random.Range(1, _mapData.SafeZoneStart / 2);
+                int z2 = Random.Range((_mapData.MapSize + _mapData.SafeZoneEnd) / 2,_mapData.MapSize - 2);
+                z = Random.Range(0, 2) < 1 ? z1 : z2;
+                temprotation = new Vector3(0, 90, 0);
+            }
+
+            if (_mapData.Map[z * _offset, x * _offset] == 0)
+            {
+                result = new Vector3Int(x * _offset, 3, z * _offset);
+                rotation = temprotation;
+            }
+        }
+
+        Vector3Int genPos = result;
+        GameObject portal = Instantiate(_portalPrefab, genPos, Quaternion.Euler(rotation), transform);
+        _portalPos = result;
+        
+        Vector3Int minimapGenPos = new Vector3Int(genPos.x / _offset, 0, genPos.z / _offset);
+        GameObject portalInMinimap = Instantiate(_portalInMinimapPrefab, minimapGenPos, Quaternion.identity);
+        portalInMinimap.SetActive(true);
+    }
+    
     private void GenerateEscapePortal(GameObject escapePortalPrefab)
     {
         Vector3Int result = new Vector3Int();

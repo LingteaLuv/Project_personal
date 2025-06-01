@@ -1784,9 +1784,13 @@ MonoBehaviour:
   _wood: {fileID: 11400000, guid: 86c97f750fa24ac41a16275ab99c1118, type: 2}
   _objectInMinimapPrefab: {fileID: 525007416764530771, guid: 7a47556e8eb33334b92fe12156c1f95d,
     type: 3}
+  _portalInMinimapPrefab: {fileID: 6822028716311519341, guid: b2939a21971e6c843bfc7e18df89f44a,
+    type: 3}
   _monsterPrefab: {fileID: 3513905363058856644, guid: 910c367a79dd3a6408ee1156ee992d01,
     type: 3}
   _escapePortalPrefab: {fileID: 5899812413181485, guid: 1d49339fb3d4af14c83bb39d5df5ecc5,
+    type: 3}
+  _portalPrefab: {fileID: 7395639718584482278, guid: 8964011e3ce9b6d49a4e1700bddc0be7,
     type: 3}
   _mapData: {fileID: 227367084}
   _fibberAmount: 5
@@ -2118,6 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1626d71af1d549742a2e832f4540ae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _generator: {fileID: 1433071540}
 --- !u!1 &2126892389
 GameObject:
   m_ObjectHideFlags: 0
