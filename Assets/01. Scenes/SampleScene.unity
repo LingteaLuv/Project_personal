@@ -374,7 +374,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -853,6 +853,7 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 7802181649684721871, guid: 48799bad2e46c6f488138335805ac4e1,
     type: 3}
   _arrowSpeed: 20
+  _arrowCount: 0
 --- !u!114 &424431412
 MonoBehaviour:
   m_ObjectHideFlags: 0
