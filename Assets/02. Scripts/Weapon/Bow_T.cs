@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bow_T : BaseWeapon
@@ -9,6 +10,7 @@ public class Bow_T : BaseWeapon
     
     [Header("InputNumber")]
     [SerializeField] private float _arrowSpeed;
+    [SerializeField] private int _arrowCount;
 
     private LineRenderer _renderer;
     private Trajectory _trajectory;
@@ -21,14 +23,18 @@ public class Bow_T : BaseWeapon
 
     private void OnEnable()
     {
-        if (_curArrow == null)
+        if (_curArrow == null  && _arrowCount > 0)
         {
             _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
             _curArrow.GetComponent<Arrow>().OnArrowDestroyed += CreateNewArrow;
             _curArrow.SetActive(false);
+            _arrowCount--;
         }
-        _curArrow.transform.rotation = transform.rotation;
-        _renderer.enabled = true;
+        if (_curArrow != null)
+        {
+            _curArrow.transform.rotation = transform.rotation;
+            _renderer.enabled = true;
+        }
     }
     
     public override void Operate()
@@ -44,36 +50,61 @@ public class Bow_T : BaseWeapon
 
     public override void Activate()
     {
-        _curArrow.SetActive(true);
-        _renderer.enabled = true;
+        if (_curArrow != null)
+        {
+            _curArrow.SetActive(true);
+            _renderer.enabled = true;
+        }
+       
     }
 
     public override void Deactivate()
     {
-        _curArrow.SetActive(false);
+        if (_curArrow != null)
+        {
+            _curArrow.SetActive(false);
+        }
         _renderer.enabled = false;
     }
 
     public override void DisplayTrajectory()
     {
-        _trajectory.UpdateTrajectory(_curArrow, _arrowSpeed);
+        if (_curArrow != null)
+        {
+            _trajectory.UpdateTrajectory(_curArrow, _arrowSpeed);
+        }
     }
 
     private void Init()
     {
         _renderer = GetComponent<LineRenderer>();
         _trajectory = GetComponent<Trajectory>();
+
+        Debug.Log("이거 지워");
+        _arrowCount = 3;
     }
 
+    public void CreateNewQuiver()
+    {
+        _arrowCount += 10;
+    }
+    
     private void CreateNewArrow()
     {
-        _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
-        Arrow arrowScript = _curArrow.GetComponent<Arrow>();
-        arrowScript.OnArrowDestroyed += () =>
+        if (_arrowCount > 0)
         {
-            CreateNewArrow();  
+            _curArrow = Instantiate(_arrowPrefab, transform.position, Quaternion.Euler(transform.forward), transform);
+            _arrowCount--;
+            Arrow arrowScript = _curArrow.GetComponent<Arrow>();
+            arrowScript.OnArrowDestroyed += () =>
+            {
+                CreateNewArrow();  
+            };
             _renderer.enabled = true;
-        };
-        _renderer.enabled = true;
+        }
+        else
+        {
+            Debug.Log("화살통에 화살이 없습니다");
+        }
     }
 }
