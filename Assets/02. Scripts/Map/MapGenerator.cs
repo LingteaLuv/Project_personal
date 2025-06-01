@@ -14,10 +14,13 @@ public class MapGenerator : MonoBehaviour
     private int _mapSize;
     private int _offset;
 
+    private BoxCollider _lightArea;
+
     private void Start()
     {
         Init();
         GenerateMap();
+        SetLightArea();
     }
 
     private void GenerateMap()
@@ -43,10 +46,19 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    private void SetLightArea()
+    {
+        _lightArea.size = new Vector3(_mapSize - 1, 3f, _mapSize - 1);
+        _lightArea.center = new Vector3((_mapSize - 1) * _offset / 2, 1.5f, (_mapSize - 1) * _offset / 2);
+        _lightArea.isTrigger = true;
+    }
+
     private void Init()
     {
         _map = _data.Map;
         _mapSize = _data.MapSize;
         _offset = _data.Offset;
+
+        _lightArea = GetComponentInChildren<BoxCollider>();
     }
 }
