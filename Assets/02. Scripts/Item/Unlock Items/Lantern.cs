@@ -9,6 +9,8 @@ public class Lantern : MonoBehaviour
     private Light _headlight;
     private bool _isTurnOn;
 
+    private Camera _playerCam;
+    
     private void Awake()
     {
         Init();
@@ -36,11 +38,21 @@ public class Lantern : MonoBehaviour
                 _headlight.gameObject.SetActive(_isTurnOn);
             }
         }
+
+        RotationUpdate();
+    }
+
+    private void RotationUpdate()
+    {
+        Vector3 curRot = transform.rotation.eulerAngles;
+        curRot.x = _playerCam.transform.rotation.eulerAngles.x;
+        transform.rotation = Quaternion.Euler(curRot);
     }
     
     private void Init()
     {
         _headlight = GetComponentInChildren<Light>();
         _isTurnOn = true;
+        _playerCam = transform.root.GetComponentInChildren<Camera>();
     }
 }
