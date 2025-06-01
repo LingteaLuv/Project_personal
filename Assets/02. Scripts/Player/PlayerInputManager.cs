@@ -28,6 +28,9 @@ public class PlayerInputManager : MonoBehaviour
     
     private bool _isPressEsc;
     public bool IsPressEsc => _isPressEsc;
+
+    private bool _isMoved;
+    public bool IsMoved => _isMoved;
     
     private void Awake()
     {
@@ -56,6 +59,15 @@ public class PlayerInputManager : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         _inputDir = new Vector3(x, 0, z).normalized;
+
+        if (_inputDir.magnitude > 0.1f)
+        {
+            _isMoved = true;
+        }
+        else
+        {
+            _isMoved = false;
+        }
     }
     
     private void Init()

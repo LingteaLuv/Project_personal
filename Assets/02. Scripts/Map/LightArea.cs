@@ -12,7 +12,7 @@ public class LightArea : MonoBehaviour
     
     private BoxCollider _area;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
@@ -22,6 +22,8 @@ public class LightArea : MonoBehaviour
             RenderSettings.fog = false;
             RenderSettings.ambientMode = AmbientMode.Skybox;
             RenderSettings.ambientIntensity = 1;
+            
+            SoundManager.Instance.StopBGM();
         }
     }
 
@@ -36,6 +38,8 @@ public class LightArea : MonoBehaviour
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Exponential;
             RenderSettings.fogDensity = 0.05f;
+            
+            SoundManager.Instance.PlayBGM("MazeBGM", true);
         }
     }
 }
