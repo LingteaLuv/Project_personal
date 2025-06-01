@@ -40,7 +40,7 @@ public class MapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(_safeZonePrefab, pos, Quaternion.identity,transform);
+                    Instantiate(_safeZonePrefab, pos - Vector3.down * 0.01f, Quaternion.identity,transform);
                 }
             }
         }
