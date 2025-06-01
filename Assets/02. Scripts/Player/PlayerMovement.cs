@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigid.velocity = Vector3.MoveTowards(_rigid.velocity, Vector3.zero, _deceleration * Time.fixedDeltaTime);
         }
-        transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
     }
 
     public void RotateUpdate()

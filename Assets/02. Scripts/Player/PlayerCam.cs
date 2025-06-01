@@ -20,7 +20,7 @@ public class PlayerCam : MonoBehaviour
         Init();
     }
     
-    private void Update()
+    private void LateUpdate()
     {
         MouseInput();
         CameraRotate();
@@ -31,10 +31,27 @@ public class PlayerCam : MonoBehaviour
         if (_curState != isHide)
         {
             _curState = isHide;
-            transform.localPosition = _curState ? _hidePos : _idlePos;
+            float offset = _curState ? 0.6f : -0.6f;
+            transform.localPosition += Vector3.down * offset;
+        }
+    }
+
+    /*private void OnCollisionEnter(Collision other)
+    {
+        if(other.transform.CompareTag("Wall"))
+        {
+            transform.localPosition += other.contacts[0].normal * 1f;
         }
     }
     
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.transform.CompareTag("Wall"))
+        {
+            transform.localPosition -= other.contacts[0].normal * 1f;
+        }
+    }*/
+
     private void MouseInput()
     {
         float rotateX = UnityEngine.Input.GetAxis("Mouse Y");
@@ -65,7 +82,7 @@ public class PlayerCam : MonoBehaviour
     private void Init()
     {
         _curState = false;
-        _idlePos = new Vector3(0, 0.5f, -1);
-        _hidePos = new Vector3(0, -0.1f, -1);
+        _idlePos = new Vector3(0, 0.5f, 0);
+        _hidePos = new Vector3(0, -0.1f, 0);
     }
 }

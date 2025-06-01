@@ -14,6 +14,9 @@ public class GameManager : Singleton<GameManager>
 
     private int _monsterEssence;
 
+    private bool _isPortalGenerated;
+    public bool IsPortalGenerated => _isPortalGenerated;
+
     private void Start()
     {
         Init();
@@ -22,10 +25,6 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         _date = CalculateDate();
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CreatePortal();
-        }
     }
 
     private DateTime CalculateDate()
@@ -51,12 +50,13 @@ public class GameManager : Singleton<GameManager>
     private void CreatePortal()
     {
         _generator.GeneratePortal();
-        // todo : 안내 문구 출력
+        _isPortalGenerated = true;
     }
     
     private void Init()
     {
         _startTime = Time.time;
         _monsterEssence = 0;
+        _isPortalGenerated = false;
     }
 }

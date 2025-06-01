@@ -11,7 +11,7 @@ public class UIManager : Singleton<UIManager>
         base.Awake();
         Init();
     }
-
+    
     public void OpenUI(GameObject curUI)
     {
         if (curUI != null)
