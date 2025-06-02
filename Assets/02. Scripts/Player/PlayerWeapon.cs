@@ -15,10 +15,6 @@ public class PlayerWeapon : MonoBehaviour
     private void Awake()
     {
         Init();
-        Debug.Log(_weaponList.Count);
-        Debug.Log(_weaponList[0]);
-        Debug.Log(_weaponList[1]);
-        Debug.Log(_weaponList[2]);
     }
     
     public void ChangeWeapon(bool changeLeft, bool changeRight)
@@ -65,6 +61,25 @@ public class PlayerWeapon : MonoBehaviour
         RemoveWeapon(grenade);
         ChangeToBaseWeapon();
     }
+
+    public void EquipBow()
+    {
+        Bow_T bow = GetComponentInChildren<Bow_T>();
+        if (bow != null)
+        {
+            _weaponList.Add(bow);
+        }
+    }
+
+    public void EquipGrenade()
+    {
+        Grenade grenade = GetComponentInChildren<Grenade>();
+        if (grenade != null)
+        {
+            _weaponList.Add(grenade);
+            grenade.OnUsed += HandleGrenadeUsed;
+        }
+    }
     
     private void Init()
     {
@@ -74,13 +89,5 @@ public class PlayerWeapon : MonoBehaviour
         _curIndex = 0;
         _curWeapon = _weaponList[_curIndex];
         _curWeapon.Activate();
-
-        Grenade grenade = GetComponentInChildren<Grenade>();
-        if (grenade != null)
-        {
-            _weaponList.Add(grenade);
-            grenade.OnUsed += HandleGrenadeUsed;
-        }
-        _weaponList.Add(GetComponentInChildren<Bow_T>());
     }
 }

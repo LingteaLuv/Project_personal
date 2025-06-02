@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCam _playerCam;
     private PlayerFootStep _playerFootStep;
     private PlayerProperty _playerProperty;
+    private PlayerItemInventory _playerItemInventory;
 
     private void Awake()
     {
@@ -33,6 +34,16 @@ public class PlayerController : MonoBehaviour
         _playerCam.ChangePos(_playerInput.IsHide);
         _playerPickUp.ConfigItem();
         _playerInteract.Interact(_playerInput.IsInteracted, _playerInput.IsPressEsc);
+
+        if (_playerItemInventory.GetIsBowAdded())
+        {
+            _playerWeapon.EquipBow();
+        }
+
+        if (_playerItemInventory.GetIsGrenadeAdded())
+        {
+            _playerWeapon.EquipGrenade();
+        }
         
         if (_playerInput.IsPickUp && _playerPickUp.CanPickUp)
         {
@@ -58,6 +69,7 @@ public class PlayerController : MonoBehaviour
         _playerInteract = GetComponent<PlayerInteract>();
         _playerFootStep = GetComponent<PlayerFootStep>();
         _playerProperty = GetComponent<PlayerProperty>();
+        _playerItemInventory = GetComponentInChildren<PlayerItemInventory>();
         
         _playerMovement.GetProperty(_playerProperty);
         _playerStealth.GetProperty(_playerProperty);

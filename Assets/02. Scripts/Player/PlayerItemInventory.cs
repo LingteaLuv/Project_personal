@@ -8,8 +8,9 @@ public class PlayerItemInventory : MonoBehaviour
 {
     private List<Item> _items;
     private Dictionary<Item, GameObject> _spawnedItem;
-    
-    public int Count => _items.Count;
+
+    private bool _isBowAdded;
+    private bool _isGrenadeAdded;
     
     private void Awake()
     {
@@ -23,7 +24,39 @@ public class PlayerItemInventory : MonoBehaviour
             _items.Add(item);
             GameObject itemObject = Instantiate(item.Prefab, transform);
             _spawnedItem.Add(item, itemObject);
+
+            if (item.name == "Bow")
+            {
+                transform.parent.GetComponentInChildren<Bow_T>().enabled = true;
+                _isBowAdded = true;
+            }
+
+            if (item.name == "Grenade")
+            {
+                transform.parent.GetComponentInChildren<Grenade>().enabled = true;
+                _isGrenadeAdded = true;
+            }
         }
+    }
+
+    public bool GetIsBowAdded()
+    {
+        if (_isBowAdded)
+        {
+            _isBowAdded = false;
+            return true;
+        }
+        return false;
+    }
+
+    public bool GetIsGrenadeAdded()
+    {
+        if (_isGrenadeAdded)
+        {
+            _isGrenadeAdded = false;
+            return true;
+        }
+        return false;
     }
 
     public int ConfigItem(Item item)

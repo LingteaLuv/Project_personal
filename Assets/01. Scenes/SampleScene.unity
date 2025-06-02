@@ -2708,8 +2708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _testStuff1: {fileID: 11400000, guid: 519202037aafdca419dc4b3e147e3195, type: 2}
-  _testStuff2: {fileID: 11400000, guid: 200c84a80ad26384282a43478e42570c, type: 2}
-  _testStuff3: {fileID: 11400000, guid: 86c97f750fa24ac41a16275ab99c1118, type: 2}
+  _testStuff2: {fileID: 11400000, guid: 3ea5f2300775e5c45bfdeecc25c786e7, type: 2}
+  _testStuff3: {fileID: 11400000, guid: 1d8dc555860be234cafaa93f89366423, type: 2}
   _stuffInventory: []
   _maxCount: 2
 --- !u!114 &2126892399
