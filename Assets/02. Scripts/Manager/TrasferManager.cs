@@ -7,20 +7,20 @@ public class TransferManager : Singleton<TransferManager>
 {
     [Header("Drag&Drop")] 
     [SerializeField] private PlayerInventory _inventory;
-    [SerializeField] private GameObject _chestUI;
 
     private Chest _curChest;
+    public Chest CurChest => _curChest;
 
     protected override void Awake()
     {
         base.Awake();
         Init();
     }
-
+    
     public void OpenChest(Chest chest)
     {
         _curChest = chest;
-        UIManager.Instance.OpenUI(_chestUI);
+        UIManager.Instance.OpenUI(chest.ChestUI);
     }
 
     public void CloseChest()
@@ -37,6 +37,34 @@ public class TransferManager : Singleton<TransferManager>
             {
                 _inventory.RemoveStuff(stuff, 1);
                 _curChest.AddStuff(stuff);
+            }
+        }
+    }
+
+    public void TransferAllToChest()
+    {
+        int count = _inventory.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (_curChest.Volume > _curChest.Count)
+            {
+                Stuff stuff = _inventory.FindObject(count - i - 1);
+                _inventory.RemoveStuff(stuff,1);
+                _curChest.AddStuff(stuff);
+            }
+        }
+    }
+
+    public void TransferAllToInventory()
+    {
+        int count = _curChest.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (_inventory.MaxCount > _inventory.Count)
+            {
+                Stuff stuff = _curChest.FindObject(count - i - 1);
+                _curChest.RemoveStuff(stuff,1);
+                _inventory.AddStuff(stuff);
             }
         }
     }

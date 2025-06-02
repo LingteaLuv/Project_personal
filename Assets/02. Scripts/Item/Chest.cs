@@ -7,12 +7,29 @@ public class Chest : MonoBehaviour
     private List<Stuff> _chest;
     private List<Stuff> _playerInventory;
     private int _volume;
+    public int Volume => _volume;
+    private GameObject _chestUI;
+    public GameObject ChestUI => _chestUI;
+    
+    public int Count => _chest.Count;
 
     private void Awake()
     {
         Init();
     }
 
+    private void Start()
+    {
+        UIManager.Instance.Mediate(this);
+        _chestUI = UIManager.Instance.GetChestUI().transform.GetChild(1).gameObject;
+    }
+
+    public Stuff FindObject(int index)
+    {
+        if (index >= Count) return null;
+        return _chest[index];
+    }
+    
     public void AddStuff(Stuff stuff)
     {
         if (_chest.Count < _volume)
@@ -48,5 +65,6 @@ public class Chest : MonoBehaviour
     private void Init()
     {
         _chest = new List<Stuff>();
+        _volume = 10;
     }
 }

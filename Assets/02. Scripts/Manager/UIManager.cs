@@ -7,6 +7,9 @@ public class UIManager : Singleton<UIManager>
     [Header("Drag&Drop")] 
     [SerializeField] private StatusUI _statusUI;
     [SerializeField] private InventoryUI _inventoryUI;
+    [SerializeField] private InventoryInChestUI _inventoryInChestUI;
+    [SerializeField] private ChestInventoryUI _chestInventoryUI;
+    [SerializeField] private ChestUI _chestUI;
     
     public GameObject _curUI;
 
@@ -14,6 +17,11 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
         Init();
+    }
+
+    public ChestUI GetChestUI()
+    {
+        return _chestUI;
     }
     
     public void OpenUI(GameObject curUI)
@@ -39,6 +47,12 @@ public class UIManager : Singleton<UIManager>
     public void Mediate(PlayerInventory playerInventory)
     {
         _inventoryUI.SetProperty(playerInventory);
+        _inventoryInChestUI.SetProperty(playerInventory);
+    }
+
+    public void Mediate(Chest chest)
+    {
+        _chestInventoryUI.SetProperty(chest);
     }
     
     private void Init()

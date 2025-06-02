@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [SerializeField] private Stuff _testStuff;
+    
     [SerializeField] private List<Stuff> _stuffInventory;
     [SerializeField] private int _maxCount;
     public int MaxCount => _maxCount;
-    
     public int Count => _stuffInventory.Count;
     private void Awake()
     {
@@ -20,9 +21,11 @@ public class PlayerInventory : MonoBehaviour
         {
             _maxCount = 5;
         }
-        Debug.Log(UIManager.Instance);
-        Debug.Log(this);
         UIManager.Instance.Mediate(this);
+        
+        _stuffInventory.Add(_testStuff);
+        _stuffInventory.Add(_testStuff);
+        _stuffInventory.Add(_testStuff);
     }
 
     public Stuff FindObject(int index)
