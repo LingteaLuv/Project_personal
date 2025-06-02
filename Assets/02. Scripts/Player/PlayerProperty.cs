@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNotify, ISpeedNotify
 {
-    [Header("InputNumber")]
-    [SerializeField] private int _hp;
-    [SerializeField] private int _mentality;
-    [SerializeField] private float _mentalityDecrease;
+    
+    public Property<int> Hp;
+    public Property<float> Mentality;
+    public Property<float> MentalityDecrease;
     [SerializeField] private int _hunger;
     [SerializeField] private float _detectRange;
+
+    private float _mentalTimer;
+    private float _hpTimer;
+    
     public float DetectRange
     {
         get { return _detectRange; }
@@ -41,9 +45,43 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
         Init();
     }
 
+    private void Update()
+    {
+        DecreaseMentality(GameManager.Instance.IsInMaze);
+        DecreaseHp();
+    }
+    
+    private void DecreaseMentality(bool isInMaze)
+    {
+        if (isInMaze)
+        {
+            _mentalTimer += Time.deltaTime;
+            if (_mentalTimer > 1f)
+            {
+                Mentality.Value -= MentalityDecrease.Value;
+                _mentalTimer = 0f;
+            }
+        }
+    }
+
+    private void DecreaseHp()
+    {
+        if (Mentality.Value <= 0)
+        {
+            _hpTimer += Time.deltaTime;
+            if (_hpTimer > 1f)
+            {
+                Hp.Value -= 1;
+                _hpTimer = 0f;
+            }
+        }
+    }
+    
+    
     private void Start()
     {
         OnSpeedChanged?.Invoke(_speed);
+        HudManager.Instance.Subscribe(this);
     }
     
     public void ApplyModifier(StatModifier modifier)
@@ -62,7 +100,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
     {
         foreach (var mod in _activeModifiers)
         {
-            _mentalityDecrease += mod.MentalityDecreaseChange;
+            MentalityDecrease.Value += mod.MentalityDecreaseChange;
             _detectRange += mod.DetectRangeChange;
             _speed += mod.SpeedChange;
         }
@@ -71,5 +109,10 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
     private void Init()
     {
         _activeModifiers = new List<StatModifier>();
+        _mentalTimer = 0;
+        _hpTimer = 0;
+        Hp = new Property<int>(100);
+        Mentality = new Property<float>(100);
+        MentalityDecrease = new Property<float>(1);
     }
 }

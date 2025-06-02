@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
     private bool _isPortalGenerated;
     public bool IsPortalGenerated => _isPortalGenerated;
 
+    public bool IsInMaze;
+
     private void Start()
     {
         Init();
@@ -58,5 +60,6 @@ public class GameManager : Singleton<GameManager>
         _startTime = Time.time;
         _monsterEssence = 0;
         _isPortalGenerated = false;
+        IsInMaze = false;
     }
 }

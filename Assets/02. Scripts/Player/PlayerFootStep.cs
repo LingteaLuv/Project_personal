@@ -37,5 +37,6 @@ public class PlayerFootStep : MonoBehaviour
         _audioSource.clip = _footStep;
         _audioSource.loop = true;
         _audioSource.spatialBlend = 1;
+        _audioSource.pitch = 0.7f;
     }
 }

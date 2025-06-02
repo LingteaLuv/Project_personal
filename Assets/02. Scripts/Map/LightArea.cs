@@ -24,6 +24,7 @@ public class LightArea : MonoBehaviour
             RenderSettings.ambientIntensity = 1;
             
             SoundManager.Instance.StopBGM();
+            GameManager.Instance.IsInMaze = false;
         }
     }
 
@@ -40,6 +41,7 @@ public class LightArea : MonoBehaviour
             RenderSettings.fogDensity = 0.05f;
             
             SoundManager.Instance.PlayBGM("MazeBGM", true);
+            GameManager.Instance.IsInMaze = true;
         }
     }
 }
