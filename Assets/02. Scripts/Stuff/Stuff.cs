@@ -8,4 +8,6 @@ public class Stuff : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private GameObject _prefab;
     public GameObject Prefab => _prefab;
+    [SerializeField] private Sprite _icon;
+    public Sprite Icon => _icon;
 }

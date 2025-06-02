@@ -19,8 +19,17 @@ public class PlayerInventory : MonoBehaviour
         {
             _maxCount = 5;
         }
+        Debug.Log(UIManager.Instance);
+        Debug.Log(this);
+        UIManager.Instance.Mediate(this);
     }
 
+    public Stuff FindObject(int index)
+    {
+        if (index >= Count) return null;
+        return _stuffInventory[index];
+    }
+    
     public void AddStuff(Stuff stuff)
     {
         if (_stuffInventory.Count < _maxCount)

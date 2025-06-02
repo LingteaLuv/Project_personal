@@ -21,11 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         Init();
     }
-
-    private void Start()
-    {
-        
-    }
     
     private void Update()
     {

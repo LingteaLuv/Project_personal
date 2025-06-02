@@ -6,6 +6,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Drag&Drop")] 
     [SerializeField] private StatusUI _statusUI;
+    [SerializeField] private InventoryUI _inventoryUI;
     
     public GameObject _curUI;
 
@@ -33,6 +34,11 @@ public class UIManager : Singleton<UIManager>
     public void Mediate(PlayerProperty playerProperty)
     {
         _statusUI.SetProperty(playerProperty);
+    }
+
+    public void Mediate(PlayerInventory playerInventory)
+    {
+        _inventoryUI.SetProperty(playerInventory);
     }
     
     private void Init()
