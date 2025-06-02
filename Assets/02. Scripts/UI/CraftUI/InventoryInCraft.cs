@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryInChestUI : MonoBehaviour
+public class InventoryInCraftUI : MonoBehaviour
 {
     [Header("Drag&Drop")]
     [SerializeField] private List<Image> _inventoryList;
     [SerializeField] private List<Button> _inventoryBtnList;
-
+    
     [SerializeField] private Sprite _basicSprite;
     [SerializeField] private Sprite _forbidSprite;
     
@@ -24,13 +24,13 @@ public class InventoryInChestUI : MonoBehaviour
         for (int i = 0; i < _inventoryBtnList.Count; i++)
         {
             int index = i;
-            _inventoryBtnList[i].onClick.AddListener(() => OnChestButtonClicked(index));
+            _inventoryBtnList[i].onClick.AddListener(() => OnCraftButtonClicked(index));
         }
     }
     
     private void Update()
     {
-        if (TransferManager.Instance.CurChest !=null)
+        if (UIManager.Instance.CurUI == transform.parent.gameObject)
         {
             for (int i = 0; i < _inventory.Count; i++)
             {
@@ -48,11 +48,11 @@ public class InventoryInChestUI : MonoBehaviour
             }
         }
     }
-    
-    private void OnChestButtonClicked(int index)
+
+    private void OnCraftButtonClicked(int index)
     {
         Stuff stuff = _inventory.FindObject(index);
-        TransferManager.Instance.TransferToChest(stuff);
+        TransferManager.Instance.TransferToNPC(stuff);
     }
     
     public void SetProperty(PlayerInventory inventory)

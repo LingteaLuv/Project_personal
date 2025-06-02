@@ -14,4 +14,5 @@ public class Recipe : ScriptableObject
 
     public List<Ingredient> Ingredients;
     public Item Result;
+    public Sprite Icon;
 }

@@ -14,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
 
     private bool _isChestOpened;
     private bool _isPortalInteracted;
+    private bool _isTalked;
     
     private void Awake()
     {
@@ -25,11 +26,11 @@ public class PlayerInteract : MonoBehaviour
         Vector3 origin = transform.position + Vector3.down * 0.5f;
         Vector3 direction = transform.forward;
         
-        if (!_isChestOpened && isInteracted)
+        if (isInteracted)
         {
             if (Physics.Raycast(origin, direction, out RaycastHit hit ,_interactDistance))
             {
-                if (hit.collider.gameObject.layer == 15)
+                if (hit.collider.gameObject.layer == 15 && !_isChestOpened)
                 {
                     Chest chest = hit.collider.GetComponentInParent<Chest>();
                     if(chest != null)
@@ -38,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
                         _isChestOpened = true;
                     }
                 }
-                else if (hit.collider.gameObject.layer == 14)
+                else if (hit.collider.gameObject.layer == 14 && !_isPortalInteracted)
                 {
                     Portal portal = hit.collider.GetComponentInParent<Portal>();
                     if (portal != null)
@@ -47,22 +48,46 @@ public class PlayerInteract : MonoBehaviour
                         _isPortalInteracted = true;
                     }
                 }
+                else if (hit.collider.gameObject.layer == 16 && !_isTalked)
+                {
+                    Crafting craftNPC = hit.collider.GetComponentInParent<Crafting>();
+                    if (craftNPC != null)
+                    {
+                        Debug.Log("1");
+                        UIManager.Instance.OpenUI(craftNPC.CraftUI.transform.parent.gameObject);
+                        _isTalked = true;
+                    }
+                }
             }
         }
-        if (_isChestOpened && isPressedEsc)
-        {
-            TransferManager.Instance.CloseChest();
-            _isChestOpened = false;
-        }
 
-        if (_isPortalInteracted && isPressedEsc)
+        if (isPressedEsc)
         {
-            UIManager.Instance.CloseUI();
+            if (_isChestOpened)
+            {
+                TransferManager.Instance.CloseChest();
+                _isChestOpened = false;
+            }
+
+            if (_isPortalInteracted)
+            {
+                UIManager.Instance.CloseUI();
+                _isPortalInteracted = false;
+            }
+
+            if (_isTalked)
+            {
+                UIManager.Instance.CloseUI();
+                _isTalked = false;
+            }
         }
+        
     }
     
     private void Init()
     {
-        
+        _isChestOpened = false;
+        _isPortalInteracted = false;
+        _isTalked = false;
     }
 }

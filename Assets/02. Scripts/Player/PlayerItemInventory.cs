@@ -52,5 +52,6 @@ public class PlayerItemInventory : MonoBehaviour
     private void Init()
     {
         _items = new List<Item>();
+        _spawnedItem = new Dictionary<Item, GameObject>();
     }
 }

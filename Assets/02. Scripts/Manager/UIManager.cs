@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -10,11 +11,14 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private InventoryInChestUI _inventoryInChestUI;
     [SerializeField] private ChestInventoryUI _chestInventoryUI;
     [SerializeField] private ChestUI _chestUI;
+    [SerializeField] private CraftStuff _craftStuff;
     [SerializeField] private PopUpUI _popUpUI;
+    [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
+    [SerializeField] private CraftResult _craftResult;
     public PopUpUI PopUpUI => _popUpUI;
 
     private TextLoader _textLoader;
-    public GameObject _curUI;
+    public GameObject CurUI;
 
     protected override void Awake()
     {
@@ -50,20 +54,30 @@ public class UIManager : Singleton<UIManager>
     {
         return _chestUI;
     }
+
+    public CraftStuff GetCraftUI()
+    {
+        return _craftStuff;
+    }
+
+    public CraftResult GetCraftResult()
+    {
+        return _craftResult;
+    }
     
     public void OpenUI(GameObject curUI)
     {
         if (curUI != null)
         {
-            _curUI = curUI;
-            _curUI.gameObject.SetActive(true);
+            CurUI = curUI;
+            CurUI.gameObject.SetActive(true);
         }
     }
 
     public void CloseUI()
     {
-        _curUI.gameObject.SetActive(false);
-        _curUI = null;
+        CurUI.gameObject.SetActive(false);
+        CurUI = null;
     }
 
     public void Mediate(PlayerProperty playerProperty)
@@ -75,11 +89,18 @@ public class UIManager : Singleton<UIManager>
     {
         _inventoryUI.SetProperty(playerInventory);
         _inventoryInChestUI.SetProperty(playerInventory);
+        _inventoryInCraftUI.SetProperty(playerInventory);
     }
 
     public void Mediate(Chest chest)
     {
         _chestInventoryUI.SetProperty(chest);
+    }
+
+    public void Mediate(Crafting craftNPC)
+    {
+        _craftStuff.SetProperty(craftNPC);
+        _craftResult.SetProperty(craftNPC);
     }
     
     private void Init()

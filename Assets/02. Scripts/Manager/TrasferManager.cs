@@ -7,9 +7,11 @@ public class TransferManager : Singleton<TransferManager>
 {
     [Header("Drag&Drop")] 
     [SerializeField] private PlayerInventory _inventory;
+    [SerializeField] private Crafting _craftNPC;
 
     private Chest _curChest;
     public Chest CurChest => _curChest;
+    
 
     protected override void Awake()
     {
@@ -78,6 +80,24 @@ public class TransferManager : Singleton<TransferManager>
                 _curChest.RemoveStuff(stuff, 1);
                 _inventory.AddStuff(stuff);
             }
+        }
+    }
+    
+    public void TransferToNPC(Stuff stuff)
+    {
+        if (_inventory.HasStuff(stuff) && _craftNPC.CraftStuff.Count < 2)
+        {
+            _inventory.RemoveStuff(stuff, 1);
+            _craftNPC.CraftStuff.Add(stuff);
+        }
+    }
+    
+    public void TransferFromNPC(Stuff stuff)
+    {
+        if (_craftNPC.CraftStuff.Contains(stuff))
+        {
+            _craftNPC.CraftStuff.Remove(stuff);
+            _inventory.AddStuff(stuff);
         }
     }
     

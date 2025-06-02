@@ -692,7 +692,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63415
+    m_Bits: 128951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2055,6 +2055,125 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1442254380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407496730988620328, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b1fce3b505f556b4aa9d7c1b4585cf4d,
+        type: 2}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bdc653d5b4ce344b8cc4a8c4371c785,
+        type: 2}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 473b341b9178aa341a4fc1b673d4646a,
+        type: 2}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b380775eddc0c2041a778b2343e2861f,
+        type: 2}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: be679637e11a92545979537fbb426ded,
+        type: 2}
+    - target: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: _recipes.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b545dc69588ef644a153b179f86c1a3,
+        type: 2}
+    - target: {fileID: 6389113553023340201, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_Name
+      value: CraftNPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389113553023340201, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa, type: 3}
 --- !u!1 &1559444468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2384,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639393092}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1735512693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4476727904295136100, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442254380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce510aca469139d47abb9884c989733b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2009462714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2365,6 +2496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d446b455ba8bcf419cf3efdf13084db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemInventory: {fileID: 14841548}
 --- !u!4 &2009888350
 Transform:
   m_ObjectHideFlags: 0
@@ -2393,6 +2525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 2126892398}
+  _craftNPC: {fileID: 1735512693}
 --- !u!114 &2009888353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,7 +2707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cd75c3106c6634fb58cc09e25aa732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testStuff: {fileID: 11400000, guid: 519202037aafdca419dc4b3e147e3195, type: 2}
+  _testStuff1: {fileID: 11400000, guid: 519202037aafdca419dc4b3e147e3195, type: 2}
+  _testStuff2: {fileID: 11400000, guid: 200c84a80ad26384282a43478e42570c, type: 2}
+  _testStuff3: {fileID: 11400000, guid: 86c97f750fa24ac41a16275ab99c1118, type: 2}
   _stuffInventory: []
   _maxCount: 2
 --- !u!114 &2126892399
@@ -2725,3 +2860,4 @@ SceneRoots:
   - {fileID: 733310788}
   - {fileID: 95760332}
   - {fileID: 2009462714}
+  - {fileID: 1442254380}

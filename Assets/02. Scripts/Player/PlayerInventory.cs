@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private Stuff _testStuff;
+    [SerializeField] private Stuff _testStuff1;
+    [SerializeField] private Stuff _testStuff2;
+    [SerializeField] private Stuff _testStuff3;
     
     [SerializeField] private List<Stuff> _stuffInventory;
     [SerializeField] private int _maxCount;
@@ -23,9 +25,9 @@ public class PlayerInventory : MonoBehaviour
         }
         UIManager.Instance.Mediate(this);
         
-        _stuffInventory.Add(_testStuff);
-        _stuffInventory.Add(_testStuff);
-        _stuffInventory.Add(_testStuff);
+        _stuffInventory.Add(_testStuff1);
+        _stuffInventory.Add(_testStuff2);
+        _stuffInventory.Add(_testStuff3);
     }
 
     public Stuff FindObject(int index)
