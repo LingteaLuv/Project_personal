@@ -8,6 +8,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
     public Property<int> Hp;
     public Property<float> Mentality;
     public Property<float> MentalityDecrease;
+    public Property<float> MentalityIncrease;
     public Property<float> Hunger;
     public Property<float> Speed;
     public Property<float> DetectRange;
@@ -31,8 +32,8 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
     
     private void Update()
     {
-        DecreaseMentality(GameManager.Instance.IsInMaze);
-        DecreaseHp();
+        ChangeMentality(GameManager.Instance.IsInMaze);
+        ChangeHp(GameManager.Instance.IsInMaze);
         DecreaseHunger();
     }
 
@@ -47,28 +48,74 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
     }
     
     
-    private void DecreaseMentality(bool isInMaze)
+    private void ChangeMentality(bool isInMaze)
     {
         if (isInMaze)
         {
-            _mentalTimer += Time.deltaTime;
-            if (_mentalTimer > 1f)
+            if (Mentality.Value > 0)
             {
-                Mentality.Value -= MentalityDecrease.Value;
-                _mentalTimer = 0f;
+                _mentalTimer += Time.deltaTime;
+                if (_mentalTimer > 1f)
+                {
+                    Mentality.Value -= MentalityDecrease.Value;
+                    _mentalTimer = 0f;
+                }
+            }
+            else
+            {
+                Mentality.Value = 0;
+            }
+        }
+
+        if (!isInMaze)
+        {
+            if (Mentality.Value < 100)
+            {
+                _mentalTimer += Time.deltaTime;
+                if (_mentalTimer > 1f)
+                {
+                    Mentality.Value += MentalityIncrease.Value;
+                    _mentalTimer = 0f;
+                }
+            }
+            else
+            {
+                Mentality.Value = 100;
             }
         }
     }
 
-    private void DecreaseHp()
+    private void ChangeHp(bool isInMaze)
     {
-        if (Mentality.Value <= 0)
+        if (Mentality.Value <= 0 && isInMaze)
         {
             _hpTimer += Time.deltaTime;
             if (_hpTimer > 1f)
             {
+                if (Hp.Value <= 0)
+                {
+                    Hp.Value = 0;
+                    // todo : 게임 종료 씬 출력
+                }
                 Hp.Value -= 1;
                 _hpTimer = 0f;
+            }
+        }
+
+        if (!isInMaze)
+        {
+            if (Hp.Value < 100)
+            {
+                _hpTimer += Time.deltaTime;
+                if (_hpTimer > 2f)
+                {
+                    Hp.Value += 1;
+                    _hpTimer = 0f;
+                }
+            }
+            else
+            {
+                Hp.Value = 100;
             }
         }
     }
@@ -109,6 +156,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
         Mentality = new Property<float>(100f);
         Hunger = new Property<float>(100f);
         MentalityDecrease = new Property<float>(1f);
+        MentalityIncrease = new Property<float>(3f);
         Speed = new Property<float>(5f);
         DetectRange = new Property<float>(5f);
     }

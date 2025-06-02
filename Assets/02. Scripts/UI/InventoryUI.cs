@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private List<Image> _inventoryList;
 
     [SerializeField] private Sprite _basicSprite;
+    [SerializeField] private Sprite _forbidSprite;
     
     private PlayerInventory _inventory;
     private bool _isOpen;
@@ -16,6 +17,11 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         Init();
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
@@ -27,9 +33,14 @@ public class InventoryUI : MonoBehaviour
                 _inventoryList[i].sprite = _inventory.FindObject(i).Icon;
             }
 
-            for (int i = _inventory.Count; i < 10; i++)
+            for (int i = _inventory.Count; i < _inventory.MaxCount; i++)
             {
                 _inventoryList[i].sprite = _basicSprite;
+            }
+            
+            for (int i = _inventory.MaxCount; i < _inventoryList.Count; i++)
+            {
+                _inventoryList[i].sprite = _forbidSprite;
             }
         }
     }

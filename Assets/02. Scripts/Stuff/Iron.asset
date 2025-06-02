@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iron
   _prefab: {fileID: 3021789994052046870, guid: f8000f40ef132af43a866c7c30dc64cf, type: 3}
+  _icon: {fileID: 21300000, guid: 06a9c4cbff54261459465e5a735f9aac, type: 3}

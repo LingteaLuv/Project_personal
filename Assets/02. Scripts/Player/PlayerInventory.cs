@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<Stuff> _stuffInventory;
     [SerializeField] private int _maxCount;
+    public int MaxCount => _maxCount;
     
     public int Count => _stuffInventory.Count;
     private void Awake()
