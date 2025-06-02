@@ -9,7 +9,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
     public Property<int> Hp;
     public Property<float> Mentality;
     public Property<float> MentalityDecrease;
-    [SerializeField] private int _hunger;
+    public Property<float> Hunger;
     [SerializeField] private float _detectRange;
 
     private float _mentalTimer;
@@ -45,10 +45,17 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
         Init();
     }
 
+    private void Start()
+    {
+        OnSpeedChanged?.Invoke(_speed);
+        HudManager.Instance.Subscribe(this);
+    }
+    
     private void Update()
     {
         DecreaseMentality(GameManager.Instance.IsInMaze);
         DecreaseHp();
+        DecreaseHenger();
     }
     
     private void DecreaseMentality(bool isInMaze)
@@ -76,12 +83,10 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
             }
         }
     }
-    
-    
-    private void Start()
+
+    private void DecreaseHenger()
     {
-        OnSpeedChanged?.Invoke(_speed);
-        HudManager.Instance.Subscribe(this);
+        Hunger.Value -= 100 * (GameManager.Instance.FlowTime / 84 * 60 * 60);
     }
     
     public void ApplyModifier(StatModifier modifier)
@@ -113,6 +118,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDetectRangeNot
         _hpTimer = 0;
         Hp = new Property<int>(100);
         Mentality = new Property<float>(100);
+        Hunger = new Property<float>(100);
         MentalityDecrease = new Property<float>(1);
     }
 }

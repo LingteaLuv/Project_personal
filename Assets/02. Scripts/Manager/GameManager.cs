@@ -12,6 +12,9 @@ public class GameManager : Singleton<GameManager>
     private DateTime _date;
     public DateTime Date => _date;
 
+    private float _flowTime;
+    public float FlowTime => _flowTime;
+
     private int _monsterEssence;
 
     private bool _isPortalGenerated;
@@ -32,11 +35,11 @@ public class GameManager : Singleton<GameManager>
     private DateTime CalculateDate()
     {
         DateTime temp = new DateTime();
-        float flowTime = Time.time - _startTime;
-        temp.Second = (int)flowTime % 60;
-        temp.Minute = (int)(flowTime / 60) % 60;
-        temp.Hour = (int)(flowTime / 60) / 60 % 24;
-        temp.Day = (int)(flowTime / 60) / 60 / 24;
+        _flowTime = Time.time - _startTime;
+        temp.Second = (int)_flowTime % 60;
+        temp.Minute = (int)(_flowTime / 60) % 60;
+        temp.Hour = 9 + (int)(_flowTime / 60) / 60 % 24;
+        temp.Day = 1 + (int)(_flowTime / 60) / 60 / 24;
         return temp;
     }
 

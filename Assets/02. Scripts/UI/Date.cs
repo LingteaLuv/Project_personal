@@ -20,7 +20,7 @@ public class Date : MonoBehaviour
     private void Update()
     {
         _curDate = GameManager.Instance.Date;
-        _dateText.text = $"Day : {_curDate.Day} | {_curDate.Hour}:{_curDate.Minute}:{_curDate.Second}";
+        _dateText.text = $"Day : {_curDate.Day} | {_curDate.Hour:D2}:{_curDate.Minute:D2}:{_curDate.Second:D2}";
     }
 
     private void Init()
