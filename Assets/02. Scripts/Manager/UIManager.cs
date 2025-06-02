@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("Drag&Drop")] 
+    [SerializeField] private StatusUI _statusUI;
+    
     public GameObject _curUI;
 
     protected override void Awake()
@@ -17,18 +20,23 @@ public class UIManager : Singleton<UIManager>
         if (curUI != null)
         {
             _curUI = curUI;
-            // todo : 상호작용 한 UI 창 켜기(활성화) 
+            _curUI.gameObject.SetActive(true);
         }
     }
 
     public void CloseUI()
     {
-        // todo : 상호작용 한 UI 창 끄기(비활성화)
+        _curUI.gameObject.SetActive(false);
         _curUI = null;
+    }
+
+    public void Mediate(PlayerProperty playerProperty)
+    {
+        _statusUI.SetProperty(playerProperty);
     }
     
     private void Init()
     {
-        
+
     }
 }

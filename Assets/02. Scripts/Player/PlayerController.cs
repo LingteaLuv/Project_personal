@@ -15,20 +15,26 @@ public class PlayerController : MonoBehaviour
     private PlayerInteract _playerInteract;
     private PlayerCam _playerCam;
     private PlayerFootStep _playerFootStep;
+    private PlayerProperty _playerProperty;
 
     private void Awake()
     {
         Init();
     }
 
+    private void Start()
+    {
+        
+    }
+    
     private void Update()
     {
         _playerInput.InputUpdate();
+        _playerProperty.HideUpdate(_playerInput.IsHide);
         _playerMovement.RotateUpdate();
         _playerFootStep.PlaySound(_playerInput.IsMoved);
         _playerAttack.AtkUpdate(_playerInput.IsAttack, _playerWeapon.CurWeapon);
         _playerWeapon.ChangeWeapon(_playerInput.ChangeLeftWeapon, _playerInput.ChangeRightWeapon);
-        _playerStealth.ChangePresence(_playerInput.IsHide);
         _playerCam.ChangePos(_playerInput.IsHide);
         _playerPickUp.ConfigItem();
         _playerInteract.Interact(_playerInput.IsInteracted, _playerInput.IsPressEsc);
@@ -56,5 +62,9 @@ public class PlayerController : MonoBehaviour
         _inventory = GetComponent<PlayerInventory>();
         _playerInteract = GetComponent<PlayerInteract>();
         _playerFootStep = GetComponent<PlayerFootStep>();
+        _playerProperty = GetComponent<PlayerProperty>();
+        
+        _playerMovement.GetProperty(_playerProperty);
+        _playerStealth.GetProperty(_playerProperty);
     }
 }

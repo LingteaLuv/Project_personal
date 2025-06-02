@@ -15,10 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] [Range(0,100)] private float _rotateInertia;
     
     private Rigidbody _rigid;
-    private bool _curState;
     private float _moveSpeed;
-    private float _runSpeed;
-    private ISpeedNotify _speedNotify;
+
+    private PlayerProperty _property;
     
 
     private void Awake()
@@ -26,34 +25,28 @@ public class PlayerMovement : MonoBehaviour
         Init();
     }
 
-    private void Start()
+    public void GetProperty(PlayerProperty property)
     {
-        _moveSpeed = _runSpeed;
+        _property = property;
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        _speedNotify.OnSpeedChanged += UpdateSpeed;
+        _property.Speed.OnChanged += UpdateSpeed;
     }
 
     private void OnDisable()
     {
-        _speedNotify.OnSpeedChanged -= UpdateSpeed;
+        _property.Speed.OnChanged -= UpdateSpeed;
     }
 
     private void UpdateSpeed(float speed)
     {
-        _runSpeed = speed;
+        _moveSpeed = speed;
     }
     
     public void MoveUpdate(Vector3 inputDir, bool isHide)
     {
-        if (_curState != isHide)
-        {
-            _moveSpeed = isHide ? _hideSpeed : _runSpeed;
-            _curState = isHide;
-        }
-        
         if (inputDir != Vector3.zero)
         {
             Vector3 camForward = _playerFollowCam.transform.forward;
@@ -86,6 +79,6 @@ public class PlayerMovement : MonoBehaviour
     private void Init()
     {
         _rigid = GetComponent<Rigidbody>();
-        _speedNotify = GetComponent<ISpeedNotify>();
+        _moveSpeed = 5f;
     }
 }

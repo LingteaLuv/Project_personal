@@ -31,7 +31,7 @@ public class MonsterDetect : MonoBehaviour
         if (_target != null)
         {
             float distance = Vector3.Distance(transform.position, _target.position);
-            float offset = _target.GetComponentInParent<PlayerProperty>().DetectRange;
+            float offset = _target.GetComponentInParent<PlayerProperty>().DetectRange.Value;
             if (distance < _firstDetectRange + offset)
             {
                 if (IsVisible(_target))

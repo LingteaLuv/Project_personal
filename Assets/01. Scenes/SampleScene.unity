@@ -2276,7 +2276,6 @@ GameObject:
   - component: {fileID: 2009888350}
   - component: {fileID: 2009888349}
   - component: {fileID: 2009888351}
-  - component: {fileID: 2009888352}
   - component: {fileID: 2009888353}
   - component: {fileID: 2009888354}
   m_Layer: 0
@@ -2327,19 +2326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventory: {fileID: 2126892398}
   _chestUI: {fileID: 0}
---- !u!114 &2009888352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009888348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7710fb317596e4743afebaee63e6b368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _curUI: {fileID: 0}
 --- !u!114 &2009888353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,6 +2351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 1433071540}
+  _offset: 120
   IsInMaze: 0
 --- !u!1 &2126892389
 GameObject:
@@ -2482,7 +2469,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!114 &2126892396
 MonoBehaviour:
@@ -2534,7 +2521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825cffc7e863b21449b6bf2dc1c68192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hunger: 100
   _detectRange: 5
   _speed: 5
 --- !u!114 &2126892400

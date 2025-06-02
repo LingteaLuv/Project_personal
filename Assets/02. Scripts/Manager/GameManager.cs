@@ -7,6 +7,9 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Drag&Drop")]
     [SerializeField] private ObjectGenerator _generator;
+
+    [Header("InputNumber")]
+    [SerializeField] private float _offset;
     
     private float _startTime;
     private DateTime _date;
@@ -35,11 +38,11 @@ public class GameManager : Singleton<GameManager>
     private DateTime CalculateDate()
     {
         DateTime temp = new DateTime();
-        _flowTime = Time.time - _startTime;
-        temp.Second = (int)_flowTime % 60;
-        temp.Minute = (int)(_flowTime / 60) % 60;
-        temp.Hour = 9 + (int)(_flowTime / 60) / 60 % 24;
-        temp.Day = 1 + (int)(_flowTime / 60) / 60 / 24;
+        _flowTime = (Time.time - _startTime);
+        temp.Second = (int)(_flowTime * _offset) % 60;
+        temp.Minute = (int)(_flowTime * _offset / 60) % 60;
+        temp.Hour = 9 + (int)(_flowTime * _offset / 60) / 60 % 24;
+        temp.Day = 1 + (int)(_flowTime * _offset / 60) / 60 / 24;
         return temp;
     }
 
