@@ -38,7 +38,7 @@ public class Chest : MonoBehaviour
         }
         else
         {
-            Debug.Log("상자가 가득 찼습니다.");
+            UIManager.Instance.PopupTextForSecond("popup_002", 3f);
         }
     }
     

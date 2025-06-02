@@ -42,7 +42,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            Debug.Log("인벤토리가 가득 찼습니다.");
+            UIManager.Instance.PopupTextForSecond("popup_001", 3f);
         }
     }
 

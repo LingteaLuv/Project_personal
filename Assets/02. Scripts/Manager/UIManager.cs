@@ -10,7 +10,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private InventoryInChestUI _inventoryInChestUI;
     [SerializeField] private ChestInventoryUI _chestInventoryUI;
     [SerializeField] private ChestUI _chestUI;
-    
+    [SerializeField] private PopUpUI _popUpUI;
+    public PopUpUI PopUpUI => _popUpUI;
+
+    private TextLoader _textLoader;
     public GameObject _curUI;
 
     protected override void Awake()
@@ -19,6 +22,30 @@ public class UIManager : Singleton<UIManager>
         Init();
     }
 
+    public void PopupText(string id)
+    {
+        string popupText = _textLoader.GetPopupText(id);
+        _popUpUI.gameObject.SetActive(true);
+        _popUpUI.PopupText(popupText);
+    }
+
+    public void PopupTextForSecond(string id, float time)
+    {
+        StartCoroutine(PopupTextRoutine(id, time));
+    }
+
+    private IEnumerator PopupTextRoutine(string id, float time)
+    {
+        PopupText(id);
+        yield return new WaitForSeconds(time);
+        HideText();
+    }
+    
+    public void HideText()
+    {
+        _popUpUI.gameObject.SetActive(false);
+    }
+    
     public ChestUI GetChestUI()
     {
         return _chestUI;
