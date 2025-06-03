@@ -101,6 +101,20 @@ public class TransferManager : Singleton<TransferManager>
         }
     }
     
+    public void TransferAllToInventoryInNPC()
+    {
+        int count = _craftNPC.CraftStuff.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (_inventory.MaxCount > _inventory.Count)
+            {
+                Stuff stuff =  _craftNPC.FindObject(count - i - 1);
+                _craftNPC.RemoveStuff(stuff);
+                _inventory.AddStuff(stuff);
+            }
+        }
+    }
+    
     private void Init()
     {
         _curChest = null;

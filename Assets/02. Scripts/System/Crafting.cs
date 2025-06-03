@@ -10,8 +10,6 @@ public class Crafting : MonoBehaviour
 
     private CraftStuff _craftUI;
     public CraftStuff CraftUI => _craftUI;
-
-    private CraftResult _craftResult;
     
     private List<Stuff> _craftStuff;
     public List<Stuff> CraftStuff => _craftStuff;
@@ -28,7 +26,6 @@ public class Crafting : MonoBehaviour
     {
         UIManager.Instance.Mediate(this);
         _craftUI = UIManager.Instance.GetCraftUI();
-        _craftResult = UIManager.Instance.GetCraftResult();
     }
     
     public Recipe CanCraft()
@@ -64,6 +61,11 @@ public class Crafting : MonoBehaviour
     {
         if (index >= _craftStuff.Count) return null;
         return _craftStuff[index];
+    }
+    
+    public void RemoveStuff(Stuff stuff)
+    {
+        _craftStuff.Remove(stuff);
     }
     
     private void Init()

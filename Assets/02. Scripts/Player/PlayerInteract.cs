@@ -77,6 +77,7 @@ public class PlayerInteract : MonoBehaviour
 
             if (_isTalked)
             {
+                TransferManager.Instance.TransferAllToInventoryInNPC();
                 UIManager.Instance.CloseUI();
                 _isTalked = false;
             }

@@ -2035,10 +2035,10 @@ MonoBehaviour:
   _portalPrefab: {fileID: 7395639718584482278, guid: 8964011e3ce9b6d49a4e1700bddc0be7,
     type: 3}
   _mapData: {fileID: 227367084}
-  _fibberAmount: 5
-  _rubberAmount: 5
-  _stoneAmount: 5
-  _woodAmount: 5
+  _fibberAmount: 10
+  _rubberAmount: 8
+  _stoneAmount: 6
+  _woodAmount: 6
   _monsterAmount: 10
 --- !u!4 &1433071541
 Transform:
@@ -2071,7 +2071,7 @@ PrefabInstance:
     - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 313026902539399955, guid: 9c4ce7e9b8d6a6d49b945dc55142d7fa,
         type: 3}
@@ -2409,6 +2409,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 4360508258537694970, guid: 4a84b3c638821144cb0aca087cd9a255,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6940631085644553202, guid: 4a84b3c638821144cb0aca087cd9a255,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2417,7 +2422,7 @@ PrefabInstance:
     - target: {fileID: 6940631085644553202, guid: 4a84b3c638821144cb0aca087cd9a255,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6940631085644553202, guid: 4a84b3c638821144cb0aca087cd9a255,
         type: 3}
