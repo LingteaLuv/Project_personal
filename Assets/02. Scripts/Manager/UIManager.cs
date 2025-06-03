@@ -16,8 +16,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
     [SerializeField] private CraftResult _craftResult;
     
-
-    
     public GameObject CurUI;
 
     protected override void Awake()
@@ -25,8 +23,6 @@ public class UIManager : Singleton<UIManager>
         base.Awake();
         Init();
     }
-
-    
     
     public ChestUI GetChestUI()
     {

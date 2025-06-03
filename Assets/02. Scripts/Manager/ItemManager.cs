@@ -43,6 +43,6 @@ public class ItemManager : Singleton<ItemManager>
     {
         _hasLantern = false;
         _hasCompass = false;
-        _hasBackpack = false;
+        _hasBackpack = true;
     }
 }

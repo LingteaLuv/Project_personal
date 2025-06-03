@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,13 @@ public class TransferManager : Singleton<TransferManager>
     {
         base.Awake();
         Init();
+    }
+
+    public void ThrowAwayStuff(Stuff stuff)
+    {
+        _inventory.RemoveStuff(stuff,1);
+        Vector3 curPos = _inventory.transform.position + Vector3.down * 1f;
+        Instantiate(stuff.Prefab, curPos, quaternion.identity);
     }
     
     public void GetItem(Item item)

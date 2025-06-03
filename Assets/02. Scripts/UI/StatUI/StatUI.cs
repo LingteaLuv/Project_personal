@@ -21,11 +21,13 @@ public class StatUI : MonoBehaviour
             if (!_isOpened)
             {
                 UIManager.Instance.OpenUI(_statInterface);
+                GameManager.Instance.IsInteracted = true;
                 _isOpened = true;
             }
             else
             {
                 UIManager.Instance.CloseUI();
+                GameManager.Instance.IsInteracted = false;
                 _isOpened = false;
             }
         }
@@ -35,6 +37,7 @@ public class StatUI : MonoBehaviour
             if (_isOpened)
             {
                 UIManager.Instance.CloseUI();
+                GameManager.Instance.IsInteracted = false;
                 _isOpened = false;
             }
         }

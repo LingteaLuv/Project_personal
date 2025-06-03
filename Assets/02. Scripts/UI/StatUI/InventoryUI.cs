@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     [Header("Drag&Drop")]
     [SerializeField] private List<Image> _inventoryList;
+    [SerializeField] private List<Button> _inventoryBtnList;
 
     [SerializeField] private Sprite _basicSprite;
     [SerializeField] private Sprite _forbidSprite;
@@ -19,6 +20,15 @@ public class InventoryUI : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < _inventoryBtnList.Count; i++)
+        {
+            int index = i;
+            _inventoryBtnList[i].onClick.AddListener(() => OnChestButtonClicked(index));
+        }
+    }
+    
     private void Update()
     {
         if (_isOpen)
@@ -50,6 +60,12 @@ public class InventoryUI : MonoBehaviour
         _isOpen = false;
     }
     
+    private void OnChestButtonClicked(int index)
+    {
+        Stuff stuff = _inventory.FindObject(index);
+        TransferManager.Instance.ThrowAwayStuff(stuff);
+    }
+    
     public void SetProperty(PlayerInventory inventory)
     {
         _inventory = inventory;
@@ -58,5 +74,13 @@ public class InventoryUI : MonoBehaviour
     private void Init()
     {
         _isOpen = false;
+        _inventoryList = new List<Image>();
+        _inventoryBtnList = new List<Button>();
+        for (int i = 0; i < 10; i++)
+        {
+            Transform child = transform.GetChild(i);
+            _inventoryList.Add(child.GetComponent<Image>());
+            _inventoryBtnList.Add(child.GetComponent<Button>());
+        }
     }
 }
