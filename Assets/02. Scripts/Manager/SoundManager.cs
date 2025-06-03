@@ -16,10 +16,30 @@ public class SoundManager : Singleton<SoundManager>
 
     private bool _isPlayed;
 
+    private float _curVolume;
+
     protected override void Awake()
     {
         base.Awake();
         Init();
+    }
+
+    private void Start()
+    {
+        _curVolume = SettingManager.Instance.Sound.Value;
+        SettingManager.Instance.Sound.OnChanged += SoundUpdate;
+    }
+
+    private void SoundUpdate(float value)
+    {
+        Debug.Log("진입");
+        _curVolume = value;
+        _bgm.volume = _curVolume;
+    }
+    
+    private void OnDestroy()
+    {
+        SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
     }
     
     public void PlayBGM(string clipName, bool loop)
@@ -55,12 +75,12 @@ public class SoundManager : Singleton<SoundManager>
         float timer = 0f;
         while (fadeTime > timer)
         {
-            source.volume = Mathf.Lerp(0f, 1f, timer / fadeTime);
+            source.volume = Mathf.Lerp(0f, _curVolume, timer / fadeTime);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        source.volume = 1f;
+        source.volume = _curVolume;
     }
 
     private IEnumerator BGMFadeOut(AudioSource source, float fadeTime)
@@ -68,12 +88,12 @@ public class SoundManager : Singleton<SoundManager>
         float timer = 0f;
         while (fadeTime > timer)
         {
-            source.volume = Mathf.Lerp(1f, 0f, timer / fadeTime);
+            source.volume = Mathf.Lerp(_curVolume, 0f, timer / fadeTime);
             timer += Time.deltaTime;
             yield return null;
         }
         source.Stop();
-        source.volume = 1f;
+        source.volume = _curVolume;
     }
     
     private void Init()

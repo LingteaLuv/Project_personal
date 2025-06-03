@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion targetRot = Quaternion.Euler(0, targetEuler.y, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * _rotateInertia);
 
-        if (Quaternion.Angle(targetRot, transform.rotation) < 0.1f)
+        if (Quaternion.Angle(targetRot, transform.rotation) < 0.01f)
         {
             transform.rotation = targetRot;
         }
