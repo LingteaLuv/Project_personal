@@ -7,6 +7,7 @@ public class TransferManager : Singleton<TransferManager>
 {
     [Header("Drag&Drop")] 
     [SerializeField] private PlayerInventory _inventory;
+    [SerializeField] private PlayerItemInventory _itemInventory;
     [SerializeField] private Crafting _craftNPC;
 
     private Chest _curChest;
@@ -17,6 +18,11 @@ public class TransferManager : Singleton<TransferManager>
     {
         base.Awake();
         Init();
+    }
+    
+    public void GetItem(Item item)
+    {
+        _itemInventory.AddItem(item);
     }
     
     public void OpenChest(Chest chest)

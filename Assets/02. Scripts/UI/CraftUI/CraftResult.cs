@@ -40,7 +40,7 @@ public class CraftResult : MonoBehaviour
     {
         if (_resultRecipe != null)
         {
-            ItemManager.Instance.GetItem(_craftNPC.Craft(_resultRecipe));
+            TransferManager.Instance.GetItem(_craftNPC.Craft(_resultRecipe));
         }
     }
     

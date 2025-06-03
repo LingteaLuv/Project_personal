@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    [Header("Drag&Drop")] 
-    [SerializeField] private PlayerItemInventory _itemInventory;
-    
     private bool _hasLantern;
     public bool HasLantern => _hasLantern;
     
@@ -21,11 +18,6 @@ public class ItemManager : Singleton<ItemManager>
     {
         base.Awake();
         Init();
-    }
-
-    public void GetItem(Item item)
-    {
-        _itemInventory.AddItem(item);
     }
     
     public void GetLantern()
