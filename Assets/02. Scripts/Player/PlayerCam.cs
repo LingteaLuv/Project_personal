@@ -27,7 +27,12 @@ public class PlayerCam : MonoBehaviour
         FOVUpdate(SettingManager.Instance.FOV.Value);
         SettingManager.Instance.FOV.OnChanged += FOVUpdate;
     }
-    
+
+    private void OnDestroy()
+    {
+        SettingManager.Instance.FOV.OnChanged -= FOVUpdate;
+    }
+
     private void LateUpdate()
     {
         MouseInput();

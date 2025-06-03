@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,12 @@ public class TitleBGM : MonoBehaviour
         _source.volume = SettingManager.Instance.Sound.Value;
         SettingManager.Instance.Sound.OnChanged += SoundUpdate;
     }
-    
+
+    private void OnDestroy()
+    {
+        SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
+    }
+
     private void SoundUpdate(float input)
     {
         _source.volume = input;

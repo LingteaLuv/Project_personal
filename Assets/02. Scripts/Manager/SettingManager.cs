@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class SettingManager : Singleton<SettingManager>
 {
-    [Header("Drag&Drop")]
-    [SerializeField] private GameObject _settingUI;
+    private GameObject _settingUI;
     
     private bool _isOnSetting;
     public bool IsOnSetting => _isOnSetting;
@@ -18,7 +17,14 @@ public class SettingManager : Singleton<SettingManager>
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(gameObject);
         Init();
+    }
+
+    public void Refer(GameObject settingUI)
+    {
+        _settingUI = settingUI;
+        _settingUI.SetActive(false);
     }
     
     public void EnterSettingUI()
@@ -50,7 +56,6 @@ public class SettingManager : Singleton<SettingManager>
     
     private void Init()
     {
-        _settingUI.SetActive(false);
         _isOnSetting = false;
         
         Brightness = new Property<float>(0.5f);
