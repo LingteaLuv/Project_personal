@@ -9,9 +9,14 @@ public class Mask : WearingItem
         Init();
     }
     
+    private void Start()
+    {
+        Activate();
+    }
+    
     private void Init()
     {
         _modifier = new StatModifier() { MentalityDecreaseChange = -0.5f };
-        _handler = GetComponent<IPlayerStatHandler>();
+        _handler = transform.root.GetComponent<IPlayerStatHandler>();
     }
 }

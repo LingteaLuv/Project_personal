@@ -9,10 +9,15 @@ public class Shoes : WearingItem
     {
         Init();
     }
+
+    private void Start()
+    {
+        Activate();
+    }
     
     private void Init()
     {
         _modifier = new StatModifier() { SpeedChange = 2f };
-        _handler = GetComponent<IPlayerStatHandler>();
+        _handler = transform.root.GetComponent<IPlayerStatHandler>();
     }
 }
