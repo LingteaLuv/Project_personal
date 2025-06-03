@@ -29,6 +29,15 @@ public class StatUI : MonoBehaviour
                 _isOpened = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_isOpened)
+            {
+                UIManager.Instance.CloseUI();
+                _isOpened = false;
+            }
+        }
     }
 
     private void Init()

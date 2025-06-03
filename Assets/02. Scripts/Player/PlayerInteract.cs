@@ -53,7 +53,6 @@ public class PlayerInteract : MonoBehaviour
                     Crafting craftNPC = hit.collider.GetComponentInParent<Crafting>();
                     if (craftNPC != null)
                     {
-                        Debug.Log("1");
                         UIManager.Instance.OpenUI(craftNPC.CraftUI.transform.parent.gameObject);
                         _isTalked = true;
                     }
