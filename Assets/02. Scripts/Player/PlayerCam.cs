@@ -8,6 +8,8 @@ public class PlayerCam : MonoBehaviour
     [Header("InputNumber")]
     [SerializeField] [Range(1,10)] private float _rotateSpeed;
 
+    private Camera _playerCam;
+    
     private float _curRotationX;
     private float _curRotationY;
     
@@ -20,10 +22,22 @@ public class PlayerCam : MonoBehaviour
         Init();
     }
     
+    private void Start()
+    {
+        FOVUpdate(SettingManager.Instance.FOV.Value);
+        SettingManager.Instance.FOV.OnChanged += FOVUpdate;
+    }
+    
     private void LateUpdate()
     {
         MouseInput();
         CameraRotate();
+    }
+    
+    private void FOVUpdate(float value)
+    {
+        float fov = Mathf.Lerp(50, 70, value);
+        _playerCam.fieldOfView = fov;
     }
 
     public void ChangePos(bool isHide)
@@ -84,5 +98,7 @@ public class PlayerCam : MonoBehaviour
         _curState = false;
         _idlePos = new Vector3(0, 0.5f, 0);
         _hidePos = new Vector3(0, -0.1f, 0);
+        
+        _playerCam = GetComponent<Camera>();
     }
 }

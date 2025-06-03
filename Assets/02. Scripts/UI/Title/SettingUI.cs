@@ -42,7 +42,7 @@ public class SettingUI : MonoBehaviour
     private void CacheInit()
     {
         _cacheBrightness = SettingManager.Instance.Brightness.Value;
-        _cachePOV = SettingManager.Instance.POV.Value;
+        _cachePOV = SettingManager.Instance.FOV.Value;
         _cacheSound = SettingManager.Instance.Sound.Value;
     }
     

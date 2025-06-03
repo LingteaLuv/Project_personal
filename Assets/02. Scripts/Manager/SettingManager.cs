@@ -12,7 +12,7 @@ public class SettingManager : Singleton<SettingManager>
     public bool IsOnSetting => _isOnSetting;
 
     public Property<float> Brightness;
-    public Property<float> POV;
+    public Property<float> FOV;
     public Property<float> Sound;
     
     protected override void Awake()
@@ -40,7 +40,7 @@ public class SettingManager : Singleton<SettingManager>
     
     public void SetPOV(float input)
     {
-        POV.Value = input;
+        FOV.Value = input;
     }
     
     public void SetSound(float input)
@@ -54,7 +54,7 @@ public class SettingManager : Singleton<SettingManager>
         _isOnSetting = false;
         
         Brightness = new Property<float>(0.5f);
-        POV = new Property<float>(0.5f);
+        FOV = new Property<float>(0.5f);
         Sound = new Property<float>(0.5f);
     }
 }
