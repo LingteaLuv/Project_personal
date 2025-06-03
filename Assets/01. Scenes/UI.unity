@@ -994,6 +994,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4148748050645703396, guid: 717eeac1edbad954f95813fd2046e7ba,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4646887023536710637, guid: 717eeac1edbad954f95813fd2046e7ba,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1054,6 +1059,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 717eeac1edbad954f95813fd2046e7ba, type: 3}
+--- !u!1 &258455694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1941644149077290646, guid: 717eeac1edbad954f95813fd2046e7ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 258455693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &261119812
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5245,6 @@ MonoBehaviour:
   _chestInventoryUI: {fileID: 1846629595}
   _chestUI: {fileID: 464801810}
   _craftStuff: {fileID: 2002585133}
-  _popUpUI: {fileID: 913441185}
   _inventoryInCraftUI: {fileID: 467720567}
   _craftResult: {fileID: 33531954}
   CurUI: {fileID: 0}
@@ -7720,6 +7730,7 @@ MonoBehaviour:
   _newGameBtn: {fileID: 485988791}
   _settingBtn: {fileID: 1330665520}
   _exitBtn: {fileID: 746723088}
+  _settingUI: {fileID: 258455694}
 --- !u!1 &1750651478
 GameObject:
   m_ObjectHideFlags: 0

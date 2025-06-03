@@ -20,7 +20,11 @@ public class TitleBGM : MonoBehaviour
 
     private void OnDestroy()
     {
-        SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
+        if (SettingManager.Instance != null)
+        {
+            SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
+        }
+       
     }
 
     private void SoundUpdate(float input)

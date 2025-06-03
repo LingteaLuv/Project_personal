@@ -10,6 +10,8 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Button _startBtn;
     [SerializeField] private Button _settingBtn;
     [SerializeField] private Button _exitBtn;
+
+    [SerializeField] private GameObject _settingUI;
     
     private void Awake()
     {
@@ -20,7 +22,11 @@ public class TitleScreen : MonoBehaviour
     {
         _startBtn.onClick.AddListener(() => SceneManager.LoadScene("InGame", LoadSceneMode.Single));
         _startBtn.onClick.AddListener(() => SceneManager.LoadScene("UI", LoadSceneMode.Additive));
-        _settingBtn.onClick.AddListener(() => SettingManager.Instance.EnterSettingUI());
+        _settingBtn.onClick.AddListener(() =>
+        {
+            SettingManager.Instance.EnterSettingUI();
+            _settingUI.SetActive(true);
+        });
         _exitBtn.onClick.AddListener(() => 
         {
             Application.Quit();

@@ -2569,7 +2569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _generator: {fileID: 1433071540}
-  _offset: 120
   IsInMaze: 0
 --- !u!1 &2126892389
 GameObject:
@@ -2725,11 +2724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cd75c3106c6634fb58cc09e25aa732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testStuff1: {fileID: 11400000, guid: 519202037aafdca419dc4b3e147e3195, type: 2}
-  _testStuff2: {fileID: 11400000, guid: 3ea5f2300775e5c45bfdeecc25c786e7, type: 2}
-  _testStuff3: {fileID: 11400000, guid: 1d8dc555860be234cafaa93f89366423, type: 2}
-  _stuffInventory: []
-  _maxCount: 2
 --- !u!114 &2126892399
 MonoBehaviour:
   m_ObjectHideFlags: 0

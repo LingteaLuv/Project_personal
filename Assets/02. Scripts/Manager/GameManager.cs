@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [Header("Drag&Drop")]
     [SerializeField] private ObjectGenerator _generator;
 
-    [Header("InputNumber")]
-    [SerializeField] private float _offset;
+    private float _offset;
     
     private float _startTime;
     private DateTime _date;
@@ -75,6 +75,11 @@ public class GameManager : Singleton<GameManager>
         return temp;
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     public void KillMonster()
     {
         _monsterEssence++;
@@ -98,5 +103,6 @@ public class GameManager : Singleton<GameManager>
         _isPortalGenerated = false;
         IsInMaze = false;
         _isPaused = false;
+        _offset = 120;
     }
 }

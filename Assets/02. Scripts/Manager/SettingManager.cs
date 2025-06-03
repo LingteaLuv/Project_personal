@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SettingManager : Singleton<SettingManager>
 {
-    private GameObject _settingUI;
-    
     private bool _isOnSetting;
     public bool IsOnSetting => _isOnSetting;
 
@@ -17,25 +15,20 @@ public class SettingManager : Singleton<SettingManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+        if (transform.parent == null)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         Init();
-    }
-
-    public void Refer(GameObject settingUI)
-    {
-        _settingUI = settingUI;
-        _settingUI.SetActive(false);
     }
     
     public void EnterSettingUI()
     {
-        _settingUI.SetActive(true);
         _isOnSetting = true;
     }
 
     public void ExitSettingUI()
     {
-        _settingUI.SetActive(false);
         _isOnSetting = false;
     }
 
