@@ -18,4 +18,4 @@ MonoBehaviour:
   - Stuff: {fileID: 11400000, guid: c0233407ea5d7124da69f148bfd2cb69, type: 2}
     Amount: 1
   Result: {fileID: 11400000, guid: e5e085b572761d64db575bf2bb83ab4e, type: 2}
-  Icon: {fileID: 21300000, guid: 7a80d763ca1cccc4cb52133b28db694b, type: 3}
+  Icon: {fileID: 21300000, guid: 5db96c6f451c0d24588b63ffe465d61f, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Stone
   _prefab: {fileID: 6615383812669341671, guid: f5c12b93adae928479b6897c2fba145e, type: 3}
-  _icon: {fileID: 21300000, guid: 19899ed59227ca44f9309b8c20a4b1e9, type: 3}
+  _icon: {fileID: 21300000, guid: c3378dcb9435055439feddca49fc8e52, type: 3}

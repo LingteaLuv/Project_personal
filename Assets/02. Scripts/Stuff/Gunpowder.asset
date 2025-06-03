@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Gunpowder
   _prefab: {fileID: 2635735819803717658, guid: 86c710803ffdbc94483e5267e6919505, type: 3}
-  _icon: {fileID: 21300000, guid: 45f9ea915cbc9cf429633e9e97e3160a, type: 3}
+  _icon: {fileID: 21300000, guid: eadabfa14aa3e9d469bb939861b8fe45, type: 3}

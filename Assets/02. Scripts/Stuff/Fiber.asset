@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fiber
   _prefab: {fileID: 1658843987373107334, guid: 5dedba807ca712e4a9dc29754d9babe3, type: 3}
-  _icon: {fileID: 21300000, guid: 44d27a2d5e1ad9f459da86a435f7e329, type: 3}
+  _icon: {fileID: 21300000, guid: 84f5663f95e6f254f9eafe8200fcf84b, type: 3}

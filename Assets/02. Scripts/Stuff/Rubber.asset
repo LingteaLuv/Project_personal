@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Rubber
   _prefab: {fileID: 1826385338903528923, guid: 396485a69e0bdda4b93a029e06d2cc75, type: 3}
-  _icon: {fileID: 21300000, guid: 4567305f25649e646ac89ed3cc797bb5, type: 3}
+  _icon: {fileID: 21300000, guid: 9195bccceaacc064cbf9d3b08d7de0e3, type: 3}
