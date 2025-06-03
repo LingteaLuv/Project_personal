@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
 {
@@ -95,7 +96,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
                 if (Hp.Value <= 0)
                 {
                     Hp.Value = 0;
-                    // todo : 게임 종료 씬 출력
+                    GameManager.Instance.GameOver();
                 }
                 Hp.Value -= 1;
                 _hpTimer = 0f;

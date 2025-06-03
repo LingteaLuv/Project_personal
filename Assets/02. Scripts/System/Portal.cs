@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Portal : MonoBehaviour
 
     public void Escape()
     {
-        // todo : 포탈 UI OnClick에 연동, 게임 클리어 -> 씬 매니저 - 씬 전환
+        GameManager.Instance.GameClear();
     }
     
     private void Init()

@@ -82,6 +82,11 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene("GameOver");
     }
 
+    public void GameClear()
+    {
+        SceneManager.LoadScene("GameClear");
+    }
+
     public void KillMonster()
     {
         _monsterEssence++;
