@@ -25,6 +25,10 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsInMaze;
 
+    private bool _isPaused;
+
+    private float _curTime;
+
     private void Start()
     {
         Init();
@@ -32,13 +36,38 @@ public class GameManager : Singleton<GameManager>
     
     private void Update()
     {
-        _date = CalculateDate();
+        if (!_isPaused)
+        {
+            _curTime = Time.time;
+            _flowTime = (_curTime - _startTime);
+            _date = CalculateDate();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _isPaused = true;
+                Time.timeScale = 0;
+                UIManager.Instance.GamePause();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ContinueMethod();
+            } 
+        }
+    }
+
+    public void ContinueMethod()
+    {
+        _isPaused = false;
+        Time.timeScale = 1;
+        UIManager.Instance.CloseUI();
     }
 
     private DateTime CalculateDate()
     {
         DateTime temp = new DateTime();
-        _flowTime = (Time.time - _startTime);
+        
         temp.Second = (int)(_flowTime * _offset) % 60;
         temp.Minute = (int)(_flowTime * _offset / 60) % 60;
         temp.Hour = 9 + (int)(_flowTime * _offset / 60) / 60 % 24;
@@ -64,8 +93,10 @@ public class GameManager : Singleton<GameManager>
     private void Init()
     {
         _startTime = Time.time;
+        Time.timeScale = 1;
         _monsterEssence = 0;
         _isPortalGenerated = false;
         IsInMaze = false;
+        _isPaused = false;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class UIManager : Singleton<UIManager>
 {
     [Header("Drag&Drop")] 
+    [SerializeField] private PauseUI _pauseUI;
     [SerializeField] private StatusUI _statusUI;
     [SerializeField] private InventoryUI _inventoryUI;
     [SerializeField] private InventoryInChestUI _inventoryInChestUI;
@@ -59,11 +60,6 @@ public class UIManager : Singleton<UIManager>
     {
         return _craftStuff;
     }
-
-    public CraftResult GetCraftResult()
-    {
-        return _craftResult;
-    }
     
     public void OpenUI(GameObject curUI)
     {
@@ -78,6 +74,12 @@ public class UIManager : Singleton<UIManager>
     {
         CurUI.gameObject.SetActive(false);
         CurUI = null;
+    }
+
+    public void GamePause()
+    {
+        CurUI = _pauseUI.gameObject;
+        CurUI.SetActive(true);
     }
 
     public void Mediate(PlayerProperty playerProperty)
