@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private Stuff _testStuff1;
-    [SerializeField] private Stuff _testStuff2;
-    [SerializeField] private Stuff _testStuff3;
-    
-    [SerializeField] private List<Stuff> _stuffInventory;
-    [SerializeField] private int _maxCount;
+    private List<Stuff> _stuffInventory;
+    private int _maxCount;
     public int MaxCount => _maxCount;
     public int Count => _stuffInventory.Count;
+    
     private void Awake()
     {
         Init();
@@ -24,10 +21,6 @@ public class PlayerInventory : MonoBehaviour
             _maxCount = 5;
         }
         UIManager.Instance.Mediate(this);
-        
-        _stuffInventory.Add(_testStuff1);
-        _stuffInventory.Add(_testStuff2);
-        _stuffInventory.Add(_testStuff3);
     }
 
     public Stuff FindObject(int index)
@@ -44,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.PopupTextForSecond("popup_001", 3f);
+            TextManager.Instance.PopupTextForSecond("popup_001", 3f);
         }
     }
 

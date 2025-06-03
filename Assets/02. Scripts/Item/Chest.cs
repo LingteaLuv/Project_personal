@@ -38,7 +38,7 @@ public class Chest : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.PopupTextForSecond("popup_002", 3f);
+            TextManager.Instance.PopupTextForSecond("popup_002", 3f);
         }
     }
     
