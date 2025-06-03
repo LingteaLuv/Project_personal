@@ -22,9 +22,12 @@ public class SettingUI : MonoBehaviour
     {
         Init();
     }
-
+    
+    
     private void Start()
     {
+        SettingManager.Instance.Refer(gameObject);
+        
         _lightSlider.onValueChanged.AddListener((value)=> SettingManager.Instance.SetBrightness(value));
         _povSlider.onValueChanged.AddListener((value)=> SettingManager.Instance.SetPOV(value));
         _soundSlider.onValueChanged.AddListener((value)=> SettingManager.Instance.SetSound(value));
@@ -37,6 +40,8 @@ public class SettingUI : MonoBehaviour
         });
 
         CacheInit();
+        SettingUpdate();
+        gameObject.SetActive(false);
     }
 
     private void CacheInit()
