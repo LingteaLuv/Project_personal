@@ -37,6 +37,7 @@ public class PlayerInteract : MonoBehaviour
                     {
                         TransferManager.Instance.OpenChest(chest);
                         _isChestOpened = true;
+                        GameManager.Instance.IsInteracted = true;
                     }
                 }
                 else if (hit.collider.gameObject.layer == 14 && !_isPortalInteracted)
@@ -46,6 +47,7 @@ public class PlayerInteract : MonoBehaviour
                     {
                         portal.InteractPortal();
                         _isPortalInteracted = true;
+                        GameManager.Instance.IsInteracted = true;
                     }
                 }
                 else if (hit.collider.gameObject.layer == 16 && !_isTalked)
@@ -55,6 +57,7 @@ public class PlayerInteract : MonoBehaviour
                     {
                         UIManager.Instance.OpenUI(craftNPC.CraftUI.transform.parent.gameObject);
                         _isTalked = true;
+                        GameManager.Instance.IsInteracted = true;
                     }
                 }
             }
@@ -66,12 +69,14 @@ public class PlayerInteract : MonoBehaviour
             {
                 TransferManager.Instance.CloseChest();
                 _isChestOpened = false;
+                GameManager.Instance.IsInteracted = false;
             }
 
             if (_isPortalInteracted)
             {
                 UIManager.Instance.CloseUI();
                 _isPortalInteracted = false;
+                GameManager.Instance.IsInteracted = false;
             }
 
             if (_isTalked)
@@ -79,6 +84,7 @@ public class PlayerInteract : MonoBehaviour
                 TransferManager.Instance.TransferAllToInventoryInNPC();
                 UIManager.Instance.CloseUI();
                 _isTalked = false;
+                GameManager.Instance.IsInteracted = false;
             }
         }
         

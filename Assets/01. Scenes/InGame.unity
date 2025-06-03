@@ -2514,7 +2514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d446b455ba8bcf419cf3efdf13084db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemInventory: {fileID: 14841548}
 --- !u!4 &2009888350
 Transform:
   m_ObjectHideFlags: 0
@@ -2543,6 +2542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 2126892398}
+  _itemInventory: {fileID: 14841548}
   _craftNPC: {fileID: 1735512693}
 --- !u!114 &2009888353
 MonoBehaviour:

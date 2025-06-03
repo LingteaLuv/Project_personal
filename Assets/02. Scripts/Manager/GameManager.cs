@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
 
     private float _curTime;
 
+    public bool IsInteracted;
+
     private void Start()
     {
         Init();
@@ -36,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     
     private void Update()
     {
-        if (!_isPaused)
+        if (!_isPaused && !IsInteracted)
         {
             _curTime = Time.time;
             _flowTime = (_curTime - _startTime);
@@ -50,7 +52,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !IsInteracted)
             {
                 ContinueMethod();
             } 
