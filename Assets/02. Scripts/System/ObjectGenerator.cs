@@ -17,11 +17,11 @@ public class ObjectGenerator : MonoBehaviour
     [SerializeField] private MapData _mapData;
 
     [Header("InputNumber")] 
-    [SerializeField][Range(1,10)] private int _fibberAmount;
-    [SerializeField][Range(1,10)] private int _rubberAmount;
-    [SerializeField][Range(1,10)] private int _stoneAmount;
-    [SerializeField][Range(1,10)] private int _woodAmount;
-    [SerializeField][Range(1,10)] private int _monsterAmount;
+    [SerializeField][Range(1,20)] private int _fibberAmount;
+    [SerializeField][Range(1,20)] private int _rubberAmount;
+    [SerializeField][Range(1,20)] private int _stoneAmount;
+    [SerializeField][Range(1,20)] private int _woodAmount;
+    [SerializeField][Range(1,20)] private int _monsterAmount;
 
     private int _offset;
     private Vector3Int _escapePortalPos;
@@ -69,11 +69,31 @@ public class ObjectGenerator : MonoBehaviour
         return result;
     }
 
+    private Vector3Int GetRndNearPosition()
+    {
+        Vector3Int result = new Vector3Int();
+        while (result == Vector3Int.zero)
+        {
+            int z1 = Random.Range(_mapData.SafeZoneStart / 2, _mapData.SafeZoneStart);
+            int z2 = Random.Range(_mapData.SafeZoneEnd, (_mapData.MapSize + _mapData.SafeZoneEnd) / 2);
+            int z = Random.Range(0, 2) < 1 ? z1 : z2;
+            int x1 = Random.Range(_mapData.SafeZoneStart / 2, _mapData.SafeZoneStart);
+            int x2 = Random.Range(_mapData.SafeZoneEnd, (_mapData.MapSize + _mapData.SafeZoneEnd) / 2);
+            int x = Random.Range(0, 2) < 1 ? x1 : x2;
+        
+            if (_mapData.Map[z * _offset, x * _offset] == 0)
+            {
+                result = new Vector3Int(x * _offset, 0, z * _offset);
+            }
+        }
+        return result;
+    }
+    
     private void Generate(GameObject prefab, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3Int genPos = GetRndPosition();
+            Vector3Int genPos = GetRndNearPosition();
             GameObject stuffInMap = Instantiate(prefab, genPos, Quaternion.identity, transform);
             
             Vector3Int minimapGenPos = new Vector3Int(genPos.x / _offset, 0, genPos.z / _offset);
