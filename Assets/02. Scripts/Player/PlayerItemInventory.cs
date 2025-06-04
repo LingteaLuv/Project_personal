@@ -22,9 +22,12 @@ public class PlayerItemInventory : MonoBehaviour
         if (ConfigItem(item) < 1)
         {
             _items.Add(item);
-            GameObject itemObject = Instantiate(item.Prefab, transform);
-            _spawnedItem.Add(item, itemObject);
-
+            if (item.name != "Arrow")
+            {
+                GameObject itemObject = Instantiate(item.Prefab, transform);
+                _spawnedItem.Add(item, itemObject);
+            }
+            
             if (item.name == "Bow")
             {
                 transform.parent.GetComponentInChildren<Bow_T>().enabled = true;

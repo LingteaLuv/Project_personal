@@ -21,6 +21,11 @@ public class Bow_T : BaseWeapon
         Init();
     }
 
+    private void Start()
+    {
+        TransferManager.Instance.OnArrowAdded += CreateNewQuiver;
+    }
+    
     private void OnEnable()
     {
         if (_curArrow == null  && _arrowCount > 0)
@@ -79,14 +84,14 @@ public class Bow_T : BaseWeapon
     {
         _renderer = GetComponent<LineRenderer>();
         _trajectory = GetComponent<Trajectory>();
-
-        Debug.Log("이거 지워");
+        
         _arrowCount = 3;
     }
 
-    public void CreateNewQuiver()
+    private void CreateNewQuiver()
     {
         _arrowCount += 10;
+        Debug.Log($"진입,{_arrowCount}");
     }
     
     private void CreateNewArrow()

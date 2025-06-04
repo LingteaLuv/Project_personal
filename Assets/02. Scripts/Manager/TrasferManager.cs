@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TransferManager : Singleton<TransferManager>
 {
@@ -13,6 +14,8 @@ public class TransferManager : Singleton<TransferManager>
 
     private Chest _curChest;
     public Chest CurChest => _curChest;
+
+    public event Action OnArrowAdded;
     
 
     protected override void Awake()
@@ -31,6 +34,10 @@ public class TransferManager : Singleton<TransferManager>
     public void GetItem(Item item)
     {
         _itemInventory.AddItem(item);
+        if (item.name == "Arrow")
+        {
+            OnArrowAdded?.Invoke();
+        }
     }
     
     public void OpenChest(Chest chest)
