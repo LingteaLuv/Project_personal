@@ -47,7 +47,18 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
             _curState = isHide;
         }
     }
-    
+
+    public void Hit()
+    {
+        Debug.Log("진입3");
+        Hp.Value -= 10;
+        Debug.Log(Hp.Value);
+        if (Hp.Value <= 0)
+        {
+            Hp.Value = 0;
+            GameManager.Instance.GameOver();
+        }
+    }
     
     private void ChangeMentality(bool isInMaze)
     {
