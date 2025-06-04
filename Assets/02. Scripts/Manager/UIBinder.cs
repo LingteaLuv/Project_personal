@@ -14,6 +14,7 @@ public class UIBinder : Singleton<UIBinder>
     [SerializeField] private CraftStuff _craftStuff;
     [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
     [SerializeField] private CraftResult _craftResult;
+    [SerializeField] private PopUpUI _popUpUI;
 
     public PauseUI GetPauseUI()
     {
@@ -28,6 +29,11 @@ public class UIBinder : Singleton<UIBinder>
     public CraftStuff GetCraftUI()
     {
         return _craftStuff;
+    }
+
+    public PopUpUI GetPopUpUI()
+    {
+        return _popUpUI;
     }
     
     public void Mediate(PlayerProperty playerProperty)

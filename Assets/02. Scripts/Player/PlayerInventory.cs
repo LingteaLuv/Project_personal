@@ -49,7 +49,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            TextManager.Instance.PopupTextForSecond("popup_001", 3f);
+            TextManager.Instance.PopupTextForSecond("popup_001", 2f);
         }
     }
 

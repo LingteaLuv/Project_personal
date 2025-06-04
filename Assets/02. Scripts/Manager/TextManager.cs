@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TextManager : Singleton<TextManager>
 {
-    private GameObject _popUpUI;
+    private PopUpUI _popUpUI;
     private TextLoader _textLoader;
     
     protected override void Awake()
@@ -14,27 +15,30 @@ public class TextManager : Singleton<TextManager>
         Init();
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        ConfigUI();
     }
 
     private void Init()
     {
-        _textLoader = GetComponent<TextLoader>();
+        _textLoader = transform.GetOrAddComponent<TextLoader>();
     }
-    
-    public void Refer(GameObject popupUI)
+
+    private void ConfigUI()
     {
-        _popUpUI = popupUI;
-        _popUpUI.SetActive(false);
+        if (_popUpUI == null)
+        {
+            _popUpUI = UIBinder.Instance.GetPopUpUI();
+        }
     }
     
     public void PopupText(string id)
     {
+        ConfigUI();
         string popupText = _textLoader.GetPopupText(id);
         _popUpUI.gameObject.SetActive(true);
-        _popUpUI.GetComponent<PopUpUI>().PopupText(popupText);
+        _popUpUI.PopupText(popupText);
     }
 
     public void PopupTextForSecond(string id, float time)
@@ -51,6 +55,7 @@ public class TextManager : Singleton<TextManager>
     
     public void HideText()
     {
-        _popUpUI.SetActive(false);
+        _popUpUI.ResetText();
+        _popUpUI.gameObject.SetActive(false);
     }
 }

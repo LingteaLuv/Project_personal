@@ -13,14 +13,14 @@ public class PopUpUI : MonoBehaviour
         Init();
     }
 
-    private void Start()
-    {
-        TextManager.Instance.Refer(gameObject);
-    }
-
     public void PopupText(string text)
     {
         _popUpText.text = text;
+    }
+    
+    public void ResetText()
+    {
+        _popUpText.text = "";
     }
     
     private void Init()

@@ -14,6 +14,8 @@ public class TextLoader : MonoBehaviour
     
     private void Init()
     {
+        _popupTexts = new Dictionary<string, string>();
+            
         TextAsset csvFile = Resources.Load<TextAsset>("popup_texts");
         if (csvFile == null) return;
 
@@ -30,6 +32,7 @@ public class TextLoader : MonoBehaviour
             {
                 string id = parts[0];
                 string text = parts[1];
+                Debug.Log($"{id},{text}");
 
                 if (parts.Length > 2)
                 {
@@ -37,15 +40,14 @@ public class TextLoader : MonoBehaviour
                     {
                         text += "," + parts[j];
                     }
-
-                    _popupTexts[id] = text;
                 }
+                _popupTexts[id] = text;
             }
         }
     }
 
     public string GetPopupText(string id)
     {
-        return _popupTexts.GetValueOrDefault(id);
+        return _popupTexts[id];
     }
 }

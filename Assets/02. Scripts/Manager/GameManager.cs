@@ -60,11 +60,6 @@ public class GameManager : Singleton<GameManager>
                 ContinueMethod();
             } 
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
-        }
     }
 
     public void ContinueMethod()
@@ -119,6 +114,7 @@ public class GameManager : Singleton<GameManager>
     {
         _generator.GeneratePortal();
         _isPortalGenerated = true;
+        TextManager.Instance.PopupTextForSecond("popup_006", 2f);
     }
     
     private void Init()
