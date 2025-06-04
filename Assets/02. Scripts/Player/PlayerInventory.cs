@@ -35,6 +35,15 @@ public class PlayerInventory : MonoBehaviour
         _stuffInventory.Add(_testStuff5);
     }
 
+    public bool CheckInventoryFull()
+    {
+        if (_stuffInventory.Count < _maxCount)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     public Stuff FindObject(int index)
     {
         if (index >= Count) return null;
@@ -46,10 +55,6 @@ public class PlayerInventory : MonoBehaviour
         if (_stuffInventory.Count < _maxCount)
         {
             _stuffInventory.Add(stuff);
-        }
-        else
-        {
-            TextManager.Instance.PopupTextForSecond("popup_001", 2f);
         }
     }
 

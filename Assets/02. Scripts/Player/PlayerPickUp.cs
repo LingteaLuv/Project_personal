@@ -22,11 +22,17 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (_closeTarget != null)
         {
-            inventory.AddStuff(_closeTarget.GetComponentInParent<LootingStuff>().Stuff);
-            _targets.Remove(_closeTarget);
-            Destroy(_closeTarget.transform.parent.gameObject);
-            
-            StuffManager.Instance.Remove(_closeTarget.transform.parent.gameObject);
+            if (!inventory.CheckInventoryFull())
+            {
+                inventory.AddStuff(_closeTarget.GetComponentInParent<LootingStuff>().Stuff);
+                _targets.Remove(_closeTarget);
+                Destroy(_closeTarget.transform.parent.gameObject);
+                StuffManager.Instance.Remove(_closeTarget.transform.parent.gameObject);
+            }
+            else
+            {
+                TextManager.Instance.PopupTextForSecond("popup_001", 2f);
+            }
         }
     }
 
