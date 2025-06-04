@@ -19,6 +19,9 @@ public class GameManager : Singleton<GameManager>
     private float _flowTime;
     public float FlowTime => _flowTime;
 
+    private float _hungerTime;
+    public float HungerTime => _hungerTime;
+
     private int _monsterEssence;
 
     private bool _isPortalGenerated;
@@ -45,6 +48,7 @@ public class GameManager : Singleton<GameManager>
         {
             _curTime = Time.time;
             _flowTime = (_curTime - _startTime);
+            _hungerTime = _flowTime * _offset;
             _date = CalculateDate();
             if (Input.GetKeyDown(KeyCode.Escape))
             {

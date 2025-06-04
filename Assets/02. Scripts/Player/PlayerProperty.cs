@@ -50,9 +50,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
 
     public void Hit()
     {
-        Debug.Log("진입3");
         Hp.Value -= 10;
-        Debug.Log(Hp.Value);
         if (Hp.Value <= 0)
         {
             Hp.Value = 0;
@@ -134,7 +132,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
 
     private void DecreaseHunger()
     {
-        Hunger.Value = 100 * (1 - GameManager.Instance.FlowTime / (84 * 60 * 60));
+        Hunger.Value = 100 * (1 - GameManager.Instance.HungerTime / (84 * 60 * 60));
     }
     
     public void ApplyModifier(StatModifier modifier)
