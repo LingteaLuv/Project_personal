@@ -10,4 +10,6 @@ public class Stuff : ScriptableObject
     public GameObject Prefab => _prefab;
     [SerializeField] private Sprite _icon;
     public Sprite Icon => _icon;
+    [SerializeField] private GameObject _minimapPrefab;
+    public GameObject MinimapPrefab => _minimapPrefab;
 }

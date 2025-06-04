@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Fiber
   _prefab: {fileID: 1658843987373107334, guid: 5dedba807ca712e4a9dc29754d9babe3, type: 3}
   _icon: {fileID: 21300000, guid: 84f5663f95e6f254f9eafe8200fcf84b, type: 3}
+  _minimapPrefab: {fileID: 525007416764530771, guid: 7a47556e8eb33334b92fe12156c1f95d,
+    type: 3}

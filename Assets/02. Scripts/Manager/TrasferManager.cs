@@ -28,7 +28,12 @@ public class TransferManager : Singleton<TransferManager>
     {
         _inventory.RemoveStuff(stuff,1);
         Vector3 curPos = _inventory.transform.position + Vector3.down * 1f;
-        Instantiate(stuff.Prefab, curPos, quaternion.identity);
+        GameObject stuffInMap = Instantiate(stuff.Prefab, curPos, quaternion.identity);
+
+        Vector3 curMinimapPos = new Vector3(curPos.x / 5, 0, curPos.z / 5);
+        GameObject stuffInMinimap = Instantiate(stuff.MinimapPrefab, curMinimapPos, quaternion.identity);
+        
+        StuffManager.Instance.Add(stuffInMap,stuffInMinimap);
     }
     
     public void GetItem(Item item)

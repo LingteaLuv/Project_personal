@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Rubber
   _prefab: {fileID: 1826385338903528923, guid: 396485a69e0bdda4b93a029e06d2cc75, type: 3}
   _icon: {fileID: 21300000, guid: 9195bccceaacc064cbf9d3b08d7de0e3, type: 3}
+  _minimapPrefab: {fileID: 525007416764530771, guid: 7a47556e8eb33334b92fe12156c1f95d,
+    type: 3}

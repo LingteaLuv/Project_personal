@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Iron
   _prefab: {fileID: 3021789994052046870, guid: f8000f40ef132af43a866c7c30dc64cf, type: 3}
   _icon: {fileID: 21300000, guid: 4cc3753f60838b24fa8924772bc6fb67, type: 3}
+  _minimapPrefab: {fileID: 525007416764530771, guid: 7a47556e8eb33334b92fe12156c1f95d,
+    type: 3}
