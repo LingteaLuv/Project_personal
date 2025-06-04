@@ -60,6 +60,11 @@ public class GameManager : Singleton<GameManager>
                 ContinueMethod();
             } 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
+        }
     }
 
     public void ContinueMethod()

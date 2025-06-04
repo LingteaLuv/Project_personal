@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour
         {
             _maxCount = 5;
         }
-        UIManager.Instance.Mediate(this);
+        UIBinder.Instance.Mediate(this);
         
         _stuffInventory.Add(_testStuff1);
         _stuffInventory.Add(_testStuff2);

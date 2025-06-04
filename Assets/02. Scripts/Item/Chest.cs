@@ -20,8 +20,8 @@ public class Chest : MonoBehaviour
 
     private void Start()
     {
-        UIManager.Instance.Mediate(this);
-        _chestUI = UIManager.Instance.GetChestUI().transform.GetChild(1).gameObject;
+        UIBinder.Instance.Mediate(this);
+        _chestUI = UIBinder.Instance.GetChestUI().transform.GetChild(1).gameObject;
     }
 
     public Stuff FindObject(int index)

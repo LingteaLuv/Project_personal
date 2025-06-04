@@ -28,7 +28,7 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
     private void Start()
     {
         HudManager.Instance.Subscribe(this);
-        UIManager.Instance.Mediate(this);
+        UIBinder.Instance.Mediate(this);
     }
     
     private void Update()

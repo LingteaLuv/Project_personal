@@ -24,8 +24,8 @@ public class Crafting : MonoBehaviour
     
     private void Start()
     {
-        UIManager.Instance.Mediate(this);
-        _craftUI = UIManager.Instance.GetCraftUI();
+        UIBinder.Instance.Mediate(this);
+        _craftUI = UIBinder.Instance.GetCraftUI();
     }
     
     public Recipe CanCraft()
