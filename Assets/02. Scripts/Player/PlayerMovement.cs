@@ -68,12 +68,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 targetEuler = _playerFollowCam.transform.rotation.eulerAngles;
         Quaternion targetRot = Quaternion.Euler(0, targetEuler.y, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * _rotateInertia);
-
-        if (Quaternion.Angle(targetRot, transform.rotation) < 0.01f)
-        {
-            transform.rotation = targetRot;
-        }
+        transform.rotation = targetRot;
     }
 
     private void Init()
