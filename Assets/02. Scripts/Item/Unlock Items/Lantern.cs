@@ -10,6 +10,7 @@ public class Lantern : MonoBehaviour
     private bool _isTurnOn;
 
     private Camera _playerCam;
+    private bool _isHasLight;
     
     private void Awake()
     {
@@ -18,7 +19,8 @@ public class Lantern : MonoBehaviour
 
     private void Start()
     {
-        if (ItemManager.Instance.HasLantern)
+        _isHasLight = ItemManager.Instance.HasLantern;
+        if (_isHasLight)
         {
             _headlight.gameObject.SetActive(true);
         }
@@ -30,7 +32,7 @@ public class Lantern : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && _isHasLight)
         {
             _isTurnOn = !_isTurnOn;
             if (_isTurnOn != _headlight.gameObject.activeSelf)
