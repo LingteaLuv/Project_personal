@@ -45,7 +45,13 @@ public class PlayerInteract : MonoBehaviour
                     Portal portal = hit.collider.GetComponentInParent<Portal>();
                     if (portal != null)
                     {
-                        portal.InteractPortal();
+                        portal.ConnectPortal();
+                        portal.PortalUI.OnClickNoBtn += () =>
+                        {
+                            UIManager.Instance.CloseUI();
+                            _isPortalInteracted = false;
+                            GameManager.Instance.IsInteracted = false;
+                        };
                         _isPortalInteracted = true;
                         GameManager.Instance.IsInteracted = true;
                     }
@@ -87,7 +93,6 @@ public class PlayerInteract : MonoBehaviour
                 GameManager.Instance.IsInteracted = false;
             }
         }
-        
     }
     
     private void Init()

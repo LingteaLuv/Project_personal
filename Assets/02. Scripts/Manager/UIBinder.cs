@@ -15,10 +15,16 @@ public class UIBinder : Singleton<UIBinder>
     [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
     [SerializeField] private CraftResult _craftResult;
     [SerializeField] private PopUpUI _popUpUI;
+    [SerializeField] private PortalUI _portalUI;
 
     public PauseUI GetPauseUI()
     {
         return _pauseUI;
+    }
+
+    public PortalUI GetPortalUI()
+    {
+        return _portalUI;
     }
     
     public ChestUI GetChestUI()

@@ -6,18 +6,24 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     [Header("Drag&Drop")]
-    [SerializeField] private GameObject _portalUI;
+    [SerializeField] private PortalUI _portalUI;
+    public PortalUI PortalUI => _portalUI;
 
     private void Awake()
     {
         Init();
     }
 
-    public void InteractPortal()
+    private void Start()
     {
-        UIManager.Instance.OpenUI(_portalUI);
+        _portalUI = UIBinder.Instance.GetPortalUI();
     }
-
+    
+    public void ConnectPortal()
+    {
+        UIManager.Instance.OpenUI(_portalUI.gameObject);
+    }
+    
     public void Escape()
     {
         GameManager.Instance.GameClear();
