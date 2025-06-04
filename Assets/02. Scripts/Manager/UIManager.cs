@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -22,6 +21,11 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
         Init();
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.OnPauseChanged += GamePause;
     }
     
     public ChestUI GetChestUI()
@@ -49,10 +53,14 @@ public class UIManager : Singleton<UIManager>
         CurUI = null;
     }
 
-    public void GamePause()
+    public void GamePause(bool isPaused)
     {
         CurUI = _pauseUI.gameObject;
-        CurUI.SetActive(true);
+        CurUI.SetActive(isPaused);
+        if (!isPaused)
+        {
+            CurUI = null;
+        }
     }
 
     public void Mediate(PlayerProperty playerProperty)

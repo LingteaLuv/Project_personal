@@ -29,17 +29,19 @@ public class SoundManager : Singleton<SoundManager>
         _curVolume = SettingManager.Instance.Sound.Value;
         SettingManager.Instance.Sound.OnChanged += SoundUpdate;
     }
-
+    
     private void SoundUpdate(float value)
     {
-        Debug.Log("진입");
         _curVolume = value;
         _bgm.volume = _curVolume;
     }
     
     private void OnDestroy()
     {
-        SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
+        if (Application.isPlaying)
+        {
+            SettingManager.Instance.Sound.OnChanged -= SoundUpdate;
+        }
     }
     
     public void PlayBGM(string clipName, bool loop)

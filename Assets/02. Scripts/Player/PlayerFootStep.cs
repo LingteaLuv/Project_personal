@@ -16,6 +16,23 @@ public class PlayerFootStep : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnPauseChanged += GamePause;
+    }
+    
+    private void GamePause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            _audioSource.Pause();
+        }
+        else
+        {
+            _audioSource.UnPause();
+        }
+    }
+    
     public void PlaySound(bool isMoved)
     {
         if (isMoved && !_isPlayed)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -31,6 +32,8 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsInteracted;
 
+    public event Action<bool> OnPauseChanged;
+
     private void Start()
     {
         Init();
@@ -47,7 +50,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _isPaused = true;
                 Time.timeScale = 0;
-                UIManager.Instance.GamePause();
+                OnPauseChanged?.Invoke(true);
             }
         }
         else
@@ -63,7 +66,7 @@ public class GameManager : Singleton<GameManager>
     {
         _isPaused = false;
         Time.timeScale = 1;
-        UIManager.Instance.CloseUI();
+        OnPauseChanged?.Invoke(false);
     }
 
     private DateTime CalculateDate()
@@ -77,6 +80,17 @@ public class GameManager : Singleton<GameManager>
         return temp;
     }
 
+    public void GameStart()
+    {
+        SceneManager.LoadScene("InGame", LoadSceneMode.Single);
+        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+    }
+
+    public void GameExit()
+    {
+        SceneManager.LoadScene("Title");
+    }
+    
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
