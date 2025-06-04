@@ -19,7 +19,6 @@ public class PauseUI : MonoBehaviour
         _newGameBtn.onClick.AddListener(() => GameManager.Instance.GameStart());
         _settingBtn.onClick.AddListener(() =>
         {
-            SettingManager.Instance.EnterSettingUI();
             _settingUI.SetActive(true);
         });
         _exitBtn.onClick.AddListener(() => GameManager.Instance.GameExit());

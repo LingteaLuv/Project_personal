@@ -32,7 +32,6 @@ public class TextLoader : MonoBehaviour
             {
                 string id = parts[0];
                 string text = parts[1];
-                Debug.Log($"{id},{text}");
 
                 if (parts.Length > 2)
                 {

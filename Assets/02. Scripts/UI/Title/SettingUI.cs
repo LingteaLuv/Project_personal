@@ -34,7 +34,6 @@ public class SettingUI : MonoBehaviour
         _exitButton.onClick.AddListener(()=>
         {
             SettingUpdate();
-            SettingManager.Instance.ExitSettingUI();
             gameObject.SetActive(false);
         });
 

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class SettingManager : Singleton<SettingManager>
 {
-    private bool _isOnSetting;
-    public bool IsOnSetting => _isOnSetting;
-
     public Property<float> Brightness;
     public Property<float> FOV;
     public Property<float> Sound;
@@ -20,16 +17,6 @@ public class SettingManager : Singleton<SettingManager>
             DontDestroyOnLoad(gameObject);
         }
         Init();
-    }
-    
-    public void EnterSettingUI()
-    {
-        _isOnSetting = true;
-    }
-
-    public void ExitSettingUI()
-    {
-        _isOnSetting = false;
     }
 
     public void SetBrightness(float input)
@@ -49,8 +36,6 @@ public class SettingManager : Singleton<SettingManager>
     
     private void Init()
     {
-        _isOnSetting = false;
-        
         Brightness = new Property<float>(0.5f);
         FOV = new Property<float>(0.5f);
         Sound = new Property<float>(0.5f);
