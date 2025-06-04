@@ -30,7 +30,7 @@ public class MinimapCam : MonoBehaviour
 
         
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        _minimapCam.orthographicSize += scroll * _zoomSpeed;
+        _minimapCam.orthographicSize += scroll * -_zoomSpeed;
 
         _minimapCam.orthographicSize = Mathf.Clamp(_minimapCam.orthographicSize, _minZoom, _maxZoom);
     }

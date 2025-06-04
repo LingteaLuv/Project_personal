@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Wood
   _prefab: {fileID: 4621369429398746001, guid: 426d33c6c87d1ea49aa912c8cf8abbe9, type: 3}
   _icon: {fileID: 21300000, guid: 8342b8db201dab24888e40ef27a26282, type: 3}
-  _minimapPrefab: {fileID: 5193795592020974454, guid: 71de040c70291a444901eb241e171fc7,
+  _minimapPrefab: {fileID: 525007416764530771, guid: 7a47556e8eb33334b92fe12156c1f95d,
     type: 3}
