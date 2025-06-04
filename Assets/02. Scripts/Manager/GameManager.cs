@@ -79,7 +79,7 @@ public class GameManager : Singleton<GameManager>
         
         temp.Second = (int)(_flowTime * _offset) % 60;
         temp.Minute = (int)(_flowTime * _offset / 60) % 60;
-        temp.Hour = 9 + (int)(_flowTime * _offset / 60) / 60 % 24;
+        temp.Hour = (9 + (int)((_flowTime * _offset / 60) / 60)) % 24;
         temp.Day = 1 + (int)(_flowTime * _offset / 60) / 60 / 24;
         return temp;
     }
