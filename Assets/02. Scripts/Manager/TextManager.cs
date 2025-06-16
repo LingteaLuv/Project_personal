@@ -33,7 +33,7 @@ public class TextManager : Singleton<TextManager>
         }
     }
     
-    public void PopupText(string id)
+    private void PopupText(string id)
     {
         ConfigUI();
         string popupText = _textLoader.GetPopupText(id);
@@ -53,7 +53,7 @@ public class TextManager : Singleton<TextManager>
         HideText();
     }
     
-    public void HideText()
+    private void HideText()
     {
         _popUpUI.ResetText();
         _popUpUI.gameObject.SetActive(false);

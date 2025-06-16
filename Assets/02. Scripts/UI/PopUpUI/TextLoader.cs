@@ -5,7 +5,6 @@ using UnityEngine;
 public class TextLoader : MonoBehaviour
 {
     private Dictionary<string, string> _popupTexts;
-    public Dictionary<string, string> PopupTexts => _popupTexts;
 
     private void Awake()
     {

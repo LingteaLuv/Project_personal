@@ -50,8 +50,8 @@ public class PlayerCam : MonoBehaviour
     
     private void MouseSpeedUpdate(float value)
     {
-        float fov = Mathf.Lerp(0.2f, 5, value);
-        _rotateSpeed = fov;
+        float speed = Mathf.Lerp(0.2f, 5, value);
+        _rotateSpeed = speed;
     }
 
     public void ChangePos(bool isHide)
