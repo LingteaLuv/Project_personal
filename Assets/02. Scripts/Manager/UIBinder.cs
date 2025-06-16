@@ -9,10 +9,10 @@ public class UIBinder : Singleton<UIBinder>
     [SerializeField] private StatusUI _statusUI;
     [SerializeField] private InventoryUI _inventoryUI;
     [SerializeField] private InventoryInChestUI _inventoryInChestUI;
+    [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
     [SerializeField] private ChestInventoryUI _chestInventoryUI;
     [SerializeField] private ChestUI _chestUI;
     [SerializeField] private CraftStuff _craftStuff;
-    [SerializeField] private InventoryInCraftUI _inventoryInCraftUI;
     [SerializeField] private CraftResult _craftResult;
     [SerializeField] private PopUpUI _popUpUI;
     [SerializeField] private PortalUI _portalUI;

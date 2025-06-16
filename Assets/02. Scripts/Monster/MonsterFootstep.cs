@@ -18,7 +18,7 @@ public class MonsterFootstep : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnPauseChanged += GamePause;
+        GameManager.Instance.IsPaused.OnChanged += GamePause;
     }
     
     private void GamePause(bool isPaused)
@@ -31,6 +31,12 @@ public class MonsterFootstep : MonoBehaviour
         {
             _audioSource.UnPause();
         }
+    }
+    
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.IsPaused.OnChanged -= GamePause;
     }
     
     public void FootstepUpdate(bool isMoved)

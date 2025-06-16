@@ -4954,7 +4954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2599bae0d090314a995a3ce923d9d3f, type: 2}
   m_sharedMaterial: {fileID: -4389169474625143456, guid: f2599bae0d090314a995a3ce923d9d3f,
@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5242,6 +5242,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069365451}
   m_CullTransparentMesh: 1
+--- !u!1 &1076383035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076383038}
+  - component: {fileID: 1076383037}
+  - component: {fileID: 1076383036}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1076383036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076383035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7710fb317596e4743afebaee63e6b368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseUI: {fileID: 1746580479}
+  _statusUI: {fileID: 1519052491}
+  _inventoryUI: {fileID: 1376339608}
+  _inventoryInChestUI: {fileID: 1346453090}
+  _inventoryInCraftUI: {fileID: 467720567}
+  _chestInventoryUI: {fileID: 1846629595}
+  _chestUI: {fileID: 464801810}
+  _craftStuff: {fileID: 2002585133}
+  _craftResult: {fileID: 33531954}
+  _popUpUI: {fileID: 913441185}
+  _portalUI: {fileID: 2022778741}
+--- !u!114 &1076383037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076383035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b44d41f6926f5a41abf42eae6ada456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpImage: {fileID: 754556552}
+  _mentalityImage: {fileID: 1069365453}
+  _hungerImage: {fileID: 2099545864}
+  _hpText: {fileID: 1504528359}
+  _mentalityText: {fileID: 1742247269}
+  _hungerText: {fileID: 1049891021}
+--- !u!4 &1076383038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076383035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 197.26431, y: 212.4617, z: 159.34113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102450163
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,80 +5991,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256321339}
   m_CullTransparentMesh: 1
---- !u!1 &1257092497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1257092499}
-  - component: {fileID: 1257092498}
-  - component: {fileID: 1257092500}
-  m_Layer: 0
-  m_Name: HudManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1257092498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257092497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b44d41f6926f5a41abf42eae6ada456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hpImage: {fileID: 754556552}
-  _mentalityImage: {fileID: 1069365453}
-  _hungerImage: {fileID: 2099545864}
-  _hpText: {fileID: 1504528359}
-  _mentalityText: {fileID: 1742247269}
-  _hungerText: {fileID: 1049891021}
---- !u!4 &1257092499
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257092497}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1257092500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257092497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7710fb317596e4743afebaee63e6b368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pauseUI: {fileID: 1746580479}
-  _statusUI: {fileID: 1519052491}
-  _inventoryUI: {fileID: 1376339608}
-  _inventoryInChestUI: {fileID: 1346453090}
-  _chestInventoryUI: {fileID: 1846629595}
-  _chestUI: {fileID: 464801810}
-  _craftStuff: {fileID: 2002585133}
-  _inventoryInCraftUI: {fileID: 467720567}
-  _craftResult: {fileID: 33531954}
-  _popUpUI: {fileID: 913441185}
-  _portalUI: {fileID: 2022778741}
 --- !u!1 &1330665518
 GameObject:
   m_ObjectHideFlags: 0
@@ -7000,7 +7000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2599bae0d090314a995a3ce923d9d3f, type: 2}
   m_sharedMaterial: {fileID: -4389169474625143456, guid: f2599bae0d090314a995a3ce923d9d3f,
@@ -7028,7 +7028,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9005,7 +9005,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2599bae0d090314a995a3ce923d9d3f, type: 2}
   m_sharedMaterial: {fileID: -4389169474625143456, guid: f2599bae0d090314a995a3ce923d9d3f,
@@ -9033,7 +9033,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11731,6 +11731,6 @@ SceneRoots:
   - {fileID: 1797403293}
   - {fileID: 464801808}
   - {fileID: 913441184}
-  - {fileID: 1257092499}
   - {fileID: 1454338996}
   - {fileID: 258455693}
+  - {fileID: 1076383038}

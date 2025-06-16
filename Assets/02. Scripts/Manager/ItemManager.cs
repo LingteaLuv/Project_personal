@@ -41,8 +41,8 @@ public class ItemManager : Singleton<ItemManager>
 
     private void Init()
     {
-        _hasLantern = false;
+        _hasLantern = true;
         _hasCompass = false;
-        _hasBackpack = false;
+        _hasBackpack = true;
     }
 }

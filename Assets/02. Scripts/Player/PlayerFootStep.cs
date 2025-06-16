@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerFootStep : MonoBehaviour
     [Header("Drag&Drop")] 
     [SerializeField] private AudioClip _footStep;
     
-    private AudioSource _audioSource;
+    public AudioSource _audioSource;
 
     private bool _isPlayed;
 
@@ -18,7 +19,14 @@ public class PlayerFootStep : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnPauseChanged += GamePause;
+        GameManager.Instance.IsPaused.OnChanged -= GamePause;
+        GameManager.Instance.IsPaused.OnChanged += GamePause;
+    }
+    
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.IsPaused.OnChanged -= GamePause;
     }
     
     private void GamePause(bool isPaused)
@@ -32,7 +40,7 @@ public class PlayerFootStep : MonoBehaviour
             _audioSource.UnPause();
         }
     }
-    
+
     public void PlaySound(bool isMoved)
     {
         if (isMoved && !_isPlayed)

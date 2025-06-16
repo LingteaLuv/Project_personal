@@ -17,7 +17,6 @@ public class GameManager : Singleton<GameManager>
     public DateTime Date => _date;
 
     private float _flowTime;
-    public float FlowTime => _flowTime;
 
     private float _hungerTime;
     public float HungerTime => _hungerTime;
@@ -29,22 +28,28 @@ public class GameManager : Singleton<GameManager>
 
     public bool IsInMaze;
 
-    private bool _isPaused;
+    public Property<bool> IsPaused;
 
     private float _curTime;
 
     public bool IsInteracted;
 
-    public event Action<bool> OnPauseChanged;
-
+    protected override void Awake()
+    {
+        base.Awake();
+        IsPaused = new Property<bool>(false);
+        Init();
+        DontDestroyOnLoad(gameObject);
+    }
+    
     private void Start()
     {
-        Init();
+        SceneManager.sceneLoaded += ResetField;
     }
     
     private void Update()
     {
-        if (!_isPaused && !IsInteracted)
+        if (!IsPaused.Value && !IsInteracted)
         {
             _curTime = Time.time;
             _flowTime = (_curTime - _startTime);
@@ -52,9 +57,8 @@ public class GameManager : Singleton<GameManager>
             _date = CalculateDate();
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _isPaused = true;
+                IsPaused.Value = true;
                 Time.timeScale = 0;
-                OnPauseChanged?.Invoke(true);
             }
         }
         else
@@ -65,12 +69,16 @@ public class GameManager : Singleton<GameManager>
             } 
         }
     }
+    
+    public void ResetField(Scene scene, LoadSceneMode mode)
+    {
+        Init();
+    }
 
     public void ContinueMethod()
     {
-        _isPaused = false;
+        IsPaused.Value = false;
         Time.timeScale = 1;
-        OnPauseChanged?.Invoke(false);
     }
 
     private DateTime CalculateDate()
@@ -80,12 +88,13 @@ public class GameManager : Singleton<GameManager>
         temp.Second = (int)(_flowTime * _offset) % 60;
         temp.Minute = (int)(_flowTime * _offset / 60) % 60;
         temp.Hour = (9 + (int)((_flowTime * _offset / 60) / 60)) % 24;
-        temp.Day = 1 + (int)(_flowTime * _offset / 60) / 60 / 24;
+        temp.Day = 1 + (9 + (int)(_flowTime * _offset / 60 / 60)) / 24;
         return temp;
     }
 
     public void GameStart()
     {
+        IsPaused.Value = false;
         SceneManager.LoadScene("InGame", LoadSceneMode.Single);
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
     }
@@ -128,7 +137,7 @@ public class GameManager : Singleton<GameManager>
         _monsterEssence = 0;
         _isPortalGenerated = false;
         IsInMaze = false;
-        _isPaused = false;
+        IsPaused.Value = false;
         _offset = 120;
     }
 }

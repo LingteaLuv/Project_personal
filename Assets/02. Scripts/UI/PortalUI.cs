@@ -14,7 +14,12 @@ public class PortalUI : MonoBehaviour
     
     private void Start()
     {
-        _yesBtn.onClick.AddListener(() => GameManager.Instance.GameClear());
+        _yesBtn.onClick.AddListener(() =>
+            {
+                UIManager.Instance.CurUI = null;
+                GameManager.Instance.GameClear();
+            }
+        );
         _noBtn.onClick.AddListener(() => OnClickNoBtn?.Invoke());
     }
 }
