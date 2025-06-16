@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCam : MonoBehaviour
 {
     [Header("InputNumber")]
-    [SerializeField] [Range(1,10)] private float _rotateSpeed;
+    private float _rotateSpeed;
 
     private Camera _playerCam;
     
@@ -25,12 +25,15 @@ public class PlayerCam : MonoBehaviour
     private void Start()
     {
         FOVUpdate(SettingManager.Instance.FOV.Value);
+        MouseSpeedUpdate(SettingManager.Instance.MouseSpeed.Value);
         SettingManager.Instance.FOV.OnChanged += FOVUpdate;
+        SettingManager.Instance.MouseSpeed.OnChanged += MouseSpeedUpdate;
     }
 
     private void OnDestroy()
     {
         SettingManager.Instance.FOV.OnChanged -= FOVUpdate;
+        SettingManager.Instance.MouseSpeed.OnChanged -= MouseSpeedUpdate;
     }
 
     private void LateUpdate()
@@ -43,6 +46,12 @@ public class PlayerCam : MonoBehaviour
     {
         float fov = Mathf.Lerp(50, 70, value);
         _playerCam.fieldOfView = fov;
+    }
+    
+    private void MouseSpeedUpdate(float value)
+    {
+        float fov = Mathf.Lerp(0.2f, 5, value);
+        _rotateSpeed = fov;
     }
 
     public void ChangePos(bool isHide)
