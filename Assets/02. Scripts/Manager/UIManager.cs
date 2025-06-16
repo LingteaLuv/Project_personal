@@ -20,17 +20,7 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         GameManager.Instance.IsPaused.OnChanged += GamePause;
-        //GamePause(GameManager.Instance.IsPaused.Value);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Debug.Log(CurUI);
-        }
-    }
-    
     
     public void OpenUI(GameObject curUI)
     {
@@ -50,10 +40,6 @@ public class UIManager : Singleton<UIManager>
     {
         CurUI.Push(UIBinder.Instance.GetPauseUI().gameObject);
         CurUI.Pop().SetActive(isPaused);
-        /*if (!isPaused)
-        {
-            CurUI = null;
-        }*/
     }
 
     private void Init()

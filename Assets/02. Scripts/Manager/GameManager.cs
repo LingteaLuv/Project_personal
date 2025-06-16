@@ -68,16 +68,6 @@ public class GameManager : Singleton<GameManager>, IGeneratorReceiver
                 ContinueMethod();
             } 
         }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameClear();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            KillMonster();
-        }
     }
 
     

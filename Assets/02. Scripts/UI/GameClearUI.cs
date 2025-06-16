@@ -121,5 +121,9 @@ public class GameClearUI : MonoBehaviour
         {
             _texts1[i].gameObject.SetActive(false);
         }
+        for (int i = 0; i < _texts2.Count; i++)
+        {
+            _texts2[i].gameObject.SetActive(false);
+        }
     }
 }

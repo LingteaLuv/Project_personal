@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     [Header("Drag&Drop")]
-    [SerializeField] private PortalUI _portalUI;
+    private PortalUI _portalUI;
     public PortalUI PortalUI => _portalUI;
 
     private void Awake()

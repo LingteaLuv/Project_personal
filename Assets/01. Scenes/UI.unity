@@ -1161,6 +1161,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1950805233476199675, guid: 717eeac1edbad954f95813fd2046e7ba,
+        type: 3}
+      propertyPath: m_Name
+      value: FOV
+      objectReference: {fileID: 0}
     - target: {fileID: 2606207310941648803, guid: 717eeac1edbad954f95813fd2046e7ba,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1285,6 +1290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368499532965502950, guid: 717eeac1edbad954f95813fd2046e7ba,
+        type: 3}
+      propertyPath: m_text
+      value: FOV
       objectReference: {fileID: 0}
     - target: {fileID: 4646887023536710637, guid: 717eeac1edbad954f95813fd2046e7ba,
         type: 3}
