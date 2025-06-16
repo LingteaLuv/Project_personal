@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3394075875357627342}
-  - component: {fileID: 2346434310976941257}
   m_Layer: 7
   m_Name: Model
   m_TagString: Monster
@@ -33,19 +32,6 @@ Transform:
   - {fileID: 4252218771416654096}
   m_Father: {fileID: 3511387036601531772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2346434310976941257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151909961445590696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e011ccba88214014fa70462cde8c38a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHp: 30
 --- !u!1 &3208606369921756971
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +465,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7473120152221281117}
+    - targetCorrespondingSourceObject: {fileID: 427320604601540549, guid: 14bdf1b939beddf46a7a06b509757bb5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1788328468536578714}
   m_SourcePrefab: {fileID: 100100000, guid: 14bdf1b939beddf46a7a06b509757bb5, type: 3}
 --- !u!4 &4252218771416654096 stripped
 Transform:
@@ -532,3 +522,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c94567919600e4e94f77390e18dfc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1788328468536578714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435328477168241320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e011ccba88214014fa70462cde8c38a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHp: 30

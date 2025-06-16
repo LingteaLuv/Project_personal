@@ -91,7 +91,7 @@ public class Bow_T : BaseWeapon
     private void CreateNewQuiver()
     {
         _arrowCount += 10;
-        Debug.Log($"진입,{_arrowCount}");
+        CreateNewArrow();
     }
     
     private void CreateNewArrow()
@@ -109,7 +109,7 @@ public class Bow_T : BaseWeapon
         }
         else
         {
-            Debug.Log("화살통에 화살이 없습니다");
+            TextManager.Instance.PopupTextForSecond("popup_007", 2f);
         }
     }
 }

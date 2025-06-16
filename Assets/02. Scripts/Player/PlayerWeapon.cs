@@ -67,7 +67,7 @@ public class PlayerWeapon : MonoBehaviour
         Bow_T bow = GetComponentInChildren<Bow_T>();
         if (bow != null)
         {
-            _weaponList.Add(bow);
+            AddWeapon(bow);
         }
     }
 
@@ -76,7 +76,7 @@ public class PlayerWeapon : MonoBehaviour
         Grenade grenade = GetComponentInChildren<Grenade>();
         if (grenade != null)
         {
-            _weaponList.Add(grenade);
+            AddWeapon(grenade);
             grenade.OnUsed += HandleGrenadeUsed;
         }
     }
