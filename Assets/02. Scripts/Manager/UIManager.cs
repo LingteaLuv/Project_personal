@@ -22,6 +22,14 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.IsPaused.OnChanged += GamePause;
         //GamePause(GameManager.Instance.IsPaused.Value);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Debug.Log(CurUI);
+        }
+    }
     
     
     public void OpenUI(GameObject curUI)

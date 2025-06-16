@@ -24,11 +24,6 @@ public class Portal : MonoBehaviour
         UIManager.Instance.OpenUI(_portalUI.gameObject);
     }
     
-    public void Escape()
-    {
-        GameManager.Instance.GameClear();
-    }
-    
     private void Init()
     {
         

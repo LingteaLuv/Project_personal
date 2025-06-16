@@ -26,23 +26,23 @@ public class ItemManager : Singleton<ItemManager>
     
     public void GetLantern()
     {
-        _hasLantern = true;
+        _hasLantern = false;
     }
 
     public void GetCompass()
     {
-        _hasCompass = true;
+        _hasCompass = false;
     }
 
     public void GetBackpack()
     {
-        _hasBackpack = true;
+        _hasBackpack = false;
     }
 
     private void Init()
     {
         _hasLantern = true;
-        _hasCompass = false;
+        _hasCompass = true;
         _hasBackpack = true;
     }
 }

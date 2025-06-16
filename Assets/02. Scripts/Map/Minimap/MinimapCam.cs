@@ -23,7 +23,7 @@ public class MinimapCam : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = new Vector3(_player.position.x / 5, transform.position.y, _player.position.z / 5);
-        if (!ItemManager.Instance.HasCompass)
+        if (ItemManager.Instance.HasCompass)
         {
             transform.rotation = Quaternion.Euler(90,_player.rotation.eulerAngles.y,0);
         }

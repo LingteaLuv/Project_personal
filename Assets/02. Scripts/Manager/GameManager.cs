@@ -71,8 +71,12 @@ public class GameManager : Singleton<GameManager>, IGeneratorReceiver
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            GameClear();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
             KillMonster();
-            Debug.Log(_monsterEssence);
         }
     }
 

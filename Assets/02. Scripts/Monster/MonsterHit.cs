@@ -24,7 +24,6 @@ public class MonsterHit : MonoBehaviour,IDamageable
     public void Damaged(int atkDamage)
     {
         _curHp -= atkDamage;
-        Debug.Log(_curHp);
         if (_curHp <= 0)
         {
             Die();
