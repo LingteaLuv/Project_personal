@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
+public class PlayerProperty : MonoBehaviour, IPlayerStatHandler, IDamageable
 {
     public Property<int> Hp;
     public Property<float> Mentality;
@@ -169,5 +169,15 @@ public class PlayerProperty : MonoBehaviour, IPlayerStatHandler
         MentalityIncrease = new Property<float>(3f);
         Speed = new Property<float>(5f);
         DetectRange = new Property<float>(5f);
+    }
+
+    public void Damaged(int atkDamage)
+    {
+        Hp.Value -= atkDamage;
+        if (Hp.Value <= 0)
+        {
+            Hp.Value = 0;
+            GameManager.Instance.GameOver();
+        }
     }
 }

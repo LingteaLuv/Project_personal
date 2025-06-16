@@ -17,20 +17,10 @@ public class PlayerController : MonoBehaviour
     private PlayerFootStep _playerFootStep;
     private PlayerProperty _playerProperty;
     private PlayerItemInventory _playerItemInventory;
-    private PlayerHit _playerHit;
     
     private void Awake()
     {
         Init();
-    }
-
-    private void Start()
-    {
-        _playerHit.OnAttacked += () =>
-        {
-            Debug.Log("진입0");
-            _playerProperty.Hit();
-        };
     }
     
     private void Update()
@@ -80,7 +70,6 @@ public class PlayerController : MonoBehaviour
         _playerFootStep = GetComponent<PlayerFootStep>();
         _playerProperty = GetComponent<PlayerProperty>();
         _playerItemInventory = GetComponentInChildren<PlayerItemInventory>();
-        _playerHit = GetComponent<PlayerHit>();
         
         _playerMovement.GetProperty(_playerProperty);
         _playerStealth.GetProperty(_playerProperty);
