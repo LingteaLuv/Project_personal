@@ -101,7 +101,7 @@ public class TransferManager : Singleton<TransferManager>
     {
         if (_curChest != null)
         {
-            if (_curChest.HasStuff(stuff))
+            if (_curChest.HasStuff(stuff) && _inventory.Count < _inventory.MaxCount)
             {
                 _curChest.RemoveStuff(stuff, 1);
                 _inventory.AddStuff(stuff);

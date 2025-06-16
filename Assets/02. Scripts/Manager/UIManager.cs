@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    public GameObject CurUI;
+    public Stack<GameObject> CurUI;
     
     protected override void Awake()
     {
@@ -13,6 +13,8 @@ public class UIManager : Singleton<UIManager>
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        Init();
     }
 
     private void Start()
@@ -26,24 +28,28 @@ public class UIManager : Singleton<UIManager>
     {
         if (curUI != null)
         {
-            CurUI = curUI;
-            CurUI.gameObject.SetActive(true);
+            CurUI.Push(curUI);
+            CurUI.Peek().gameObject.SetActive(true);
         }
     }
 
     public void CloseUI()
     {
-        CurUI.gameObject.SetActive(false);
-        CurUI = null;
+        CurUI.Pop().SetActive(false);
     }
     
     private void GamePause(bool isPaused)
     {
-        CurUI = UIBinder.Instance.GetPauseUI().gameObject;
-        CurUI.SetActive(isPaused);
-        if (!isPaused)
+        CurUI.Push(UIBinder.Instance.GetPauseUI().gameObject);
+        CurUI.Pop().SetActive(isPaused);
+        /*if (!isPaused)
         {
             CurUI = null;
-        }
+        }*/
+    }
+
+    private void Init()
+    {
+        CurUI = new Stack<GameObject>();
     }
 }

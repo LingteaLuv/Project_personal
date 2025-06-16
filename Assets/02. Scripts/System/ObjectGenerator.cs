@@ -37,6 +37,8 @@ public class ObjectGenerator : MonoBehaviour
     private void Start()
     {
         Init();
+        IGeneratorReceiver receiver = GameManager.Instance;
+        receiver.ReceiveGenerator(this);
     }
 
     private void Init()

@@ -30,7 +30,7 @@ public class InventoryInCraftUI : MonoBehaviour
     
     private void Update()
     {
-        if (UIManager.Instance.CurUI == transform.parent.gameObject)
+        if (UIManager.Instance.CurUI.Peek() == transform.parent.gameObject)
         {
             for (int i = 0; i < _inventory.Count; i++)
             {

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : Singleton<GameManager>, IGeneratorReceiver
 {
     [Header("Drag&Drop")]
     [SerializeField] private ObjectGenerator _generator;
@@ -68,7 +68,15 @@ public class GameManager : Singleton<GameManager>
                 ContinueMethod();
             } 
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            KillMonster();
+            Debug.Log(_monsterEssence);
+        }
     }
+
+    
     
     public void ResetField(Scene scene, LoadSceneMode mode)
     {
@@ -139,5 +147,10 @@ public class GameManager : Singleton<GameManager>
         IsInMaze = false;
         IsPaused.Value = false;
         _offset = 120;
+    }
+
+    public void ReceiveGenerator(ObjectGenerator generator)
+    {
+        _generator = generator;
     }
 }
