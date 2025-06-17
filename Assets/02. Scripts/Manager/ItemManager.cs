@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    private bool _hasLantern;
-    public bool HasLantern => _hasLantern;
-    
-    private bool _hasCompass;
-    public bool HasCompass => _hasCompass;
-    
-    private bool _hasBackpack;
-    public bool HasBackpack => _hasBackpack;
+    public Property<bool> HasLantern;
+    public Property<bool> HasCompass;
+    public Property<bool> HasBackpack;
     
     protected override void Awake()
     {
@@ -23,26 +18,49 @@ public class ItemManager : Singleton<ItemManager>
         }
         Init();
     }
+
+    private void Start()
+    {
+        DataManager.Instance.OnGameLoaded += LoadItemData;
+    }
     
     public void GetLantern()
     {
-        _hasLantern = false;
+        HasLantern.Value = false;
     }
 
     public void GetCompass()
     {
-        _hasCompass = false;
+        HasCompass.Value = false;
     }
 
     public void GetBackpack()
     {
-        _hasBackpack = false;
+        HasBackpack.Value = false;
     }
 
+    private void LoadItemData()
+    {
+        HasBackpack.Value = DataManager.Instance.GameData.HasBackpack;
+        HasCompass.Value = DataManager.Instance.GameData.HasCompass;
+        HasLantern.Value = DataManager.Instance.GameData.HasLantern;
+    }
+
+    private void SaveItemData(bool value)
+    {
+        DataManager.Instance.GameData.HasBackpack = HasBackpack.Value;
+        DataManager.Instance.GameData.HasCompass = HasCompass.Value;
+        DataManager.Instance.GameData.HasLantern = HasLantern.Value;
+    }
+    
     private void Init()
     {
-        _hasLantern = true;
-        _hasCompass = true;
-        _hasBackpack = true;
+        HasBackpack = new Property<bool>(true);
+        HasCompass = new Property<bool>(true);
+        HasLantern = new Property<bool>(true);
+        
+        HasBackpack.OnChanged += SaveItemData;
+        HasCompass.OnChanged += SaveItemData;
+        HasLantern.OnChanged += SaveItemData;
     }
 }

@@ -28,7 +28,7 @@ public class GameClearUI : MonoBehaviour
     {
         _backpack.onClick.AddListener(()=>
         {
-            if (ItemManager.Instance.HasBackpack)
+            if (ItemManager.Instance.HasBackpack.Value)
             {
                 StartCoroutine(SelectItem());
                 ItemManager.Instance.GetBackpack();
@@ -36,7 +36,7 @@ public class GameClearUI : MonoBehaviour
         });
         _compass.onClick.AddListener(()=>
         {
-            if (ItemManager.Instance.HasCompass)
+            if (ItemManager.Instance.HasCompass.Value)
             {
                 StartCoroutine(SelectItem());
                 ItemManager.Instance.GetCompass();
@@ -44,14 +44,14 @@ public class GameClearUI : MonoBehaviour
         });
         _lantern.onClick.AddListener(()=>
         {
-            if(ItemManager.Instance.HasLantern)
+            if(ItemManager.Instance.HasLantern.Value)
             {
                 StartCoroutine(SelectItem());
                 ItemManager.Instance.GetLantern();
             }
         });
 
-        if (!ItemManager.Instance.HasBackpack && !ItemManager.Instance.HasCompass && !ItemManager.Instance.HasLantern)
+        if (!ItemManager.Instance.HasBackpack.Value && !ItemManager.Instance.HasCompass.Value && !ItemManager.Instance.HasLantern.Value)
         {
             StartCoroutine(HiddenText());
         }

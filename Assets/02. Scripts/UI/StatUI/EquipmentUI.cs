@@ -32,9 +32,9 @@ public class EquipmentUI : MonoBehaviour
     {
         if(_isOpen)
         {
-            _lanternText.text = ItemManager.Instance.HasLantern ? $"   Lantern : O" : $"   Lantern : X";
-            _compassText.text = ItemManager.Instance.HasCompass ? $"   Compass : O" : $"   Compass : X";
-            _backpackText.text = ItemManager.Instance.HasBackpack ? $"   Backpack : O" : $"   Backpack : X";
+            _lanternText.text = ItemManager.Instance.HasLantern.Value ? $"   Lantern : O" : $"   Lantern : X";
+            _compassText.text = ItemManager.Instance.HasCompass.Value ? $"   Compass : O" : $"   Compass : X";
+            _backpackText.text = ItemManager.Instance.HasBackpack.Value ? $"   Backpack : O" : $"   Backpack : X";
         }
     }
 

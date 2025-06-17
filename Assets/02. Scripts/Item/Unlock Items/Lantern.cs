@@ -18,7 +18,7 @@ public class Lantern : MonoBehaviour
 
     private void Start()
     {
-        _isHasLight = ItemManager.Instance.HasLantern;
+        _isHasLight = ItemManager.Instance.HasLantern.Value;
         if (_isHasLight)
         {
             _headlight.gameObject.SetActive(true);

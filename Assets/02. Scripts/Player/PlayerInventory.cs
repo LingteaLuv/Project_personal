@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        if (ItemManager.Instance.HasBackpack)
+        if (ItemManager.Instance.HasBackpack.Value)
         {
             _maxCount = 5;
         }
