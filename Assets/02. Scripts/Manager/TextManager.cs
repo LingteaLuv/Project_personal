@@ -15,27 +15,22 @@ public class TextManager : Singleton<TextManager>
         Init();
     }
 
-    private void Start()
-    {
-        ConfigUI();
-    }
-
     private void Init()
     {
         _textLoader = transform.GetOrAddComponent<TextLoader>();
     }
 
-    private void ConfigUI()
+    public void GetPopUpUI(PopUpUI popUpUI)
     {
         if (_popUpUI == null)
         {
-            _popUpUI = UIBinder.Instance.GetPopUpUI();
+            _popUpUI = popUpUI;
+            Debug.Log("진입5");
         }
     }
     
     private void PopupText(string id)
     {
-        ConfigUI();
         string popupText = _textLoader.GetPopupText(id);
         _popUpUI.gameObject.SetActive(true);
         _popUpUI.PopupText(popupText);

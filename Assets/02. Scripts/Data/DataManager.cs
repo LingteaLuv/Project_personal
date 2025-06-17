@@ -23,7 +23,6 @@ public class DataManager : Singleton<DataManager>
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
-        Init();
     }
     
     public void SaveData(int slot)
@@ -33,7 +32,6 @@ public class DataManager : Singleton<DataManager>
             Directory.CreateDirectory(Path.GetDirectoryName($"{path}_{slot}"));
         } 
         string json = JsonUtility.ToJson(GameData);
-        Debug.Log($"{slot},{json}");
         File.WriteAllText($"{path}_{slot}",json);
 
         OnFileChanged?.Invoke();
@@ -57,10 +55,5 @@ public class DataManager : Singleton<DataManager>
         GameData = JsonUtility.FromJson<GameData>(json);
         OnGameLoaded?.Invoke();
         return true;
-    }
-
-    private void Init()
-    {
-        
     }
 }

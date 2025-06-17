@@ -17,6 +17,11 @@ public class UIBinder : Singleton<UIBinder>
     [SerializeField] private PopUpUI _popUpUI;
     [SerializeField] private PortalUI _portalUI;
 
+    private void Start()
+    {
+        Init();
+    }
+    
     public PauseUI GetPauseUI()
     {
         return _pauseUI;
@@ -63,5 +68,10 @@ public class UIBinder : Singleton<UIBinder>
     {
         _craftStuff.SetProperty(craftNPC);
         _craftResult.SetProperty(craftNPC);
+    }
+
+    private void Init()
+    {
+        TextManager.Instance.GetPopUpUI(_popUpUI);
     }
 }

@@ -69,8 +69,6 @@ public class GameManager : Singleton<GameManager>, IGeneratorReceiver
             } 
         }
     }
-
-    
     
     public void ResetField(Scene scene, LoadSceneMode mode)
     {
@@ -96,7 +94,7 @@ public class GameManager : Singleton<GameManager>, IGeneratorReceiver
 
     public void GameStart()
     {
-        IsPaused.Value = false;
+        // IsPaused.Value = false;
         SceneManager.LoadScene("InGame", LoadSceneMode.Single);
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
     }

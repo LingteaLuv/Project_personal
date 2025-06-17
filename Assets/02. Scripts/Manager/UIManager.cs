@@ -38,6 +38,7 @@ public class UIManager : Singleton<UIManager>
     
     private void GamePause(bool isPaused)
     {
+        if (UIBinder.Instance.GetPauseUI() == null) return;
         CurUI.Push(UIBinder.Instance.GetPauseUI().gameObject);
         CurUI.Pop().SetActive(isPaused);
     }
