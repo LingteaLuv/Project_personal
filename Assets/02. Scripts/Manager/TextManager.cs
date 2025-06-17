@@ -25,7 +25,6 @@ public class TextManager : Singleton<TextManager>
         if (_popUpUI == null)
         {
             _popUpUI = popUpUI;
-            Debug.Log("진입5");
         }
     }
     

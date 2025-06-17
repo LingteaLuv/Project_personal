@@ -48,8 +48,6 @@ public class ItemManager : Singleton<ItemManager>
         HasBackpack.Value = DataManager.Instance.GameData.HasBackpack;
         HasCompass.Value = DataManager.Instance.GameData.HasCompass;
         HasLantern.Value = DataManager.Instance.GameData.HasLantern;
-        Debug.Log($"{HasBackpack.Value},{HasCompass.Value},{HasLantern.Value}");
-        Debug.Log($"{DataManager.Instance.GameData.HasBackpack},{DataManager.Instance.GameData.HasCompass},{DataManager.Instance.GameData.HasLantern}");
 
         _isLoadingData = false;
     }
